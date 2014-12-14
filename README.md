@@ -1,4 +1,4 @@
-Extraction and Analysis System of Topics for Software History Reports
+Thesis title: “Extraction and Analysis System of Topics for Software History Reports”. 
 ======
-This is my desktop application for my degree thesis. 
-Faculty of Exact Sciences of the UNICEN University. Tandil, Argentine. http://www.exa.unicen.edu.ar/
+Director: Dr. Daniela Godoy, Co-Director Eng. Alejandro Corbellini. National University of the Center of Buenos Aires (UNICEN University). Tandil, Argentina. 
+http://www.exa.unicen.edu.ar/
