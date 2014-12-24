@@ -1,0 +1,3044 @@
+<Android_Bugs>
+<bug>
+<bugid>8563</bugid>
+<title>Browser/WebView doesnQ&apos;Et set InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT on Forms in Android 2.2</title>
+<status>Reviewed</status>
+<owner>cary%and...@gtempaccount.com</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Browser</component>
+<stars>5</stars>
+<reportedBy>jonasl1...@gmail.com</reportedBy>
+<openedDate>Mon, 24 May 2010 21:13:18 +0000</openedDate>
+<description>Prior to Android 2.2 developers of soft keyboards could detect that the
+user was typing in a web form by looking for the
+InputType.TYPE_TEXT_VARIATION_WEB_EDIT_TEXT flag. On Android 2.2 this is
+not possible since the Browser/WebView simply specifies
+InputType.TYPE_TEXT_VARIATION_NORMAL instead. This change is not neither
+documented or needed. It occurred between 2.1 and 2.2 build FRF50 on
+Nexus One.</description>
+<comment>
+<author>cccandr...@gmail.com</author>
+<when>Mon, 24 May 2010 21:24:39 +0000</when>
+<what>This change was an unintended oversight -- unfortunately, itQ&apos;Es too late to fix it in Froyo.</what>
+</comment>
+<comment>
+<author>jonasl1...@gmail.com</author>
+<when>Mon, 24 May 2010 21:35:08 +0000</when>
+<what>Bummer. Thanks for the quick confirmation anyway. Please consider removing the flag
+IME_FLAG_NO_EXTRACT_UI that was added in the web forms in 2.2 as well.</what>
+</comment>
+<comment>
+<author>morri...@google.com</author>
+<when>Fri, 20 Aug 2010 22:00:38 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>13666</bugid>
+<title>[Yellowpages] Selecting Q&quot;ERate ItQ&quot;E from the pop up causes Marketplace Sorry pop up crash</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>mintpape...@gmail.com</reportedBy>
+<openedDate>Tue, 04 Jan 2011 08:40:03 +0000</openedDate>
+<description>- Action : [Precondition] HavenQ&apos;Et launched Marketplace yet Homescreen Q&gt;E
+Menu Q&gt;E Yellowpages Q&gt;E Search for something Q&gt;E Use Yellowpages for a while
+until the pop up asking you to Rate the Yellowpages application appears
+Q&gt;E Rate It Q&gt;E Accept Marketplace terms and conditions Q&gt;E Observe - Problems
+: There is a Sorry pop up in Marketplace and Marketplace must Force
+Close. Q&quot;EThe application Market (process com.android.vending) has stopped
+unexpectedly. Please try again. [Force Close]Q&quot;E - Expected Results:
+Marketplace does not force close after launching it from the Q&quot;ERate ItQ&quot;E
+pop up.</description>
+</bug>
+<bug>
+<bugid>8434</bugid>
+<title>Cannot disable SD card filesystem auto-checking and repair in 1.5 and higher(bacame problem when updated to 2.1</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>cp1...@gmail.com</reportedBy>
+<openedDate>Fri, 21 May 2010 05:18:13 +0000</openedDate>
+<description>Sprint samsung moment running 2.1 after flashing 2.1 from 1.5 file check
+ran on first boot Q&amp;E LOST.DIRQ&apos;Ed music folder (which contained .mp3 and
+.wma files with.jpg cover art in separate folders), and camera folder
+(which contained .jpg files camera folder resided inside of DCIM
+alongside of other folders, all of which were left untouched). File
+check isolated files into LOST.DIR File check should have left them
+alone, warned with Q&quot;ECheck cardQ&quot;E message / Q&quot;Eplease backup filesQ&quot;E message,
+or gave options.</description>
+<comment>
+<author>Gir...@gmail.com</author>
+<when>Sun, 27 Feb 2011 04:44:40 +0000</when>
+<what>I agree, I would love to disable that Q&quot;Ewonderful featureQ&quot;E. or at least find a list of things that rub it the wrong way (or maybe see a companion program which can undo itQ&apos;Es damage).</what>
+</comment>
+</bug>
+<bug>
+<bugid>5006</bugid>
+<title>Separate display timeout parameter when phone is in Q&quot;Edocking stationQ&quot;E</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component>Framework</component>
+<stars>6</stars>
+<reportedBy>dmpdmp@gmail.com</reportedBy>
+<openedDate>Mon, 23 Nov 2009 21:15:34 +0000</openedDate>
+<description>There are current enhancement requests for more granular control of the
+display timeout/display locking functions. However, I do not see one
+that raises the issue of docking stations. I, too, would like to have
+separate display and lock timers so that my screen will go dark after a
+specified amount of time to save battery, but Q&quot;EwakingQ&quot;E it is as simply
+as taking any user action. I would prefer to choose to lock the screen
+manually only when IQ&apos;Em putting the phone away/in a pocket/etc. That
+said, I would like to either have the display never sleep/never lock, or
+have a separate timeout parameter for when the phone is Q&quot;EdockedQ&quot;E such as
+when itQ&apos;Es placed into a charging cradle like that for the new Moto
+Droid. The device already exhibits different behavior once docked
+(screen options, orientation, etc.). One of the features is acting like
+an alarm clock. If the display timesout after a few minutes according to
+the single timout setting, then itQ&apos;Es not very useful as an alarm clock.
+Please add this to the development plan when screen timeout is to be
+addressed. Thanks.</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Mon, 23 Nov 2009 21:34:14 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>dmpdmp@gmail.com</author>
+<when>Mon, 23 Nov 2009 23:25:10 +0000</when>
+<what>As an update, at least on a Motorola Droid, when in a Q&quot;Edocking stationQ&quot;E the screen 
+backlight seems to obey the single timeout setting, however the display does not 
+lock. So it seems that there is alread an exception in code that prevents the lock 
+from taking effect when docked - in fact I cannot seem to force the device to lock 
+at all (which I would consider a bug, not a feature), but the timeout is respected 
+(which I donQ&apos;Et want).</what>
+</comment>
+<comment>
+<author>CharlieC...@gmail.com</author>
+<when>Mon, 04 Jan 2010 20:04:33 +0000</when>
+<what>I agree.  Have Moto Droid on docking station and screen times out anyway.  WhatQ&apos;Es 
+the point of offering a docking station with a handy dandy clock/weather 
+display/etc. if itQ&apos;Es just going to go to sleep anyway?
+
+It does this whether I have Slacker Radio playing or just have it sitting there 
+in Q&quot;Eclock mode.Q&quot;E</what>
+</comment>
+<comment>
+<author>rton...@gmail.com</author>
+<when>Fri, 19 Feb 2010 16:48:06 +0000</when>
+<what>The screen stays on while docked, but if you want to turn it off, go to 
+Settings/Applications/Development and check off the Q&apos;Enever sleep while chargingQ&apos;E. 
+The alarms however continue to work.</what>
+</comment>
+</bug>
+<bug>
+<bugid>3509</bugid>
+<title>Q&quot;EMessage not downloadedQ&quot;E notification leads to... the compose screen??!!</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Applications</component>
+<stars>4</stars>
+<reportedBy>digitalbitstream@gmail.com</reportedBy>
+<openedDate>Sun, 09 Aug 2009 20:50:26 +0000</openedDate>
+<description>Every few days I get a Notification that reads: Message not downloaded
+Select to review the message and try..(7:10am) I think these come from
+email to SMS gateways that are sending me messages that are too long.
+Selecting that notification leads me to a confusing place... the
+Q&quot;EComposeQ&quot;E SMS screen, with Q&quot;E(!) Undelivered message/Unable to send this
+messageQ&quot;E showing for a few seconds, before reverting to the normal
+compose screen. If I cancel out of that, I sometimes can get an offer to
+Download the message, which never works.
+-------------------------------------------------------------------------
+Running: Updated HTC Magic, Google Ion Firmware 1.5, Kernel
+2.26.27-00393 san@sandroid #1 CRB43, T-Mobile ToGo SIM without data
+plan, WiFi access usually enabled.</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Mon, 24 Aug 2009 23:36:06 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>jlapenna@google.com</author>
+<when>Tue, 01 Sep 2009 01:55:08 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>Bkin...@gmail.com</author>
+<when>Fri, 30 Apr 2010 19:12:36 +0000</when>
+<what>I am having the same exact issue.  I have always been able to get attachments in SMS 
+until recently.  Any help would be great.</what>
+</comment>
+<comment>
+<author>norm.oh...@gmail.com</author>
+<when>Fri, 16 Jul 2010 16:29:09 +0000</when>
+<what>i keep getting the same message. itQ&apos;Es very annoying.</what>
+</comment>
+</bug>
+<bug>
+<bugid>10309</bugid>
+<title>weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee want ARABIC</title>
+<status>Duplicate</status>
+<owner>null</owner>
+<closedOn>2010-08-10T04:20:10.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>action6...@gmail.com</reportedBy>
+<openedDate>Mon, 09 Aug 2010 19:06:23 +0000</openedDate>
+<description>NOTE: This form is only for reporting user bugs. For all other user
+discussions please visit: http://groups.google.com/group/android-discuss
+Please describe the problem in detail. Be sure to include: - Steps to
+reproduce the problem. - What happened. - What you think the correct
+behavior should be. DonQ&apos;Et forget to mention which device you have, and
+which version of Android is installed on it. (Find it under Home Q&gt;E Menu
+Q&gt;E Settings Q&gt;E About phone.) If you happen to have a development
+environment, please also run Q&quot;Eadb bugreportQ&quot;E and archive the output as
+it could help diagnose the problem.</description>
+<comment>
+<author>hkunn...@gmail.com</author>
+<when>Mon, 09 Aug 2010 20:39:29 +0000</when>
+<what>ItQ&apos;Es better to add a star to the topic :
+
+http://code.google.com/p/android/issues/detail?id=5597</what>
+</comment>
+<comment>
+<author>e...@google.com</author>
+<when>Tue, 10 Aug 2010 04:20:10 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>18581</bugid>
+<title>Nexus S camera app: preview window crashes every two seconds</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>mhelv...@gmail.com</reportedBy>
+<openedDate>Sat, 16 Jul 2011 15:09:47 +0000</openedDate>
+<description>I have a Samsung Nexus S running Android 2.3.4. IQ&apos;Em not sure what
+prompted this problem, but starting yesterday, when I was in picture
+(not video) mode in the Camera app, the preview window would turn black
+and restart every two seconds or so, making it almost impossible to take
+a picture. Restarting the phone would not help. IQ&apos;Eve captured the log
+during two or three restart cycles and attached it to this bug report. I
+was able to fix the problem by clearing all data from the Camera app, in
+app management. So even if this bug is not fixed (since I donQ&apos;Et even
+know how to reproduce it), this bug report may at least help other users
+with the same problem.</description>
+</bug>
+<bug>
+<bugid>10122</bugid>
+<title>Gesture recorder</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>nalaw...@gmail.com</reportedBy>
+<openedDate>Sun, 01 Aug 2010 00:10:06 +0000</openedDate>
+<description>I would like to see the OS introduce a standard set of gesture types
+(zoom, rotate, delete, etc) and low users to record those gestures. This
+way users can decide if they use pinch for zoom or maybe make a
+clockwise spiral gesture etc.</description>
+</bug>
+<bug>
+<bugid>7652</bugid>
+<title>Contacts auto merging</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>vivek.ds...@gmail.com</reportedBy>
+<openedDate>Sat, 10 Apr 2010 00:06:00 +0000</openedDate>
+<description>Phone: Nexus One Version: 2.1-update1 I have 2 separate users both with
+the same First and Last name. They both have different middle names. I
+setup their names as they appear on Facebook in Google contacts. Contact
+1: One Three Contact 2: One Two Three On my phone contacts it merges
+both these accounts. This is really irritating. The actual behavior
+should show both the contacts separately since they do not have any
+information that overlaps (except for the first and last name).</description>
+<comment>
+<author>vivek.ds...@gmail.com</author>
+<when>Sat, 10 Apr 2010 00:07:58 +0000</when>
+<what>To make the example clear this are how the contacts appear
+Contact 1: FirstName LastName
+Contact 2: FirstName MiddleName LastName
+</what>
+</comment>
+<comment>
+<author>vivek.ds...@gmail.com</author>
+<when>Sat, 10 Apr 2010 00:17:31 +0000</when>
+<what>Looks like this is a duplicate of issue #4979</what>
+</comment>
+</bug>
+<bug>
+<bugid>14308</bugid>
+<title>Camera app not working after 2.2.2 OTA update</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>2011-02-07T21:33:45.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>4</stars>
+<reportedBy>TimothyA...@gmail.com</reportedBy>
+<openedDate>Tue, 25 Jan 2011 23:18:41 +0000</openedDate>
+<description>Nexus One, Android 2.2.2, FRG83G I received the 2.2.2 OTA update
+yesterday. After installing, my camera app will not work properly. It
+was working without issue before the update. When you open camera it
+pops up like normal at first, But then starts flashing the screen on and
+off. The Q&quot;EviewfinderQ&quot;E (display) will flash off for a second and then
+back on. The menu with flash settings, timer, etc. goes with it as well.
+And if it stays open, it will just do that forever, flash on and off.
+The camera will take photos if I can time it to catch it when the
+viewfinder is on, but that is difficult. I can slide from still camera
+to video, the video will record and work. No flashing screen. But if I
+slide it back to still picture, it will start the flashing on and off
+all over again. Video included of me starting the camera app, showing
+what happens.</description>
+<comment>
+<author>TimothyA...@gmail.com</author>
+<when>Wed, 26 Jan 2011 19:57:16 +0000</when>
+<what>UPDATE: I had tried rebooting by powering off my phone, removing the battery and then powering it back up.  I still had the camera issue. 
+I finally tried a factory reset.  All data was erased and system is back to default settings and that seems to have fixed the camera issue.</what>
+</comment>
+<comment>
+<author>janne.jo...@gmail.com</author>
+<when>Mon, 07 Feb 2011 17:47:06 +0000</when>
+<what>I have this exact issue if and only if I enable Q&quot;EStore locationQ&quot;E in the camera options. Rebooting phone, and clearing the camera application cache have no effect.</what>
+</comment>
+<comment>
+<author>morri...@google.com</author>
+<when>Mon, 07 Feb 2011 21:33:45 +0000</when>
+<what>Although the Nexus One and Nexus S run pure Android, this issue tracker is not the place to report bugs for these devices. Please do so under the appropriate section of the Google Mobile Help Forum so the right people can take a look at it. If you have a feature request or issue directly related to the Android source code feel free to post it here. Thanks!
+
+http://www.google.com/support/forum/p/Google+Mobile</what>
+</comment>
+<comment>
+<author>jor...@hall05.co.uk</author>
+<when>Sun, 13 Feb 2011 22:01:41 +0000</when>
+<what>I am also experiencing this exact issue as described and will have to try a factory reset.
+
+Out of curiousity, why has this been declined, as this does appear to be an issue with the Android update? Is it due to this being an OTA update for Nexus One specifically?</what>
+</comment>
+<comment>
+<author>jor...@hall05.co.uk</author>
+<when>Sun, 13 Feb 2011 22:08:18 +0000</when>
+<what>Update: after toggling both of the location settings in the main Q&apos;Elocation privacyQ&apos;E section and clearing the Camera applicationQ&apos;Es data, the issue seems to be resolved for now. It seems while this problem existed Google Maps could not correctly access the GPS/location information either.
+
+Hope this helps people discovering this thread. :)</what>
+</comment>
+</bug>
+<bug>
+<bugid>1387</bugid>
+<title>Use per-contact ringtones when receiving messages</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component>Applications</component>
+<stars>4</stars>
+<reportedBy>ABlackac...@gmail.com</reportedBy>
+<openedDate>Fri, 28 Nov 2008 14:41:24 +0000</openedDate>
+<description>I would love if there was an app that allowed my assigned ringtones to
+certain contacts, to also go off when i get text messages for those
+people in my phone book. NOTE: This form is only for reporting bugs. For
+questions, comments, or advice please visit:
+http://groups.google.com/group/android-developers Please describe the
+problem in as much detail as possible. Be sure to include: - Steps to
+reproduce the problem - Sample source code demonstrating the problem -
+What you think the correct behavior should be. If you are reporting a
+crash or similar issue, please also run the command Q&apos;Eadb bugreportQ&apos;E, and
+attach the resulting output as a text file to your issue report. (For
+feature requests for APIs, please include sample code showing how you
+are proposing the API should be used.)</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Tue, 16 Dec 2008 05:09:49 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Thu, 27 Aug 2009 14:27:34 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>jlapenna@google.com</author>
+<when>Tue, 01 Sep 2009 01:29:41 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>17773</bugid>
+<title>SMS subsistem error, sends Q&quot;EgarbageQ&quot;E instead of accentuation of spanish special characters</title>
+<status>Duplicate</status>
+<owner>null</owner>
+<closedOn>2011-06-23T19:27:07.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>jbsas...@gmail.com</reportedBy>
+<openedDate>Sun, 19 Jun 2011 00:23:35 +0000</openedDate>
+<description>My phone itQ&apos;Es a Samsung Nexus S (i9023), Android version itQ&apos;Es
+Gingerbread 2.3.4, base band version I9023XD, kernel version
+2.6.35.7-ge282d80 android-build@apa28 #1, IMEI: 355921041216712 ItQ&apos;Es
+been happening since I got this phone in Spain. But I live in Argentina,
+IQ&apos;Em using Movistar (Telef?nica) as a cell provider, and I notice most of
+my sms doesnQ&apos;Et arrive ok to the recipients... I`m not talking about MMS,
+just plain and simple SMS. When this fail happens the sms show a big
+black bar over the words of the message, instead of text, letters, etc
+you see just a black bar... IQ&apos;Em attaching you a photo of a Motorola V3i
+that I owe, itQ&apos;Es not just this phone, itQ&apos;Es happens in a great number of
+my friendQ&apos;Es phones too, differents brands, models and technologies.
+Testing and investigating a little bit I found that this happens mostly
+when I use the accentuation letters of the spanish language (my
+language), meaning the letters: Q&quot;E?Q&quot;E, Q&quot;E?Q&quot;E, Q&quot;E?Q&quot;E, Q&quot;E?Q&quot;E, Q&quot;E?Q&quot;E or the Q&quot;EspecialQ&quot;E
+letters Q&quot;E?Q&quot;E Q&quot;E?Q&quot;E and de Q&quot;E?Q&quot;E o r Q&quot;E?Q&quot;E. IQ&apos;Eve look around in forums and some
+people have the same fails. Some says itQ&apos;Es an accentuation issue some
+others said itQ&apos;Es a problem of Q&quot;ElenghQ&quot;E o the sms, that when your sms
+passes the 160 character limit Android fails in Q&quot;EchoppingQ&quot;E the sms in
+two or more messages. I donQ&apos;Et know, for me itQ&apos;Es the accentuation issue.
+I hope you guys can check it out because itQ&apos;Es a really frustranting when
+people show you in their phoners that your message it?s unintelligible,
+itQ&apos;Es just big black bar instead of text... Thank you very much, please
+if you read this or find a solution please sent a email to
+jbsastre@gmail.com Juan B. Sastre Argentina Cell: +54 92954 575012</description>
+<comment>
+<author>jbsas...@gmail.com</author>
+<when>Mon, 20 Jun 2011 01:11:07 +0000</when>
+<what>This issue has been reported already...
+
+http://code.google.com/p/android/issues/detail?id=6522</what>
+</comment>
+<comment>
+<author>jbsas...@gmail.com</author>
+<when>Mon, 20 Jun 2011 02:51:30 +0000</when>
+<what>Will Google do something about this issue?????
+
+Comment 1 by powe...@gmail.com, May 5, 2010
+Same problem with Portuguese characters :(
+I am using HTC Legend.
+Comment 2 by Filipe...@gmail.com, May 12, 2010
+Happens here too.
+My Q&quot;EoldQ&quot;E windows mobile had an option to disable Unicode character.
+
+HTC Desire
+Comment 3 by os2an...@gmail.com, May 13, 2010
+Same with HTC Hero :(
+I only noticed this lately. IQ&apos;Eve been wasting a lot o money in SMSs without knowing.
+Perhaps we should consider suing Google/Android because they do not warn about this
+problem!
+My Windows Smartphone also has an option to disable Unicode.
+Shame on Android :(
+Comment 4 by stuar...@gmail.com, May 13, 2010
+I had an option on my Samsung Omnia too to disable Unicode...
+
+We have to tweet as much as we can about this thread to make come more people...
+
+BTW, IQ&apos;Em using HTC Magic...
+Comment 5 by vaclav.l...@gmail.com, May 14, 2010
+There is a big need for this simple feature! Every damned nokia can do that and 
+unfortunately I could not find any stock app (not even paid) that could do this. Has 
+somebody already found (any) solution?
+Comment 6 by pierre.burel, Jun 11, 2010
+ItQ&apos;Es a shame this issue isnQ&apos;Et fixed yet.
+IQ&apos;Eve read that third-party messaging applications (chompSMS or Handcent SMS) donQ&apos;Et have this problem.
+Please Google, there are other languages than english !
+
+IQ&apos;Em using a HTC Desire running stock Android 2.1 with Sense (btw, maybe this is fixed in Froyo ?)
+Comment 7 by nando...@gmail.com, Jul 25, 2010
+Same problem, Desire and 2.1 u1 here.
+Comment 8 by fabio.fr...@gmail.com, Aug 11, 2010
+Sama issue, HTC Magic w/Android 1.6.. Money wasted on unreadable messages as I write in Italian and Spanish.. 
+Comment 9 by nando...@gmail.com, Aug 11, 2010
+Its a shame Android got this problem, I find its a major bug, and if its not a bug its not a correct solution. First phone with this problem, even 10 years ago ones worked perfectly.
+Comment 10 by powe...@gmail.com, Aug 22, 2010
+ItQ&apos;Es amazing but, it looks like that, even froyo still does not fix this issue.
+For android developers, it looks like that English is the only language in the world.
+Going back to a windows mobile device, where there is no such problem.
+At least, Microsoft acknowledges that there are more languages around.
+Have fun ;)
+Comment 11 by barb...@gmail.com, Oct 6, 2010
+Same problem with Portuguese, no resolution yet.
+
+Comment 12 by eduardov...@gmail.com, Oct 8, 2010
+Same issue in HTC Desire 2.2.
+
+I also tried other apps (Handcent SMS, ChompSMS), but the problem persists.
+Comment 13 by antoniod...@gmail.com, Dec 2, 2010
+Interestingly, Samsung Galaxy does not have that issue.
+I sent my HTC legend for repairing, but it came back the same.
+They say that I should wait for an update that MAYBE will solve the problem.
+LOL
+
+I am returning the phone to the seller to get refunded.
+Comment 15 by raul.sim...@gmail.com, Dec 2, 2010
+New versions of handcent already solve the problem. CanQ&apos;Et tell how many languages it solves the issues right now, but iQ&apos;Em from Portugal and it does and more 6 or 7.
+
+Amazing how the guys from Handcent create a free app to solve this and a few more messaging issues and Google itself doesnQ&apos;Et give a f...! I understand that a few united states operators have the issue solved on 2.2 but thatQ&apos;Es it. Just them and not all of them. Google should solve the issue on the basic level and make it work all around, without workarounds from other people.
+
+Bottomline -Q&gt;E Use Handcent, they did it!
+
+Comment 16 by misspark...@gmail.com, Jan 1, 2011
+I confirm the issue in French on my Desire Z. Took me several days to understand why I sent 5 messages with only 200 or 300 characters.
+Definitely needs a fix.
+Comment 17 by hum...@gmail.com, Jan 1, 2011
+Please fix this.
+Comment 18 by rui.g.sa...@gmail.com, Jan 1, 2011
+I have the same problem on my Desire Z. I write in portuguese. 
+Comment 19 by effie.th...@gmail.com, Jan 1, 2011
+Same for greek, I noticed I get charged x2.5 the texts I use. Outrageous.
+Comment 20 by effie.th...@gmail.com, Jan 1, 2011
+Just to report that Handcent SMS solves the problem for greek too.
+Comment 21 by nando...@gmail.com, Jan 1, 2011
+Spain, 2011, still having the problem...
+Comment 22 by nando...@gmail.com, Jan 1, 2011
+Spain, 2011, still having the problem...
+Comment 23 by tioj...@gmail.com, Jan 7, 2011
+Portuguese Desire HD same problem.
+IQ&apos;Eve sent this problem to HTC also. Handcent works. ItQ&apos;Es a shame both google and HTC.
+Comment 24 by atfernan...@gmail.com, Jan 13, 2011
+Hi, iQ&apos;Eve a Portuguese Desire and have the same problem. Handcent works, but it converts a ? to a c when sending a msg. 
+Comment 25 by krak...@gmail.com, Feb 9, 2011
+Another disgruntled Greek user here... trying to get http://forum.xda-developers.com/showthread.php?t=624416 to work...
+Comment 26 by negrijul...@gmail.com, Mar 14, 2011
+mismo problema con un milestone 2, desde argentina.
+Espero se solucione, no me gusta escribir sin los acentos.
+
+
+Same problem with a milestone 2, from argentina.
+
+Comment 27 by mmm...@gmail.com, Mar 14, 2011
+Hello all.
+
+Have any of you had the chance to test on Gingerbread? I just tested on my Nexus One with stock 2.3.3 (Gingerbread). It does appear to work with a short message sent from and to the same device. At least I am not getting a garbled message.
+Comment 28 by tioj...@gmail.com, Mar 14, 2011
+On my desire hd gingerbread is not available yet. Still on froyo.
+No dia 14 de Mar de 2011 19:01, Q&lt;Eandroid@googlecode.comQ&gt;E escreveu:
+
+a
+Comment 29 by efx...@gmail.com, Mar 14, 2011
+Issue still happens on my desire with gingerbread (cm7). Using handcent anyway...
+Comment 30 by zip...@gmail.com, Mar 29, 2011
+Issue present on my LG Optimus S running stock 2.2.
+
+First part of the problem is when I receive a message from a non android phone (like a W7 or IOS phone) that is using accentuations (?) the phone cant understand the font or character set and the message comes out like this:
+
+H o l a. M i  c e l u l a r  e s t ?  d a ? a d o.
+
+With spaces after every letter and the ? character replacing any latin specific characters.
+
+Second part of the problem is when I send a message to a non Android phone. The messages come out differently garbled and with @ characters all over the place. This only happens if I use a latin specific character.
+
+Im surprised Google hasnt done anything about this yet as it would affect all phones sold outside of the US.
+
+
+Comment 31 by thiago...@gmail.com, May 19, 2011
+I have the same problem
+IQ&apos;Em using a Samsung Nexus S, Android 2.3.4.
+Every time a try to send a sms with some special characters, like: ?, ?, ?... everything gets messed up. The receiver just receives squares.
+However, with some carriers here in Brazil, the issue does not occur. But 99% of the times I can reproduce it.
+Comment 32 by carole.w...@gmail.com, May 21, 2011
+I have the same problem, since I send text messages in several languages. However, for now, I get around by spelling words in a phonetic way. If I want to write Q&quot;Ea?oQ&quot;E I write Q&quot;EanioQ&quot;E, because I donQ&apos;Et want people to think IQ&apos;Em writing a dirty word :-) I use a Samsung Galaxy S GT10000 and I find it ridiculous indeed that even after more than a year of commenting on this subject (the oldest post is dated Feb 7, 2010) nothing has been changed!!!!!!!!
+Comment 33 by edp...@gmail.com, May 21, 2011
+It seems you all did not know about this bug when you bought the phone.
+Will you buy it again now that you know about this and other bugs?
+Or will you buy a non Android phone?
+How did you get informed about the operating system of the phone to buy?
+Did you know about this issue tracker?
+Did you know about a comparison of Mobile Operating Systems like:
+http://en.wikipedia.org/wiki/Mobile_operating_system#Smartphone_OS_comparison
+?
+How would you like being informed about these issues when you bought the phone?
+
+Comment 34 by zip...@gmail.com, May 21, 2011
+This bug is preventing me from communicating properly wirh my friends. I canQ&apos;Et believe this has not been fixed. I will look at how google, manufacturers, and providers  update android phones in the future. If they keep ignoring these types of bugs and not update phones, then I will look into a OS provider that will. 
+Comment 35 by krak...@gmail.com, May 22, 2011
+@Comment 33 by edp..@gmail.com: what, are you working for some company and running surveys?
+Comment 36 by edp...@gmail.com, May 23, 2011
+I just want to let people know that Android has many bugs, like this, that Google is not willing to fix, and that other OSs do not have these bugs.
+So, I want to know how did you get informed when you bought the phone so we can provide this info and not let people make such bad decisions.
+Comment 37 by zip...@gmail.com, May 23, 2011
+I found out when my friends complain that my messages were all garbled. And
+then theirs were too.
+Its an international character problem so here in the US they prob wont even
+care
+
+we
+Comment 38 by krak...@gmail.com, May 23, 2011
+@@Comment 33 by edp..@gmail.com:so, you come in an android-related support forum in order to start a crusade against it. How smart of you. Q&quot;EWe can provide this infoQ&quot;E? WhoQ&apos;Es Q&apos;EweQ&apos;E?
+
+All OSes have bugs, of course, iOS has them, Windows Mobile has them (and, in this case, it has the exact same bug), itQ&apos;Es way too stupid to say that they donQ&apos;Et. The answers to the questions youQ&apos;Ere making are NONE of your business.
+Comment 39 by edp...@gmail.com, May 29, 2011
+I am not in a crusade against Android. I would really like Android to be the best OS, but currently it is not. I know all OSes have bugs. I just want people to get the best information in order to choose a phone. Of course you should not answer any question, if you are not willing to collaborate. These questions are only intended for people that want the best OS for their phone.
+Delete comment Comment 40 by jbsas...@gmail.com, Today (82 minutes ago)
+Same problem with my Nexus S (i9023), IQ&apos;Eve put another bug report of this one here: http://code.google.com/p/android/issues/detail?id=17773Q&amp;Ecolspec=ID%20Type%20Status%20Owner%20Summary%20Stars
+</what>
+</comment>
+<comment>
+<author>morri...@google.com</author>
+<when>Thu, 23 Jun 2011 19:27:07 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>12798</bugid>
+<title>adb pull / push </title>
+<status>NeedsInfo</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>frabb...@gmail.com</reportedBy>
+<openedDate>Fri, 26 Nov 2010 10:53:05 +0000</openedDate>
+<description>adb pull or push return wrong informations about trasferred file example
+882 KB/s (0 bytes in 578611.000s) where 578611 is the dimension of the
+file and not the seconds required!!</description>
+<comment>
+<author>fadden%a...@gtempaccount.com</author>
+<when>Mon, 29 Nov 2010 20:13:15 +0000</when>
+<what>On what platform?</what>
+</comment>
+<comment>
+<author>frabb...@gmail.com</author>
+<when>Mon, 29 Nov 2010 20:21:05 +0000</when>
+<what>i found this bug on windows platform. I will verify on linux too as soon as
+possible!</what>
+</comment>
+</bug>
+<bug>
+<bugid>2634</bugid>
+<title>Possible to completely dim display such that nothing is visible</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>2009-07-24T02:35:34.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>0</stars>
+<reportedBy>gtcopeland</reportedBy>
+<openedDate>Mon, 11 May 2009 18:38:05 +0000</openedDate>
+<description>This includes the programmatic system wide brightness setting. And yes,
+system wide setting can be changed. This would be a horrible thing to
+see exploited. If exploited, this could force users to reload their
+phone. I have dimmed display on hardware running 1.5 with the 1.5 SDK.
+Please take this report seriously. You may want to hide this report.</description>
+<comment>
+<author>romaingu...@gmail.com</author>
+<when>Mon, 11 May 2009 20:27:30 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>jlape...@google.com</author>
+<when>Fri, 24 Jul 2009 02:35:34 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>gtcopeland</author>
+<when>Fri, 07 Aug 2009 19:13:57 +0000</when>
+<what>This declined because it hardware/device driver specific?
+</what>
+</comment>
+<comment>
+<author>tomlo...@gmail.com</author>
+<when>Wed, 07 Apr 2010 06:00:26 +0000</when>
+<what>Maybe the system can reset the brightness level to a Q&quot;EsafeQ&quot;E value after a battery-pull?</what>
+</comment>
+</bug>
+<bug>
+<bugid>1785</bugid>
+<title>not possible to uninstall an application when a newer version has been released</title>
+<status>FutureRelease</status>
+<owner>null</owner>
+<closedOn>2009-01-21T19:26:38.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>mrwee...@gmail.com</reportedBy>
+<openedDate>Tue, 13 Jan 2009 15:18:06 +0000</openedDate>
+<description>It is not possible to uninstall an application from the market panel if,
+since installation, a newer version has been released. To reproduce:
+install an app, in the market applet the buttons at the bottom say
+[Open] and [Uninstall]. Wait until a newer version of the app is
+available. Then in the market it says [Install] with no way to uninstall
+the older version without first installing the new version, and then
+uninstalling the new one, a waste of time and bandwidth It would be
+better to have the options [Open], [Uninstall], [Upgrade] or something
+similar</description>
+<comment>
+<author>romaingu...@gtempaccount.com</author>
+<when>Tue, 13 Jan 2009 16:24:28 +0000</when>
+<what>Hi,
+
+You can always uninstall the download application through Settings Q&gt;E Applications.</what>
+</comment>
+<comment>
+<author>mrwee...@gmail.com</author>
+<when>Tue, 13 Jan 2009 17:23:11 +0000</when>
+<what>Fantastic! unfortunately T-mobile UK neglected to include this information in the
+manual, stating the android market downloads page was the way to remove installed apps</what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 21 Jan 2009 15:01:35 +0000</when>
+<what>This issue is assigned to an engineer for further evaluation</what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 21 Jan 2009 19:26:38 +0000</when>
+<what>This issue was fixed and the fix will be in a future release</what>
+</comment>
+</bug>
+<bug>
+<bugid>8419</bugid>
+<title>GMail sorry popup occurs when user attach an image.</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>star...@gmail.com</reportedBy>
+<openedDate>Thu, 20 May 2010 15:29:34 +0000</openedDate>
+<description>Please describe the problem in detail. Be sure to include: - Steps to
+reproduce the problem (including sample code if appropriate). 1. Google
+Mail 2. Menu key Q&gt;E Compose 3. Option menu Q&gt;E attach 4. Enter drop box
+folder on Gallery Q&gt;E Select JPEG file - What happened.
+com.google.android.gm Sorry popup occurs.(once) - What you think the
+correct behavior should be. Normal operation. DonQ&apos;Et forget to mention
+which version of Android youQ&apos;Ere using, and/or which device the problem
+appears on (model and Android version). (Samsung GT-I9000 / Android 2.1
+Ecair)</description>
+<comment>
+<author>morri...@google.com</author>
+<when>Fri, 21 May 2010 22:47:14 +0000</when>
+<what>The Android team is not able to help with issues related to GoogleQ&apos;Es 
+software for Android, such as Maps.
+
+Please direct questions to the Help Forum:
+http://www.google.com/support/forum/p/Google+Mobile/label?
+lid=5681ac6f08f6d45dQ&amp;Elid=551c5c4cca827a18Q&amp;Ehl-en</what>
+</comment>
+<comment>
+<author>morri...@gmail.com</author>
+<when>Sat, 22 May 2010 15:15:06 +0000</when>
+<what>To be more clear, this is the bug tracker for the Android Open-Source 
+Project. GoogleQ&apos;Es Q&quot;EbrandedQ&quot;E apps like Maps, YouTube, Gmail, and so on are 
+not open-source and are developed by different teams at Google, who do not 
+check this bug tracker. Anything about those apps submitted here simply 
+wonQ&apos;Et be seen by the right people.
+
+As we tidy up the Android bug tracker, weQ&apos;Ere directing issues about the 
+Google apps to the Help Forums where the right people will see the 
+feedback.
+
+(P.S. Sorry about the reference to Maps in my previous comment, I meant 
+Gmail. Mea culpa.)</what>
+</comment>
+</bug>
+<bug>
+<bugid>9363</bugid>
+<title>Better detection and blacklisting of abusive users on Android market</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>11</stars>
+<reportedBy>yangbo....@gmail.com</reportedBy>
+<openedDate>Sun, 27 Jun 2010 17:51:34 +0000</openedDate>
+<description>A user named Q&quot;EHamQ&quot;E is posting comments promoting Q&quot;Edroidparadise.comQ&quot;E on
+every top ranking apps everyday, to keep his comment always at the top.
+Marking his comments as spam doesnQ&apos;Et help because he simply deletes it
+and re-posts. His comments provide no value to the users and heavily
+pollute the comment space because they are always at the top of every
+top ranking apps. Can we make better use of the Q&quot;EspamQ&quot;E signals to detect
+such behavior, and probably temporarily blacklist the abusive user from
+posting comments?</description>
+<comment>
+<author>khayt...@gmail.com</author>
+<when>Wed, 21 Jul 2010 10:41:43 +0000</when>
+<what>Sadly this is ignored?  Not like Google doesnQ&apos;Et have pretty darn decent spam detection algorithms already!</what>
+</comment>
+</bug>
+<bug>
+<bugid>18471</bugid>
+<title>camera saves photo as zero-size file, content is not saved</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>3</stars>
+<reportedBy>dja.as...@gmail.com</reportedBy>
+<openedDate>Wed, 13 Jul 2011 00:48:49 +0000</openedDate>
+<description>Taking a photo with Android camera app. Go to the gallery several hours
+later and the photos are shown as blank squares. Browsing the files
+shows that they are zero-sized and no picture content was saved. I have
+been able to save files, but then at other times the files donQ&apos;Et save. I
+cannot tell what the reproducible conditions are. Possibility: I have
+disabled data roaming because I am traveling outside of the US, and 3G
+cell coverage is most often not available. Android version 2.2.2 on
+Verizon Droid.</description>
+<comment>
+<author>Arne.Ber...@gmail.com</author>
+<when>Fri, 30 Sep 2011 09:46:16 +0000</when>
+<what>I guess I have almost same problem although I am sure that the photos have been successfully saved at first. I viewed them in the gallery an they where all there but a view hours later they had a size of zero.
+Android version 2.3.3 on Samsung I9100XXKE7.</what>
+</comment>
+<comment>
+<author>thecbo...@gmail.com</author>
+<when>Mon, 31 Oct 2011 17:55:33 +0000</when>
+<what>Yeah I have the same problem and a search of the forums show others do as well. I have experienced it on a Droid X Android 2.2 and Android 2.3 but only with the stock camera app.</what>
+</comment>
+</bug>
+<bug>
+<bugid>18324</bugid>
+<title>Force close occurs on selecting Q&quot;EAcceptQ&quot;E in ATQ&amp;ET Billing Agreement page in Android Market</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>satishku...@gmail.com</reportedBy>
+<openedDate>Fri, 08 Jul 2011 06:45:27 +0000</openedDate>
+<description>Phone : Nexus S Android Version : 2.3.3 Market Version : 2.3.6 Issue :
+Force close occurs on selecting Q&quot;EAcceptQ&quot;E in ATQ&amp;ET Billing Agreement page
+in Android Market. STEP-BY-STEP INSTRUCTIONS: Preconditions: 1. Google
+account has been created on the device. Procedure: 1. On the phone
+homescreen , press and hold the page to add widget. 2. Select Q&quot;E Get
+GamesQ&quot;E widget. 3. Tap the widget 4. The list of free and paid games is
+displayed 5. Select paid game 6. It goes to the market place 7. Select
+Buy and then ok 8. Select Purchase options as ATQ&amp;ET carrier billing 9.
+The ATQ&amp;ET Billing agreement page is displayed 10. Select Accept 11.
+Observe Expected behaviour: Expected the widget to display the latest
+messages. Actual behaviour: Selecting Accept on the ATQ&amp;ET billing
+agreement returns with the force close error : Q&quot;EThe application Market
+(process com.android.vending)has stopped unexpectedly. Please try
+againQ&quot;E. Stack trace : I/ActivityManager( 110): Starting: Intent {
+act=android.intent.action.VIEW
+cmp=com.android.vending/.billing.BuyPageActivity (has extras) } from pid
+336 I/ActivityManager( 110): Displayed
+com.android.vending/.billing.BuyPageActivity: +367ms D/vending ( 336):
+[1] BaseBuyPageActivity.onPostResponse(): {PurchaseResult=OK,
+PurchaseInfo=PurchaseInfo=, SignupStatus=NEW_USER, TId=null,
+ShoppingCart=[ItemPrice=US$1.99, TaxInclusive=N/A, TaxExclusive=N/A,
+Total=US$1.99, HasTaxMessage=false, TaxMessage=null,
+HasFooterMessage=false, FooterMessage=null], RefundPolicy=Applications
+can be returned for a full refund within 15 minutes of purchase. Q&lt;Ea
+href=Q&quot;Ehttp://market.android.com/support/bin/answer.py?answer=134336Q&quot;EQ&gt;ERefund
+PolicyQ&lt;E/aQ&gt;E, ErrorFields=[]} D/dalvikvm( 336): GC_CONCURRENT freed 1155K,
+44% free 4635K/8263K, external 3755K/3853K, paused 2ms+3ms I/dalvikvm(
+336): Jit: resizing JitTable from 4096 to 8192 E/ThrottleService( 110):
+Error reading data file D/ThrottleService( 110): Too many data files
+D/ThrottleService( 110): deleting /data/system/throttle/1039172274
+W/InputManagerService( 110): Window already focused, ignoring focus gain
+of: com.android.internal.view.IInputMethodClient$Stub$Proxy@4078abe0
+D/dalvikvm( 231): GC_EXPLICIT freed 446K, 45% free 3982K/7239K, external
+1625K/2137K, paused 32ms W/InputManagerService( 110): Window already
+focused, ignoring focus gain of:
+com.android.internal.view.IInputMethodClient$Stub$Proxy@407864f8
+I/ActivityManager( 110): Starting: Intent {
+act=android.intent.action.MAIN cat=[android.intent.category.HOME]
+flg=0x10200000 cmp=com.android.launcher/com.android.launcher2.Launcher }
+from pid 110 W/InputManagerService( 110): Window already focused,
+ignoring focus gain of:
+com.android.internal.view.IInputMethodClient$Stub$Proxy@40844050
+V/RenderScript_jni( 208): surfaceCreated V/RenderScript_jni( 208):
+surfaceChanged I/ActivityManager( 110): Starting: Intent {
+act=android.intent.action.MAIN cat=[android.intent.category.HOME]
+flg=0x10200000 cmp=com.android.launcher/com.android.launcher2.Launcher }
+from pid 110 I/ActivityManager( 110): Starting: Intent {
+act=android.settings.SETTINGS flg=0x10200000
+cmp=com.android.settings/.Settings } from pid 208 V/RenderScript_jni(
+208): surfaceDestroyed I/ActivityManager( 110): Displayed
+com.android.settings/.Settings: +356ms D/dalvikvm( 329):
+GC_EXTERNAL_ALLOC freed 98K, 45% free 3105K/5639K, external 2857K/2882K,
+paused 45ms D/dalvikvm( 336): GC_EXTERNAL_ALLOC freed 465K, 42% free
+4863K/8263K, external 3839K/3853K, paused 32ms D/dalvikvm( 208):
+GC_EXTERNAL_ALLOC freed 583K, 46% free 3590K/6599K, external
+5946K/5959K, paused 27ms I/ActivityManager( 110): Starting: Intent {
+act=android.intent.action.MAIN
+cmp=com.android.settings/.ApplicationSettings } from pid 329
+I/ActivityManager( 110): Displayed
+com.android.settings/.ApplicationSettings: +277ms D/dalvikvm( 208):
+GC_EXPLICIT freed 97K, 46% free 3592K/6599K, external 5671K/7082K,
+paused 73ms I/ActivityManager( 110): Starting: Intent {
+act=android.intent.action.MAIN
+cmp=com.android.settings/.DevelopmentSettings } from pid 329
+I/ActivityManager( 110): Displayed
+com.android.settings/.DevelopmentSettings: +294ms I/ActivityManager(
+110): Starting: Intent { act=android.intent.action.MAIN
+cat=[android.intent.category.HOME] flg=0x10200000
+cmp=com.android.launcher/com.android.launcher2.Launcher } from pid 110
+V/RenderScript_jni( 208): surfaceCreated V/RenderScript_jni( 208):
+surfaceChanged D/ConnectivityService( 110): ConnectivityService
+FeatureUser expire(0, enableMMS, android.os.BinderProxy@40728c80),
+created 60004 mSec ago W/Vold ( 71): Ignoring unknown switch
+Q&apos;Eusb_connectedQ&apos;E D/Tethering( 110): sendTetherStateChangedBroadcast 1, 0,
+0 D/Tethering( 110): interfaceAdded :usb0 D/Vold ( 71): USB connected
+D/Vold ( 71): Share method ums now available E/Tethering( 110): active
+iface (usb0) reported as added, ignoring I/StorageNotification( 178):
+UMS connection changed to true (media state mounted) D/dalvikvm( 329):
+GC_EXPLICIT freed 234K, 47% free 3073K/5767K, external 2218K/2770K,
+paused 31ms D/dalvikvm( 336): GC_EXPLICIT freed 368K, 44% free
+4708K/8263K, external 4008K/4742K, paused 100ms D/dalvikvm( 375):
+GC_EXPLICIT freed 333K, 49% free 2940K/5703K, external 1625K/2137K,
+paused 62ms D/dalvikvm( 420): GC_EXPLICIT freed 124K, 53% free
+3170K/6727K, external 1625K/2137K, paused 46ms D/dalvikvm( 497):
+GC_EXPLICIT freed 105K, 50% free 2743K/5379K, external 1625K/2137K,
+paused 87ms D/dalvikvm( 513): GC_EXPLICIT freed 124K, 49% free
+2778K/5379K, external 1625K/2137K, paused 21ms D/dalvikvm( 110):
+GC_EXTERNAL_ALLOC freed 977K, 38% free 5607K/9031K, external
+2449K/2454K, paused 54ms I/ActivityManager( 110): Starting: Intent {
+act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER]
+flg=0x10100000 cmp=com.android.vending/.AssetBrowserActivity } from pid
+110 V/RenderScript_jni( 208): surfaceDestroyed D/vending ( 336): [1]
+BaseBuyPageActivity.onPostResponse(): {PurchaseResult=OK,
+PurchaseInfo=PurchaseInfo=, SignupStatus=NEW_USER, TId=null,
+ShoppingCart=[ItemPrice=US$1.99, TaxInclusive=N/A, TaxExclusive=N/A,
+Total=US$1.99, HasTaxMessage=false, TaxMessage=null,
+HasFooterMessage=false, FooterMessage=null], RefundPolicy=Applications
+can be returned for a full refund within 15 minutes of purchase. Q&lt;Ea
+href=Q&quot;Ehttp://market.android.com/support/bin/answer.py?answer=134336Q&quot;EQ&gt;ERefund
+PolicyQ&lt;E/aQ&gt;E, ErrorFields=[]} I/ActivityManager( 110): Starting: Intent {
+cmp=com.android.vending/.billing.CarrierTosAndAddressActivity (has
+extras) } from pid 336 I/ActivityManager( 110): Displayed
+com.android.vending/.billing.CarrierTosAndAddressActivity: +397ms
+D/vending ( 336): [57] RadioHttpClient.isRadioActiveElseWait(): calls
+going through connection type MMS I/TelephonyRegistry( 110):
+notifyDataConnection: state=0 isDataConnectivityPossible=true
+reason=apnSwitched interfaceName=null networkType=2 I/TelephonyRegistry(
+110): notifyDataConnection: state=1 isDataConnectivityPossible=true
+reason=apnSwitched interfaceName=null networkType=2 I/vending ( 336):
+[57] RadioHttpClient.isRadioActiveElseWait(): APN request started:
+Thread[GetProvisioningThread,5,main] I/TelephonyRegistry( 110):
+notifyDataConnection: state=2 isDataConnectivityPossible=true
+reason=apnSwitched interfaceName=rmnet0 networkType=2 D/vending ( 336):
+[1] RadioNetworkWaiter.onReceive(): Network info: NetworkInfo: type:
+mobile_mms[EDGE], state: CONNECTED/CONNECTED, reason: apnSwitched,
+extra: wap.cingular, roaming: false, failover: false, isAvailable: true
+D/GTalkService( 231): ##### Network broadcast (connected=true)
+type=mobile_mms, state=CONNECTED D/GTalkService( 231):
+[GTalkConnection.1] ### networkStateChanged: active and curr network
+type/state are the same(1/CONNECTED), ignore I/MediaUploader( 497): No
+need to wake up D/Tethering( 110): MasterInitialState.processMessage
+what=3 W/dalvikvm( 336): threadid=26: thread exiting with uncaught
+exception (group=0x40015560) E/AndroidRuntime( 336): FATAL EXCEPTION:
+GetProvisioningThread E/AndroidRuntime( 336):
+java.lang.NullPointerException E/AndroidRuntime( 336): at
+org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:456)
+E/AndroidRuntime( 336): at
+org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:555)
+E/AndroidRuntime( 336): at
+org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:487)
+E/AndroidRuntime( 336): at
+android.net.http.AndroidHttpClient.execute(AndroidHttpClient.java:248)
+E/AndroidRuntime( 336): at
+com.google.android.common.http.GoogleHttpClient.executeWithoutRewriting(GoogleHttpClient.java:203)
+E/AndroidRuntime( 336): at
+com.google.android.common.http.GoogleHttpClient.execute(GoogleHttpClient.java:245)
+E/AndroidRuntime( 336): at
+com.google.android.common.http.GoogleHttpClient.execute(GoogleHttpClient.java:313)
+E/AndroidRuntime( 336): at
+com.android.vending.api.RadioHttpClient.performRequest(RadioHttpClient.java:173)
+E/AndroidRuntime( 336): at
+com.android.vending.api.RadioHttpClient.execute(RadioHttpClient.java:135)
+E/AndroidRuntime( 336): at
+com.android.vending.api.CarrierService.performRequest(CarrierService.java:119)
+E/AndroidRuntime( 336): at
+com.android.vending.api.CarrierService.getProvisioning(CarrierService.java:70)
+E/AndroidRuntime( 336): at
+com.android.vending.billing.CarrierTosAndAddressActivity$1.run(CarrierTosAndAddressActivity.java:446)
+W/ActivityManager( 110): Force finishing activity
+com.android.vending/.billing.CarrierTosAndAddressActivity
+I/TelephonyRegistry( 110): notifyDataConnection: state=0
+isDataConnectivityPossible=true reason=dataDisabled interfaceName=null
+networkType=2</description>
+</bug>
+<bug>
+<bugid>17145</bugid>
+<title>Clear default home app if it force closes too much.</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>ericsp70@gmail.com</reportedBy>
+<openedDate>Wed, 25 May 2011 18:40:49 +0000</openedDate>
+<description>I recently experienced an issue with a 3rd party launcher app. This
+launcher was set as my default home app. After a reboot, when I unlocked
+the device the 3rd party app got an error and gave me the force close
+prompt. But because there had not been any other apps recently run, the
+home screen app was then relaunched by default, which gave me another
+force close prompt. This loop continued until I had to uninstall the app
+with ADB. The enhancement IQ&apos;Em suggesting is to clear the default
+launcher if it is set to a 3rd party launcher, and that launcher has
+gone into a FC loop (or itQ&apos;Es had to be force closed 3 times in 5
+minutes, for example). This would cause the prompt to come up that would
+allow the user to switch home apps to fix the problem and use their
+phone. When this happened to me, I was lucky and was home with a
+computer with the SDK installed. Had that not been the case, my phone
+would have been practically useless until I could get to a computer and
+use ADB. For less tech savvy folks, this could cause them to have to
+take their phone into a store to be reset. Pretty big problem with a
+reasonably simple solution. Android version: 2.3.3</description>
+</bug>
+<bug>
+<bugid>16590</bugid>
+<title>GestureOverlayView + ViewFlipper causes application to crash on orientation change</title>
+<status>Reviewed</status>
+<owner>romaingu...@gtempaccount.com</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>Wojciech...@gmail.com</reportedBy>
+<openedDate>Wed, 04 May 2011 19:29:22 +0000</openedDate>
+<description>Android 2.2.1 (kernel version 2.6.32.21-g6e170e7) on HTC Desire Z
+(reproducible in the emulator as well). Create empty application and use
+the attached file as main activityQ&apos;Es XML code. Leave the .java file
+unchanged. Build and export application as .apk file, then run either on
+emulator or on real device. Real device behavior: screen orientation
+change while application is running does nothing more than expected.
+However, if one exit application by pressing Q&quot;EbackQ&quot;E key, then change
+orientation and then run it again, it crashes. Emulator behavior: screen
+orientation change while application is running crashes it after a few
+attempts. Call stack follows: Thread [Q&lt;E1Q&gt;E main] (Suspended (exception
+IllegalArgumentException)) WindowManagerImpl.removeViewImmediate(View)
+line: 262 Window$LocalWindowManager.removeViewImmediate(View) line: 436
+ActivityThread.handleDestroyActivity(IBinder, boolean, int, boolean)
+line: 4022
+ActivityThread.handleRelaunchActivity(ActivityThread$ActivityRecord,
+int) line: 4127 ActivityThread.access$2400(ActivityThread,
+ActivityThread$ActivityRecord, int) line: 136
+ActivityThread$H.handleMessage(Message) line: 2183
+ActivityThread$H(Handler).dispatchMessage(Message) line: 99
+Looper.loop() line: 143 ActivityThread.main(String[]) line: 5068
+Method.invokeNative(Object, Object[], Class, Class[], Class, int,
+boolean) line: not available [native method] Method.invoke(Object,
+Object...) line: 521 ZygoteInit$MethodAndArgsCaller.run() line: 858
+ZygoteInit.main(String[]) line: 616 NativeStart.main(String[]) line: not
+available [native method] Best regards -- Spook.</description>
+<comment>
+<author>romaingu...@gtempaccount.com</author>
+<when>Tue, 10 May 2011 06:01:57 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>19092</bugid>
+<title>Getting Explorer into Xperia play</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>lod.dar...@gmail.com</reportedBy>
+<openedDate>Sun, 07 Aug 2011 18:57:34 +0000</openedDate>
+<description>how to install an explorer into SONY ERICSSON XPERIA PLAY,no way to
+install it , please help</description>
+</bug>
+<bug>
+<bugid>18860</bugid>
+<title>Applications Disappeared</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>marian.r...@gmail.com</reportedBy>
+<openedDate>Wed, 27 Jul 2011 14:34:24 +0000</openedDate>
+<description>I have an HTC Desire purchased in Beijing in December 2010. This
+afternoon I ran my phone battery down to dead. When I turned it back on
+the phone was in Chinese instead of English and about half of my
+applications (including Android Marketplace) were missing from the home
+screens AND the selection of all my apps. If I go to settings -Q&gt;E
+applications -Q&gt;E manage apps I can see the names of the apps but the
+icons are missing. I cannot clear data on any of the apps nor can I move
+to/from the sdcard. I was able to uninstall one of the less important
+apps. Another app that I tried to uninstall would not uninstall. -M</description>
+<comment>
+<author>grantsut...@charter.net</author>
+<when>Wed, 27 Jul 2011 20:52:30 +0000</when>
+<what>Just do a factory reset, then it should be fine.</what>
+</comment>
+</bug>
+<bug>
+<bugid>4893</bugid>
+<title>Ability NOT to show icon/status in top bar for ongoing notifications</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component>Framework</component>
+<stars>10</stars>
+<reportedBy>preinv...@gmail.com</reportedBy>
+<openedDate>Wed, 18 Nov 2009 16:28:51 +0000</openedDate>
+<description>IQ&apos;Em working on an app that maintains an ongoing notification that
+updates regularly (every 5 or 10 minutes). I do NOT want to alert the
+user every time this update occurs but I donQ&apos;Et see any way of disabling
+the icon/text notification when I perform an update. Adding a flag to
+NOT show the icon/text in the top area would be great!</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Thu, 19 Nov 2009 13:51:57 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>Mr.PaulB...@gmail.com</author>
+<when>Tue, 04 May 2010 14:39:32 +0000</when>
+<what>Please make the notification icon optional. 
+
+Many people have requested this feature (option) in my app Q&quot;EStatusNotesQ&quot;E (com.ipaulpro.statusnotes). This would 
+allow notifications to be created that do not take up valuable status bar space.
+
+Currently, a notification requires an icon. My current work-around is a transparent .png spacer, that gives the 
+illusion of a hidden icon. However, this often creates an undesirable space between icons in the status bar.
+
+There is no flag necessary, simply make the icon parameter of the Notification object optional. If nothing else, this 
+should really be possible for Ongoing Notifications (FLAG_ONGOING_EVENT).
+
+Star this issue if you want Android notifications without icons!</what>
+</comment>
+<comment>
+<author>Mr.PaulB...@gmail.com</author>
+<when>Wed, 05 May 2010 14:11:14 +0000</when>
+<what>On second thought, the flag idea might be a better universal option.</what>
+</comment>
+<comment>
+<author>par...@gmail.com</author>
+<when>Thu, 06 May 2010 03:08:35 +0000</when>
+<what>IQ&apos;Em all for optional status icons. Too much crap going on up there.
+
+IQ&apos;Ed prefer that StatusNotes have one single icon with a number in it. </what>
+</comment>
+</bug>
+<bug>
+<bugid>14392</bugid>
+<title>SDK Manager update all doesnQ&apos;Et auto-select google add-on updates</title>
+<status>Released</status>
+<owner>ralf%and...@gtempaccount.com</owner>
+<closedOn>2011-02-10T22:48:09.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Tools</component>
+<stars>1</stars>
+<reportedBy>ralfoide</reportedBy>
+<openedDate>Sat, 29 Jan 2011 05:19:28 +0000</openedDate>
+<description>Steps: - Run SDK Manager (via tools/android.bat) from Tools r8 - I had
+the google add-on for API 9 rev 1 installed. - Select Installed Packages
+Q&gt;E Update All Expected: it should have suggested to update the google
+add-on for API 9 rev 2. Observed: didnQ&apos;Et suggest to update it.
+Workaround: - go to Available packages and expand the Q&quot;Egoogle add-onQ&quot;E
+node. - now Installed Packages Q&gt;E Update All will suggest the API 9 rev 2
+addon.</description>
+<comment>
+<author>ralf%and...@gtempaccount.com</author>
+<when>Mon, 31 Jan 2011 18:02:45 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>ralf%and...@gtempaccount.com</author>
+<when>Thu, 10 Feb 2011 22:48:10 +0000</when>
+<what>Fixed by https://review.source.android.com/#change,21118</what>
+</comment>
+<comment>
+<author>ralf%and...@gtempaccount.com</author>
+<when>Tue, 22 Feb 2011 22:39:21 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>3497</bugid>
+<title>Android Browser fails basic authentication under some conditions</title>
+<status>Released</status>
+<owner>cary%and...@gtempaccount.com</owner>
+<closedOn>2009-10-01T13:54:36.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Browser</component>
+<stars>4</stars>
+<reportedBy>masru.m...@gmail.com</reportedBy>
+<openedDate>Fri, 07 Aug 2009 15:04:17 +0000</openedDate>
+<description>Android Browser fails in HTTP basic authentication under some
+conditions. - Steps to reproduce the problem (1)access to a page which
+requires HTTP basic authentication (2)browser shows dialog for username
+and password (3)enter wrong user name and password (ex) aaa / pass
+(4)browser fails in authentication, and shows dialog again (5)enter
+correct user name and password (ex) usr01 / pass (6)browser succeeds in
+authentication for only the page (7)for subsequent pages, browser fails
+in authentication - Cause of this problem In the Android Framework
+(WebKit), WebViewDatabase has a database for basic authentication, its
+table name is Q&quot;EhttpauthQ&quot;E. The table is defined as bellow create table
+httpauth ( id ...., host ...., realm ...., username ...., password ...,
+unique(host,realm,username) on conflict replace ); after procedure
+described above, table Q&quot;EhttpauthQ&quot;E has two records. 1,
+www.somecompany.com, somerealm, aaa, pass 2, www.somecompany.com,
+somerealm, usr01, pass and then, if the browser needs to get username
+and password, it selects record from Q&quot;EhttpauthQ&quot;E and always uses the
+first record. (source code: WebViewDatabase.java method:
+getHttpAuthUsernamePassword) I think the table definition should be
+corrected as bellow. create table httpauth ( id ...., host ...., realm
+...., username ...., password ..., unique(host,realm) on conflict
+replace ); * (host,realm) should be a unique key -------- *affected
+releases: android-1.5 and donut</description>
+<comment>
+<author>cccandr...@gmail.com</author>
+<when>Tue, 18 Aug 2009 20:43:39 +0000</when>
+<what>investigating</what>
+</comment>
+<comment>
+<author>cccandr...@gmail.com</author>
+<when>Thu, 01 Oct 2009 13:54:36 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>cccandr...@gmail.com</author>
+<when>Fri, 02 Jul 2010 16:56:17 +0000</when>
+<what>Fixed in Froyo (2.2)</what>
+</comment>
+<comment>
+<author>dvmor...@gmail.com</author>
+<when>Tue, 27 Jul 2010 14:11:15 +0000</when>
+<what>I am having an issue with basic auth and ajax requests on Android 1.6,2.0, and 2.1. Here are the details of my issue:
+
+http://stackoverflow.com/questions/3306301/how-ajax-requests-work-on-android-2-0-vs-android-2-2
+
+Do you think my issue is related to this, or is there something else I can do to fix it on my end? 
+
+Thanks for your help,
+
+Dave Morris
+</what>
+</comment>
+<comment>
+<author>cccandr...@gmail.com</author>
+<when>Tue, 27 Jul 2010 15:29:56 +0000</when>
+<what>This specific fix was made in Sept 2009 and was probably related to the way we cache the authentication results, but should not have affected the authentication headers. There have been a lot of changes between Eclair and Froyo, including an updated webkit and updated networking. I did not find a change specific to basic authentication or ajax requests in our internal bug database.</what>
+</comment>
+<comment>
+<author>cary%and...@gtempaccount.com</author>
+<when>Mon, 23 Aug 2010 18:06:06 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>19720</bugid>
+<title>disappearing media </title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>0</stars>
+<reportedBy>shahad0...@gmail.com</reportedBy>
+<openedDate>Wed, 31 Aug 2011 19:08:55 +0000</openedDate>
+<description>Hi , I bought Sony Ericsson Xperia erc and it was with android version
+3.2, however after upgrading to android 3.3 media files such as pictures
+I take they disappear after taking them in in 24 hours upto 2 days, if I
+connect the mobile to the pc they still exists in the memory but they
+dont appear on the media bar in the mobile. Ideally such photos and
+songs I download should be available from the mobile not only when I
+connect the mobile to the pc. Please contact me as I want to solve this
+issue.</description>
+</bug>
+<bug>
+<bugid>6531</bugid>
+<title>Make all updates universal</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>Arum...@gmail.com</reportedBy>
+<openedDate>Mon, 08 Feb 2010 15:43:52 +0000</openedDate>
+<description>Hello. Will updates to the Android OS be made for specific handsets?
+Currently the latest is 2.1 but my G1 still has 1.5. I was really hoping
+that Google wouldnQ&apos;Et make a monopoly on Android by only obtaining the
+latest versions by buying a new phone!</description>
+</bug>
+<bug>
+<bugid>12093</bugid>
+<title>BlueTooth Dialling non-functional (HTC Magic+, 2.1)</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>5</stars>
+<reportedBy>kilro...@gmail.com</reportedBy>
+<openedDate>Sat, 23 Oct 2010 04:41:10 +0000</openedDate>
+<description>Have an HTC Magic+, Android 2.1 (Rogers). Previously had voice dialling
+that was activated by pressing main button on BT headset (Rogers Android
+1.5 , pre-911 bug fix). When we were promised 2.1, we were also told
+that voice dialling activated via BT would be restored with that update.
+This still does not seem to function. There is voice-activated dialling,
+but you have to launch the app by pressing a button on the phone
+(long-press call button) and then press a screen button to confirm the
+app got the right number/function. Either one of these actions alone is
+illegal if using the phone while driving where I live (Ontario, Canada).
+Major safety and legal issues here. DonQ&apos;Et understand why this
+functionality disappeared with the 911 update, donQ&apos;Et understand why an
+advacned smartphone canQ&apos;Et use BT properly, when my old dumb phones used
+it years ago.</description>
+<comment>
+<author>clintybo...@gmail.com</author>
+<when>Thu, 11 Nov 2010 14:20:30 +0000</when>
+<what>Agree, this is still an issue with v2.2 from what I can make out. I have a HTC DesireHD.
+In order to get around the 1st problem of actually initiating the call via the BT headset I use BowTie. This seems to work, but does not actually call the number, just brings up on the screen and you need to press to dial. Close but no cigar</what>
+</comment>
+<comment>
+<author>r.n.owen...@gmail.com</author>
+<when>Wed, 10 Aug 2011 15:03:28 +0000</when>
+<what>Are American carriers blocking bluetooth activated voice dialing on android phones? Google, whatQ&apos;Es going on? This should not be allowed to happen.</what>
+</comment>
+</bug>
+<bug>
+<bugid>7022</bugid>
+<title>canQ&apos;Et insert plus (+) sign in message center input field in android 1.5</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>suhendro...@gmail.com</reportedBy>
+<openedDate>Mon, 08 Mar 2010 04:53:25 +0000</openedDate>
+<description>I use Samsung Galaxy Spica (android 1.5). When I want to change message
+center, I canQ&apos;Et insert the plus (+) sign. My operator message center
+should be +62816124, every time I press plus sign; it wonQ&apos;Et insert. you
+can find message center in : home Q&gt;E messaging Q&gt;E setting Q&gt;E message center
+I have old type sim card, so it wonQ&apos;Et autoconfig for message center.
+regards Suhendro</description>
+</bug>
+<bug>
+<bugid>3919</bugid>
+<title>YouTube application force closes</title>
+<status>Duplicate</status>
+<owner>null</owner>
+<closedOn>2009-09-16T22:29:28.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>reinier....@gmail.com</reportedBy>
+<openedDate>Wed, 16 Sep 2009 20:56:18 +0000</openedDate>
+<description>Steps to reproduce: Make sure no network connection is present. Open
+YouTube. Q&apos;EBackQ&apos;E out of message stating no connection is available. Press
+menu and select Q&apos;EMy accountQ&apos;E. What I expect: Application produces
+message stating no connection is available.</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 16 Sep 2009 22:29:28 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>16355</bugid>
+<title>voll bl?d, da? das nicht geht!</title>
+<status>Spam</status>
+<owner>null</owner>
+<closedOn>2011-04-25T18:52:58.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>grell.fr...@gmail.com</reportedBy>
+<openedDate>Mon, 25 Apr 2011 10:00:44 +0000</openedDate>
+<description>NOTE: This form is only for reporting user bugs. For all other user
+discussions please visit: http://groups.google.com/group/android-discuss
+Please describe the problem in detail. Be sure to include: - Steps to
+reproduce the problem. - What happened. - What you think the correct
+behavior should be. DonQ&apos;Et forget to mention which device you have, and
+which version of Android is installed on it. (Find it under Home Q&gt;E Menu
+Q&gt;E Settings Q&gt;E About phone.) If you happen to have a development
+environment, please also run Q&quot;Eadb bugreportQ&quot;E and archive the output as
+it could help diagnose the problem.</description>
+<comment>
+<author>e...@google.com</author>
+<when>Mon, 25 Apr 2011 18:52:58 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>1244</bugid>
+<title>TextView.append() does not linkify text</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Framework</component>
+<stars>5</stars>
+<reportedBy>not...@gmail.com</reportedBy>
+<openedDate>Tue, 11 Nov 2008 04:24:36 +0000</openedDate>
+<description>as summary says, here is the workaround I am using:
+tvbuf.setAutoLinkMask(Linkify.WEB_URLS); tvbuf.setText(text + Q&quot;E\nQ&quot;E);
+tv.append(tvbuf.getText());</description>
+<comment>
+<author>alaurrah...@gmail.com</author>
+<when>Wed, 19 Nov 2008 14:24:44 +0000</when>
+<what>I also having this problem and the workaround above does not work for me. The code I
+am using is below:
+
+EditText et = (EditText) findViewById(R.id.et);
+TextView tv = (TextView) findViewById(R.id.tv);
+
+et.setOnKeyListener(new OnKeyListener() {
+      	@Override
+   		public boolean onKey(View v, int i, KeyEvent e) {
+			if (i == 66) { //Enter key
+	    				
+  				String s = et.getText().toString();
+	    				
+   				if (s.equals(Q&quot;EQ&quot;E) || s.equals(Q&quot;E\nQ&quot;E)) {
+	    					
+   					return true;
+   				}	
+	    				
+	    					
+   				tv.append(s + Q&quot;E\nQ&quot;E);
+	    					
+   				et.setText(null);
+	    					
+   				return true;
+	    				
+   			}
+	    			
+  			return false;
+   		}
+
+});
+
+In my XML file, the code for the Textview is:
+
+Q&lt;ETextView
+	android:id=Q&quot;E@+id/tvQ&quot;E
+	android:layout_width=Q&quot;Ewrap_contentQ&quot;E
+	android:layout_height=Q&quot;Ewrap_contentQ&quot;E
+	android:textSize=Q&quot;E12pxQ&quot;E
+	android:autoLink=Q&quot;Eweb|emailQ&quot;EQ&gt;E
+	
+This is wrapped inside a ScrollView. The root element of the XML file is a
+RelativeLayout.
+
+Strangely enough, once I change orientation and then back to the original, the text
+is linkified.
+
+Software:
+Eclipse 3.4.0
+android-sdk-windows-1.0_r1	
+Windows XP SP3
+</what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 26 Aug 2009 17:13:52 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Sat, 19 Sep 2009 14:13:37 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>christop...@gmail.com</author>
+<when>Tue, 11 May 2010 16:49:12 +0000</when>
+<what>Perhaps someone is interested in: As notnyt wrote, simply use a buffer (StringBuilder, 
+StringBuffer or just a String, if you like) for the text.
+Use setAutoLinkMask() and write the String to the TextView by calling setText() at 
+once. That should do the trick.
+
+Cheers</what>
+</comment>
+</bug>
+<bug>
+<bugid>1638</bugid>
+<title>Nullpointer exception in eglGetConfigs method</title>
+<status>FutureRelease</status>
+<owner>null</owner>
+<closedOn>2009-02-03T14:45:46.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>ref...@gmail.com</reportedBy>
+<openedDate>Wed, 24 Dec 2008 09:29:02 +0000</openedDate>
+<description>An attempt to get all available configurations in EGL will fail with a
+NullPointerException. Code to reproduce: ================== EGL10 mEgl =
+(EGL10) EGLContext.getEGL(); EGLDisplay mEglDisplay =
+mEgl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY); int[] version = new
+int[2]; mEgl.eglInitialize(mEglDisplay, version); EGLConfig[] configs =
+new EGLConfig[100]; int[] num_config = new int[100];
+mEgl.eglGetConfigs(mEglDisplay, configs, 1, num_config); Reason: =======
+In the JNI implementation of the method: jboolean
+jni_eglGetConfigs(JNIEnv *_env, jobject _this, jobject display,
+jobjectArray configs, jint config_size, jintArray num_config) The
+following lines are problematic: -------------------------- jobject obj
+= _env-Q&gt;EGetObjectArrayElement(configs, i); if (obj == NULL) {
+doThrow(_env, Q&quot;Ejava/lang/NullPointerExceptionQ&quot;E); break; }
+_env-Q&gt;ESetIntField(obj, gConfig_EGLConfigFieldID,
+(jint)nativeConfigs[i]); -------------------------- Since, the Q&apos;EconfigsQ&apos;E
+array will always have NULL elements, the exception will ALWAYS be
+thrown. User cannot manually construct an array of EGLConfigs, and
+therefor cannot use this function at all.</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Tue, 03 Feb 2009 14:45:46 +0000</when>
+<what>This issue doesnQ&apos;Et seem to exist in the latest source code, which will be the basis
+for a future release.</what>
+</comment>
+</bug>
+<bug>
+<bugid>7816</bugid>
+<title>Provide stop_all() method in SoundPool</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>4</stars>
+<reportedBy>kopfgeld...@gmail.com</reportedBy>
+<openedDate>Sun, 18 Apr 2010 18:59:36 +0000</openedDate>
+<description>It would be really handy if there was a method that would stop all
+streams currently played back by a SoundPool. Example use:
+mySoundPool.stop_all();</description>
+<comment>
+<author>pant...@gmail.com</author>
+<when>Fri, 08 Oct 2010 10:51:08 +0000</when>
+<what>Yes, something that would stop or pause all soundpool streams would be VERY useful.  Pause and resume would be good too since they Q&apos;Ehave no effectQ&apos;E when in the wrong state.</what>
+</comment>
+</bug>
+<bug>
+<bugid>1969</bugid>
+<title>application menu not auto-sizing with screen orientation on firmware 1.1</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>2009-02-11T21:11:28.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>s0ni...@gmail.com</reportedBy>
+<openedDate>Wed, 11 Feb 2009 09:46:31 +0000</openedDate>
+<description>On the t-mobile G1 running RC33 and/or the Android Dev Phone 1 running
+the 1.1 firmware, certain application menus no longer auto-size with
+screen orientation switch into landscape mode. IQ&apos;Eve noticed this in the
+gmail app (only when reading a message), and two market apps (terminal
+emulator and twidroid.) This first image is of the menus as they looked
+on the G1 RC30 firmware (and below) and the ADP1 1.0 firmware
+http://lh5.ggpht.com/_uUFK6Ielg8Y/SZC6Dn-CF3I/AAAAAAAAAd0/5KVImwukICw/s720/
+G1_bug_01.JPG This second image is as they look on the G1 RC33 or the
+ADP1 1.1 firmware
+http://lh4.ggpht.com/_uUFK6Ielg8Y/SZC6DyWUAYI/AAAAAAAAAd8/4vH93Z5KZ-U/s720/
+G1_bug_02.JPG</description>
+<comment>
+<author>romaingu...@gmail.com</author>
+<when>Wed, 11 Feb 2009 21:11:28 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>2203</bugid>
+<title>OutOfMemoryError Caused by UI rotation change.</title>
+<status>FutureRelease</status>
+<owner>null</owner>
+<closedOn>2009-03-11T04:05:48.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>9</stars>
+<reportedBy>Ray...@gmail.com</reportedBy>
+<openedDate>Wed, 11 Mar 2009 03:30:49 +0000</openedDate>
+<description>I had add the rotation feature in Android. But when I rotate it more
+than 20 times, UI will popup alert. And the log is Q&quot;EOutOfMemoryError:Q&quot;E
+============================================= E/dalvikvm-heap( 534):
+71680-byte external allocation too large for this process. E/ ( 534): VM
+wonQ&apos;Et let us allocate 71680 bytes D/AndroidRuntime( 534): Shutting down
+VM W/dalvikvm( 534): threadid=3: thread exiting with uncaught exception
+(group=0x4000fe68) E/AndroidRuntime( 534): Uncaught handler: thread main
+exiting due to uncaught exception E/AndroidRuntime( 534):
+java.lang.RuntimeException: Unable to start activity ComponentInfo
+{com.android.launcher/com.android.launcher.Launcher}:
+android.view.InflateException: Binary XML file line #50: Error inflating
+class java.lang.reflect.Constructor E/AndroidRuntime( 534): at
+android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2151)
+E/AndroidRuntime( 534): at
+android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2167)
+E/AndroidRuntime( 534): at
+android.app.ActivityThread.handleRelaunchActivity(ActivityThread.java:3108)
+E/AndroidRuntime( 534): at android.app.ActivityThread.access$1900
+(ActivityThread.java:112) E/AndroidRuntime( 534): at
+android.app.ActivityThread$H.handleMessage(ActivityThread.java:1586)
+E/AndroidRuntime( 534): at android.os.Handler.dispatchMessage
+(Handler.java:99) E/AndroidRuntime( 534): at
+android.os.Looper.loop(Looper.java:123) E/AndroidRuntime( 534): at
+android.app.ActivityThread.main (ActivityThread.java:3760)
+E/AndroidRuntime( 534): at java.lang.reflect.Method.invokeNative (Native
+Method) E/AndroidRuntime( 534): at java.lang.reflect.Method.invoke
+(Method.java:518) E/AndroidRuntime( 534): at
+com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run
+(ZygoteInit.java:745) E/AndroidRuntime( 534): at
+com.android.internal.os.ZygoteInit.main (ZygoteInit.java:503)
+E/AndroidRuntime( 534): at dalvik.system.NativeStart.main(Native Method)
+E/AndroidRuntime( 534): Caused by: android.view.InflateException: Binary
+XML file line #50: Error inflating class java.lang.reflect.Constructor
+E/AndroidRuntime( 534): at android.view.LayoutInflater.createView
+(LayoutInflater.java:512) E/AndroidRuntime( 534): at
+android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:564)
+E/AndroidRuntime( 534): at android.view.LayoutInflater.rInflate
+(LayoutInflater.java:617) E/AndroidRuntime( 534): at
+android.view.LayoutInflater.rInflate (LayoutInflater.java:620)
+E/AndroidRuntime( 534): at android.view.LayoutInflater.inflate
+(LayoutInflater.java:407) E/AndroidRuntime( 534): at
+android.view.LayoutInflater.inflate (LayoutInflater.java:320)
+E/AndroidRuntime( 534): at android.view.LayoutInflater.inflate
+(LayoutInflater.java:276) E/AndroidRuntime( 534): at
+com.android.internal.policy.impl.PhoneWindow.setContentView
+(PhoneWindow.java:227) E/AndroidRuntime( 534): at
+android.app.Activity.setContentView (Activity.java:1603)
+E/AndroidRuntime( 534): at com.android.launcher.Launcher.onCreate
+(Launcher.java:203) E/AndroidRuntime( 534): at
+android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1123)
+E/AndroidRuntime( 534): at
+android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2114)
+E/AndroidRuntime( 534): ... 12 more E/AndroidRuntime( 534): Caused by:
+java.lang.reflect.InvocationTargetException E/AndroidRuntime( 534): at
+com.android.launcher.HandleView.Q&lt;EinitQ&gt;E (HandleView.java:38)
+E/AndroidRuntime( 534): at
+java.lang.reflect.Constructor.constructNative(Native Method)
+E/AndroidRuntime( 534): at
+java.lang.reflect.Constructor.newInstance(Constructor.java:448)
+E/AndroidRuntime( 534): at android.view.LayoutInflater.createView
+(LayoutInflater.java:499) E/AndroidRuntime( 534): ... 23 more
+E/AndroidRuntime( 534): Caused by: java.lang.OutOfMemoryError: bitmap
+size exceeds VM budget E/AndroidRuntime( 534): at
+android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)
+E/AndroidRuntime( 534): at
+android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:290)
+E/AndroidRuntime( 534): at
+android.graphics.drawable.Drawable.createFromStream(Drawable.java:635)
+E/AndroidRuntime( 534): at
+android.content.res.Resources.loadDrawable(Resources.java:1591)
+E/AndroidRuntime( 534): at
+android.content.res.Resources.getDrawable(Resources.java:506)
+E/AndroidRuntime( 534): at
+android.graphics.drawable.StateListDrawable.inflate
+(StateListDrawable.java:125) E/AndroidRuntime( 534): at
+android.graphics.drawable.Drawable.createFromXmlInner(Drawable.java:716)
+E/AndroidRuntime( 534): at
+android.graphics.drawable.Drawable.createFromXml(Drawable.java:667)
+E/AndroidRuntime( 534): at
+android.content.res.Resources.loadDrawable(Resources.java:1576)
+E/AndroidRuntime( 534): at
+android.content.res.TypedArray.getDrawable(TypedArray.java:520)
+E/AndroidRuntime( 534): at android.view.View.Q&lt;EinitQ&gt;E(View.java:1686)
+E/AndroidRuntime( 534): at android.widget.ImageView.Q&lt;EinitQ&gt;E
+(ImageView.java:106) E/AndroidRuntime( 534): at
+com.android.launcher.HandleView.Q&lt;EinitQ&gt;E (HandleView.java:42)
+E/AndroidRuntime( 534): ... 27 more
+==============================================</description>
+<comment>
+<author>romaingu...@gmail.com</author>
+<when>Wed, 11 Mar 2009 04:05:48 +0000</when>
+<what>Your application is </what>
+</comment>
+<comment>
+<author>selfsa...@gmail.com</author>
+<when>Mon, 19 Oct 2009 13:35:23 +0000</when>
+<what>Hi, was this defect fixed in CupCake or Donut?
+We still observe the same issue.
+If we change device orientation several times (more then 20) and do not wait screen 
+repaint on each rotation we get an OutOfMemoryError. On each rotation the 
+getInstanceCount() is increased. If we change device orientation when screen have been 
+repainted - all is fine. We have double checked that we do not save any context 
+instances or so on. </what>
+</comment>
+</bug>
+<bug>
+<bugid>4358</bugid>
+<title>locking screen - button OFF doesnQ&apos;Et work</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Framework</component>
+<stars>3</stars>
+<reportedBy>alena....@gmail.com</reportedBy>
+<openedDate>Sun, 25 Oct 2009 11:20:32 +0000</openedDate>
+<description>Hi i have google G1 Dream device yesterday (24/10/2009) i have upgraded
+it to android 1,6 now i have a problem that pushing OFF button the
+screen is not locking anymore (pushing this button nothing happens). In
+other versions this button worked as screen lock. may be in new version
+there is another way to do it? thanks</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 11 Nov 2009 13:28:31 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Wed, 03 Feb 2010 03:52:22 +0000</when>
+<what>IQ&apos;Em adding this comment without having first searched through other issues so it may
+be redundant, and I may redundantly comment on other reports as I continue... jbgQ&apos;Es
+description is just one of the symptoms that seem to accompany a reproduceable
+problem, i say reproduceable, because the reports of this problem on the net seem to
+be similar enough and frequent enough to conclude they are describing the same thing.
+ My Touch3G developed the set of symptoms this afternoon, IQ&apos;Em racking my brain trying
+to think if i did anything different and/or when precisely the issue arose. At this
+point I can consistantly play with ALL security settings (exhaustively tried each
+possible combinations of settings (use screen lock, give tactile feedback, reset
+pattern,....) and no change in the behavior occurs. Power-down-up: no change.   Pull
+battery: no change. A fairly comprehensive descriptions of the issues are found in:
+
+http://androidforums.com/t-mobile-mytouch-3g/12021-home-search-buttons-not-working-not-sleeping-locking-properly.html
+
+My phone shows all the symptoms described:
+
+*The Home button no longer brings me to the home screen, in fact it does nothing
+*The phone no longer uses my pattern to unlock, though it is still enabled in the
+settings. I can press any key (including end) when the screen turns off and it just
+brings the screen right back up (whichever screen/application I was on last). This is
+the same whether it times out or I hit End.
+*The Search button is equally as ineffective as the Home button, only functioning to
+turn the screen back on.
+*Holding down the End button no longer gives me the options of Silent/Sleep/Power.
+Only Power is available.
+
+I hadnQ&apos;Et installed any applications recently enough for them to be logical triggers.
+
+
+Another thread describing what is probably the same thing:
+
+http://forums.t-mobile.com/t5/General-Help/Screen-will-not-lock/m-p/289265;jsessionid=709C024D73DD76315B4D3A7B144D2797
+ (not really a good description)
+</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Wed, 03 Feb 2010 04:28:33 +0000</when>
+<what>1. in comment 2 substitute Q&quot;Ealena.nskQ&quot;E for Q&quot;EjbgQ&quot;E (My apologies to the reviewer).
+
+2. This may be totally unrelated, but I did have my first low-power warning about 24
+hours ago. The low power warning surprised me as I hadnQ&apos;Et used the phone enough since
+last charge to expect to see such a condition. However the phone had been sitting in
+a back-pack with the facebook app trying to upload a pict (personally, from the delay
+i suspect the facebook app or the server it was talking to was stuck in deadlock or
+infinite loop). When the warning occurred and to get facebook out of the task stack
+(no way to kill it), i immeadiately powered down the phone an powered it up --  the
+low-battery condition was cleared.
+
+3. firmware: 1.6
+build: drc92
+
+4. I am more than willing to help explore this issue if it lands on an engineerQ&apos;Es
+desk soon, but this is my primary phone so a factory reset is going to occur if it
+isnQ&apos;Et going to get immediate attention.  I have the SDK installed and functional on
+an Ubuntu box in eclipse.  I have no problem if somebody wants ssh access (they can
+tunnel X); and, if really necessary, I can munge my firewall and enable VNC. 
+
+
+</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Wed, 03 Feb 2010 05:30:49 +0000</when>
+<what>IQ&apos;Em guessing it is related to:
+
+http://android.git.kernel.org/?p=platform/frameworks/base.git;a=blob_plain;f=core/java/android/view/WindowManagerPolicy.java
+
+based on the comment it contains:
+
+    /**
+     * inKeyguardRestrictedKeyInputMode
+     *
+     * if keyguard screen is showing or in restricted key input mode (i.e. in
+     * keyguard password emergency screen). When in such mode, certain keys,
+     * such as the Home key and the right soft keys, donQ&apos;Et work.
+     *
+     * @return true if in keyguard restricted input mode.
+     */
+</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Wed, 03 Feb 2010 06:43:21 +0000</when>
+<what>also of questionable value another clue: the ringtone for notifications changed. IQ&apos;Em
+hoping nothing corrupted a persistent sql table?  
+
+That aside, I will attempt to learn how to use adb log monitoring to trace the flow in: 
+
+http://android.git.kernel.org/?p=platform/frameworks/policies/base.git;a=blob_plain;f=phone/com/android/internal/policy/impl/KeyguardViewMediator.java
+ 
+
+as it appears to contain all the logic regards the state of locking.
+
+Unfortunately, iQ&apos;Em way to java/android ignorant to do much more.</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Wed, 03 Feb 2010 16:22:29 +0000</when>
+<what>
+In a system dump, I think I found the problem:
+
+02-03 10:05:55.222 I/CallNotifier(  121): CallNotifier: rejecting incoming call:
+device isnQ&apos;Et provisioned
+
+which means somehow (????) the key Q&quot;Edevice_provisionedQ&quot;E in 
+
+/data/data/com.android.providers.settings/databases/settings.db 
+
+has been changed to zero.
+
+My phone is not rooted; so I donQ&apos;Et (yet) have a way of resetting this flag.  
+
+QUESTION ONE: is there a permission flag in manifest file that would allow me to
+write a small activity to reset this flag?  
+
+QUESTION TWO: in the interests of the user base, I would still like to find out how Q&amp;E
+why this occurred on my phone. One of two things occurred: (1) an application with
+the manifest flag (assuming it exists?? -- i.e. my QUESTION ONE) changed the value,
+or (2) a bug exists somewhere such that the database file was corrupted. I find this
+unlikely as file corruption usually is way more drastic than one or two changed
+settings!!! (Remember from my other comment that a ringtone was also changed !! --
+same database file). 
+</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Thu, 04 Feb 2010 10:55:37 +0000</when>
+<what>see also:
+
+http://code.google.com/p/android/issues/detail?id=1858</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Thu, 04 Feb 2010 11:03:13 +0000</when>
+<what>another discussion:
+
+http://groups.google.com/group/android-porting/browse_thread/thread/61baf6058966fe31
+
+Please note, my issue arose on a stock release of Touch 3G. It is not, never has
+been, rooted/jail-broken. It is what the 100 of thousands of other T-mobile end-users
+have. To tell them they need to factory-reset their phone (my current option), to
+reset this flag is not a a very user/customer friendly solution. Some piece of
+software on the phone screwed up the flag!!!  The customer base needs a
+utility/patch/update to set it. Several internet sites recommend some method of
+re-running set-up via another piece of software, but that solution is still to arcane
+for the average customer.</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Thu, 04 Feb 2010 11:11:18 +0000</when>
+<what>just adding the reference in addition to others so others donQ&apos;Et have to search:
+
+http://groups.google.com/group/android-discuss/browse_thread/thread/595025c7cd6e6197</what>
+</comment>
+<comment>
+<author>JeffAKna...@gmail.com</author>
+<when>Mon, 26 Apr 2010 19:50:16 +0000</when>
+<what>IQ&apos;Eve encountered this twice since my original flurry of comments. IQ&apos;Em now suspecting
+that it occurs while my phone is tethered with adb and IQ&apos;Em in a traditional
+development cycle (compile, install, run, fix-bug, compile, install, run). I know
+this is totally vague (useless) for reproducing/tracking down. But until I figure it
+out, IQ&apos;Em using (probably inappropriate or bad etiquette?) this issue as a place to
+keep notes. My phone is not rooted and I donQ&apos;Et have the necessary signature files to
+do system/hardware stuff, so nothing in my code should be able to touch the
+settings/files that change.</what>
+</comment>
+</bug>
+<bug>
+<bugid>14729</bugid>
+<title>Refactoring activites in Eclipse with ADT donQ&apos;Et update well in AndroidManifest.xml</title>
+<status>Released</status>
+<owner>null</owner>
+<closedOn>2011-02-16T01:10:52.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Tools</component>
+<stars>4</stars>
+<reportedBy>jj.Sarra...@gmail.com</reportedBy>
+<openedDate>Mon, 14 Feb 2011 16:15:03 +0000</openedDate>
+<description>Host OS: MacOS 10.6.6 SDK tools version: V9 Eclipse version: 3.6.1,
+Build M20100909-0800 ADT plug-in version: Android Development Tools
+9.0.0.v201101191456-93220 STEPS TO REPRODUCE: 1. Create a project with
+package com.google. 2. Put your package Q&quot;Ecom.googleQ&quot;E in your
+AndroidManifest.xml file 3. Create an activity in a subpackage (i.e:
+com.google.ui.MyActivity) 4. Add it to the AndroidManifest.xml
+android:name=Q&quot;E.ui.MyActivityQ&quot;E 5. Rename the activity through right click
+=Q&gt;E Refactor =Q&gt;E Rename =Q&gt;E Q&quot;EBugActivityQ&quot;E 6. Go check in your
+AndroidManifest.xml file EXPECTED RESULTS: ADT should renamed it in
+android:name=Q&quot;E.ui.BugActivityQ&quot;E OBSERVED RESULTS: ADT has renamed it in
+android:name=Q&quot;Eui.BugActivityQ&quot;E (Q&quot;E.Q&quot;E is missing)</description>
+<comment>
+<author>xav%andr...@gtempaccount.com</author>
+<when>Mon, 14 Feb 2011 18:50:01 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>snp...@gmail.com</author>
+<when>Wed, 16 Feb 2011 00:34:00 +0000</when>
+<what>I have created https://review.source.android.com/#change,21213 that fixes this issue.</what>
+</comment>
+<comment>
+<author>xav%andr...@gtempaccount.com</author>
+<when>Wed, 16 Feb 2011 01:10:52 +0000</when>
+<what>Patch has been accepted and merged.</what>
+</comment>
+<comment>
+<author>x...@android.com</author>
+<when>Wed, 19 Oct 2011 18:49:21 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>16410</bugid>
+<title>call this number until itQ&apos;Es not busy</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>schoolof...@gmail.com</reportedBy>
+<openedDate>Thu, 28 Apr 2011 03:24:06 +0000</openedDate>
+<description>Instead of just having Q&quot;Ecall this numberQ&quot;E as an option, maybe add Q&quot;Ecall
+this number until I get through.Q&quot;E I donQ&apos;Et know, though-- this might
+result in folks Q&quot;Ecalling a number until they get throughQ&quot;E, and waiting
+so long that they put the phone down Q&amp;E walk away, leaving the person
+they called and finally got through to wondering why their phone rang
+with no one on the other end? But assuming *most* people wouldnQ&apos;Et be
+that irresponsible, *maybe* itQ&apos;Es a good idea. Maybe make it optional and
+default to Q&apos;Enot available as a calling optionQ&apos;E, as IQ&apos;Ed guess most folks
+donQ&apos;Et browse through their settings. Maybe itQ&apos;Es *only* an option on a
+missed call in the call log due to a busy signal. And maybe once you
+connect, itQ&apos;Es removed as an option from everything in the call log for
+this number. This paragraph is so that folks donQ&apos;Et overuse (and maybe
+abuse) the Q&quot;Ecall until connectedQ&quot;E feature until they at least try ONCE,
+and get a busy signal. After they try regular dial at least once, and
+itQ&apos;Es busy, if they then visit that entry in the call log, Q&quot;Ecall until
+not busyQ&quot;E has appeared. Just a thought.</description>
+<comment>
+<author>andr...@forbidden.co.uk</author>
+<when>Wed, 04 May 2011 06:15:42 +0000</when>
+<what>IsnQ&apos;Et this what email is for?</what>
+</comment>
+<comment>
+<author>schoolof...@gmail.com</author>
+<when>Wed, 04 May 2011 13:00:25 +0000</when>
+<what>Well, to my thinking, yes Q&amp;E no.  With email-- IF this contact has email, does your grandma?-- you are pretty sure only that theyQ&apos;Ell see the message someday.  That works for anything thatQ&apos;Es not time sensitive.  But that doesnQ&apos;Et work when they REALLY donQ&apos;Et get to email very often-- remember, much of the world doesnQ&apos;Et get email on their cell phones-- and you really do need to deliver this message soon.  To me, the difference is Q&quot;EHey, I can check my email any olQ&apos;E time, so why nowQ&quot;E vs. Q&quot;EOoh, hey, the phone is ringing right now.Q&quot;E  I mean, even if an answering machine picks up, I highly suspect that gets checked more often than email in MOST cases.  Just food for the conversation-- thoughts?  I know this may turn into a somewhat controversial feature request, thatQ&apos;Es why it should be talked out well.  But hey, open-source technology is changing the landscape of many models weQ&apos;Eve held for years, why not change the way the phone game is played?</what>
+</comment>
+</bug>
+<bug>
+<bugid>15101</bugid>
+<title>Documentation: Q&quot;EGoogle Map ViewQ&quot;E ItemizedOverlay is an abstract class not an interface</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>3</stars>
+<reportedBy>mainer...@gmail.com</reportedBy>
+<openedDate>Mon, 28 Feb 2011 12:33:38 +0000</openedDate>
+<description>Reading Q&quot;EPart 2: Adding Overlay ItemsQ&quot;E of the Google Map View tutorial I
+have noticed an error in this line. Q&quot;ECreate a new Java class named
+HelloItemizedOverlay that implements ItemizedOverlay.Q&quot;E ItemizedOverlay
+is an abstract class so you can only extend and not implement it.</description>
+</bug>
+<bug>
+<bugid>4003</bugid>
+<title>Alarm clock security flaw </title>
+<status>Unreproducible</status>
+<owner>null</owner>
+<closedOn>2011-06-18T04:08:33.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Framework</component>
+<stars>1</stars>
+<reportedBy>martin.d...@gmail.com</reportedBy>
+<openedDate>Thu, 24 Sep 2009 12:14:29 +0000</openedDate>
+<description>- Steps to reproduce the problem * Configure the alarm clock to ring. *
+When it rings, dismiss the alarm. * Then, you can very briefly see the
+contents of the screen and interact with the phone as if it were
+unlocked. - What you think the correct behaviour should be. * If the
+phone is locked, you should not be able to see the contents of the
+screen or interact with the phone except to dismiss or snooze the alarm.</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Tue, 03 Nov 2009 17:03:25 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>pfmil...@gmail.com</author>
+<when>Wed, 24 Feb 2010 22:04:30 +0000</when>
+<what>What version of Android is this seen on? I canQ&apos;Et reproduce the problem in Android 2.1
+so it may have been resolved.</what>
+</comment>
+<comment>
+<author>martin.d...@gmail.com</author>
+<when>Wed, 24 Feb 2010 23:05:36 +0000</when>
+<what>Yes, it is now resolved in android 1.6 build DRC92.</what>
+</comment>
+<comment>
+<author>sharath....@wipro.com</author>
+<when>Fri, 13 May 2011 12:12:22 +0000</when>
+<what>I cannot reproduce this problem on Nexus one with Android 2.3.3..</what>
+</comment>
+<comment>
+<author>n...@google.com</author>
+<when>Sat, 18 Jun 2011 04:08:33 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>16622</bugid>
+<title>remember password for vpn connection</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>4</stars>
+<reportedBy>roman.sn...@gmail.com</reportedBy>
+<openedDate>Fri, 06 May 2011 02:51:50 +0000</openedDate>
+<description>In honeycomb 3.0 every time I try to connect to a vpn it requests the
+password. This is very inconvenient, I wish there was an option of
+remembering this password. Ideally a shortcut for the vpn connection on
+the desktop would be very welcome.</description>
+</bug>
+<bug>
+<bugid>11648</bugid>
+<title>Google Navigation title doesnQ&apos;Et support spanish(values-es-rUS)</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>lee.jw.k...@gmail.com</reportedBy>
+<openedDate>Sun, 03 Oct 2010 02:48:10 +0000</openedDate>
+<description>Tested this case on Android 2.2 with GMS R5 - Steps to reproduce the
+problem (including sample code if appropriate). Go to Setting -Q&gt;E
+LanguageQ&amp;Ekeyboard -Q&gt;E Select language -Q&gt;E Select Espanol (our phone uses
+values-es-rUS to spanish) -Q&gt;E Go to Top menu -Q&gt;E Check Navigation title
+below NavigationQ&apos;Es icon - What happened. Navigation title doesnQ&apos;Et be
+changed to spanish. - What you think the correct behavior should be.
+Navigation title should be changed to spanish. As I think, Navigation
+doesnQ&apos;Et support values-es-rUS. Thanks.</description>
+</bug>
+<bug>
+<bugid>4836</bugid>
+<title>HTC MAGIC 1.5 CRB17</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>User</component>
+<stars>1</stars>
+<reportedBy>flo0...@gmail.com</reportedBy>
+<openedDate>Mon, 16 Nov 2009 23:19:51 +0000</openedDate>
+<description>hello y have my htc magic since 13/11/2009 my ROM version is 1.5 CRB17 i
+would like update my ROM version from 1.6 DONUT or more what process ?
+in about/MAJ of sytems/ is already up to date ... i have a bug with sms
+send after 160 caracter thank for your help Florian flo0462@gmail.fr</description>
+<comment>
+<author>morri...@google.com</author>
+<when>Fri, 21 May 2010 22:22:51 +0000</when>
+<what>The Android team is generally not able to help with problems with specific 
+devices. Please contact your carrier or deviceQ&apos;Es manufacturer for 
+assistance.</what>
+</comment>
+</bug>
+<bug>
+<bugid>10233</bugid>
+<title>Calendar reminder noise sounds when no reminder is active</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>soph...@gmail.com</reportedBy>
+<openedDate>Thu, 05 Aug 2010 21:13:15 +0000</openedDate>
+<description>I use HTC Sync to sync with outlook. I have all day events (by default
+have no reminder) and some events that have no reminder set. Despite
+this, the reminder noise will play when the event starts (midnight for
+all day). I have tried setting setting the Alerts Q&amp;E Notifications
+setting for the calendar to Alert and also Status bar notification. Both
+will play the calendar alert sound not the status bar sound. HTC EVO
+with 2.2 HTC Sync 2.0.40</description>
+<comment>
+<author>chucknor...@google.com</author>
+<when>Tue, 24 Aug 2010 03:55:19 +0000</when>
+<what>Having the same issue with the same phone, same OS release and same version of HTC Sync.  In my case EVERY event synced by HTC Sync has an alert go off at the exact start time of the event.  However, NO events have a reminder set, either in Outlook or on the phone.
+
+My default reminder is set at 5 minutes before, so it is unlikely related.  I am pretty sure that the alert sound is different from my normal Gmail calendar alert sound.  Trying to research the symptoms by setting an Outlook event a few minutes after the sync time have not generated the sound.  Only those that occur some number of hours in the future make the sound.
+
+Two emails and two phone calls to HTC support confirm this is a common issue.  Their solution was wait for HTC sync version 3.0, which is supposedly a complete rewrite by a new supplier to them.
+
+While it MAY be caused by HTC Sync, Android OS is allowing it to occur.  My unwanted alerts will continue go off until all synced events pass, are deleted or until I disable the PC Sync calendar, even if I never sync again.  ItQ&apos;Es hard to blame the HTC Sync software thatQ&apos;Es no longer in use.
+</what>
+</comment>
+<comment>
+<author>soph...@gmail.com</author>
+<when>Tue, 24 Aug 2010 16:45:39 +0000</when>
+<what>I think ultimately this is an HTC Sync issue. I mostly posted here because the HTC forums donQ&apos;Et seem to get constructive responses. I know that HTC Sync 3 is out but it is not compatible with the EVO, or atleast would not let me download because of this. </what>
+</comment>
+</bug>
+<bug>
+<bugid>13334</bugid>
+<title>Please add Cisco AnyConnect in Android. Cisco AnyConnect is the new VPN software from Cisco based on SSL VPN. </title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>21</stars>
+<reportedBy>kOrNkI...@gmail.com</reportedBy>
+<openedDate>Tue, 21 Dec 2010 21:55:10 +0000</openedDate>
+<description>Please add Cisco AnyConnect in Android. Cisco AnyConnect is the new VPN
+software from Cisco based on SSL VPN.</description>
+<comment>
+<author>mario.b...@gmail.com</author>
+<when>Mon, 24 Jan 2011 13:41:06 +0000</when>
+<what>*</what>
+</comment>
+<comment>
+<author>cmwdsc...@gmail.com</author>
+<when>Fri, 03 Jun 2011 22:41:51 +0000</when>
+<what>Please add Cisco AnyConnect in Android. Cisco AnyConnect is the new VPN software from Cisco based on SSL VPN. 
+</what>
+</comment>
+<comment>
+<author>jens.wei...@gmail.com</author>
+<when>Sun, 20 Nov 2011 12:07:38 +0000</when>
+<what>At least the anyconnect client from cisco should be installable even on a non-rooted android device.
+
+Currently only Samsung androids works out of the box without having to root the device.</what>
+</comment>
+</bug>
+<bug>
+<bugid>12242</bugid>
+<title>Google search issue in Qwerty keypad model</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>star...@gmail.com</reportedBy>
+<openedDate>Fri, 29 Oct 2010 09:23:42 +0000</openedDate>
+<description>Android version : 2.2 - Steps to reproduce the problem. This issue
+happens only at the Qwerty keypad model. Change IME input language to
+Chinese Q&gt;E Idle screen Q&gt;E Key in Q&apos;EhjQ&apos;E in Pinyin or Stroke mode while
+sliding up QWERTY keyboard - What happened. First one or two characters
+are not Chinese, but English on Google search editor. - What you think
+the correct behavior should be. Chinese character should be shown on
+Google search editor.</description>
+</bug>
+<bug>
+<bugid>14610</bugid>
+<title>During a call on 2G, data transfers arenQ&apos;Et disabled, leading to DROPPED CALLS</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>5</stars>
+<reportedBy>notar...@gmail.com</reportedBy>
+<openedDate>Tue, 08 Feb 2011 16:12:44 +0000</openedDate>
+<description>Steps to reproduce: 1. Be on a 2G network, either by forcing it in the
+settings, or just not being in a 3G zone (EGDE in my case). 2. Start a
+call. 3. Wait until a sync starts - the data transfer will drop the
+call. This is LUDICROUS design, data transfers should NOT happen when a
+call is going on and the phone is on 2G. Phone and network: Nexus One
+Android 2.2.2 on Fido in Canada.</description>
+<comment>
+<author>ozan...@gmail.com</author>
+<when>Mon, 27 Jun 2011 06:02:28 +0000</when>
+<what>IQ&apos;Em having these kind of problems too. This is on Nexus S 2.3.4. I also captured a bug report.
+
+On 22:44 IQ&apos;Eve started a call which was dropped at 22.52. On 22.52/53 IQ&apos;Eve recalled that number and on 22.54 it was dropped again.
+
+The capture was taken after the second drop happened.</what>
+</comment>
+<comment>
+<author>ozan...@gmail.com</author>
+<when>Mon, 27 Jun 2011 06:02:59 +0000</when>
+<what>IQ&apos;Em on 2G network, Wifi was enabled at that time.</what>
+</comment>
+<comment>
+<author>pubma...@gmail.com</author>
+<when>Tue, 28 Jun 2011 17:16:15 +0000</when>
+<what>I had this issue yesterday (27/06/2011) for the first time and it happened again today (28/06/2011). Both times the Wi-Fi was enabled and while first time the signal bar was showing GPRS network second time today it was 3G network. I have never encountered this problem before and the only new application I have installed in last few days is WAZE and using that seems to overheat the phone. I wonder if any of this is useful or not but guess here are my two cents. Hope it gets resolved quickly.</what>
+</comment>
+</bug>
+<bug>
+<bugid>11427</bugid>
+<title>SpannedStringBuilder issue when it contains arabic+english characters</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>4</stars>
+<reportedBy>sameerfe...@gmail.com</reportedBy>
+<openedDate>Thu, 23 Sep 2010 14:53:52 +0000</openedDate>
+<description>SpannableStringbuilder buf; String token1=Q&quot;E????? ??? ????? ??
+1234567890Q&quot;E; TextView tv; buf.append(token1); tv.SetText(buf); Then
+displayed in TextView as reversed as Arab number 1234567890 then arabic
+string. Can you please give me some input how to solve this issue?
+Correct behavior: It should be appear in textview same as token. PRESENT
+in FROYO 2.2</description>
+<comment>
+<author>fadden%a...@gtempaccount.com</author>
+<when>Mon, 27 Sep 2010 19:00:19 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>e...@google.com</author>
+<when>Mon, 27 Sep 2010 19:07:48 +0000</when>
+<what>Sorry about the bidirectional bugs.  They should all be fixed in Honeycomb, which uses ICUQ&apos;Es implementation of the bidirectional algorithm.</what>
+</comment>
+</bug>
+<bug>
+<bugid>15874</bugid>
+<title>Google Talk on Thunderbolt status LED wonQ&apos;Et stop blinking until new message arrives</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>guyheave...@gmail.com</reportedBy>
+<openedDate>Wed, 30 Mar 2011 21:10:15 +0000</openedDate>
+<description>While in a message thread/viewing message and receiving a new message.
+The LED indicator notifies you of a new message, but backing out to
+homescreen will not clear message waiting indicator. The indicator light
+resets when new message arrives and exit google talk promptly after.</description>
+</bug>
+<bug>
+<bugid>13766</bugid>
+<title>Camera app in 2.3 freezes/hangs when too close to screen?</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>10</stars>
+<reportedBy>dua...@gmail.com</reportedBy>
+<openedDate>Thu, 06 Jan 2011 10:44:47 +0000</openedDate>
+<description>Bizarre! The attached photo was taken with a Nexus S running the android
+2.3.1 (build GRH78) stock camera app. It is a photo of a Dell Latitude
+13 running Win 7 and Chrome (if any of that matters) showing the
+gmail.com login page. The camera is able to take this picture with no
+problem. But, move closer to the screen (so that the Gmail icon is at
+the top of the frame and the Less Spam icon is at the bottom - both near
+the left edge of the cameraQ&apos;Es view) and snap a picture and the camera
+app will freeze and not save the picture. The Back, Menu, and Search
+buttons will stop working; only the Home button will work (aborting the
+camer app). I was able to duplicate the problem while submitting this
+report (using a different monitor - an ACER 1920x1080 HDMI display). The
+camera wonQ&apos;Et always freeze when up close - but it seems to happen more
+frequently when there is a horizontal line near the top of the picture.
+A possibly similar bug might be
+http://code.google.com/p/android/issues/detail?id=4719Q&amp;Eq=camera%20stopQ&amp;Ecolspec=ID%20Type%20Status%20Owner%20Summary%20Stars</description>
+<comment>
+<author>yyyyaaaa...@gmail.com</author>
+<when>Fri, 07 Jan 2011 17:34:05 +0000</when>
+<what>
+IQ&apos;Em an app developer and making a camera app named FxCamera.
+I have a similar problem on Nexus S(2.3.1) with both pre-installed camera app and my app.
+
+the following is the case of my app
+ - when app calls Camera#takePicture, sometimes Camera goes wrong
+   without throwing any exception/error 
+   (and PictureCallback never come)
+ - it seems that SIGSEGV (Segmentation Fault) was occurred!
+   (see the attached file which is an output of logcat)
+
+frequency of this problem is highly dependent on picture(subject) what I take.
+Q&quot;Ewhite noiseQ&quot;E image causes this problem frequently, almost 100% in my case.
+  (e.g. shot this image. http://bootyourbroker.com/blog/analysis-paralysis/whitenoise/ )
+
+I guess this is a bug of JPEG encoder or something
+and I hope this is a Nexus S specific problem, not a gingerbread prob..
+
+ymst
+http://stackrmobile.com
+</what>
+</comment>
+<comment>
+<author>t.eg...@gmail.com</author>
+<when>Sat, 08 Jan 2011 01:10:42 +0000</when>
+<what>I have also seen this situation on Nexus S. I wish it would be fixed soon.</what>
+</comment>
+<comment>
+<author>thiagoss...@gmail.com</author>
+<when>Tue, 15 Feb 2011 02:03:36 +0000</when>
+<what>I have seen something really similar to this on a Xperia Mini too.</what>
+</comment>
+<comment>
+<author>arsala...@gmail.com</author>
+<when>Thu, 17 Mar 2011 14:55:24 +0000</when>
+<what>I can also reproduce exact problem on Nexus S. The camera picture callback is not called most of the time, and when called, an exception is raised as soon as I try to restart camera preview.</what>
+</comment>
+</bug>
+<bug>
+<bugid>18647</bugid>
+<title>Jit: aborting trace compilation, reverting to interpreter</title>
+<status>New</status>
+<owner>buz...@google.com</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Dalvik</component>
+<stars>1</stars>
+<reportedBy>ningwano...@gmail.com</reportedBy>
+<openedDate>Tue, 19 Jul 2011 09:03:17 +0000</openedDate>
+<description>NOTE: This form is only for reporting bugs found in the Android system
+while developing Android applications on 2.3. Use the Tools templates
+for issues with the developer tools. Please describe the problem in
+detail. Be sure to include: - Steps to reproduce the problem (including
+sample code if appropriate). - What happened. - What you think the
+correct behavior should be. Please make sure that youQ&apos;Ere using Android
+2.3, and (if the issue exists on a device) that the device also runs
+Android 2.3. Please also run Q&quot;Eadb bugreportQ&quot;E and archive the output.
+When i test application in Emulator, It shows error Q&quot;EJit: aborting trace
+compilation, reverting to interpreterQ&quot;E in Logcat view. My application is
+very simple, it generate 3D style pie chart. I works well, However, it
+shown error in logcat.</description>
+<comment>
+<author>fadden%a...@gtempaccount.com</author>
+<when>Tue, 19 Jul 2011 17:19:34 +0000</when>
+<what>I believe thatQ&apos;Es usually harmless (and perhaps shouldnQ&apos;Et be a LOGE).  Over to the Dalvik folks.
+
+07-19 16:44:52.227 I/Html Start Angle(  372): 5.8327346
+07-19 16:44:52.266 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.266 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.276 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.276 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.307 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.307 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.316 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.316 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.336 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.336 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.355 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.355 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.387 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.387 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.397 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.397 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.406 E/dalvikvm(  372): No free temp registers
+07-19 16:44:52.406 E/dalvikvm(  372): Jit: aborting trace compilation, reverting to interpreter
+07-19 16:44:52.766 I/ActivityManager(   61): Displayed com.epsilon.drawpaint/.PieChartTest: +787ms
+</what>
+</comment>
+<comment>
+<author>buz...@google.com</author>
+<when>Tue, 19 Jul 2011 17:58:05 +0000</when>
+<what>Yes, this is harmless (though Fadden is correct - the message shouldnQ&apos;Et be delivered as a LOGE).  This situation should never occur on an actual device Q&gt;E armv5te, and in any event represents a missed performance opportunity rather than a correctness problem.  IQ&apos;Ell change the LOGEQ&apos;Es to LOGDQ&apos;Es.</what>
+</comment>
+<comment>
+<author>ningwano...@gmail.com</author>
+<when>Wed, 20 Jul 2011 03:54:35 +0000</when>
+<what>Thank you, no matter itQ&apos;Es harmless, itQ&apos;Es an error. I hope this issue will be fixed on next version of Android.</what>
+</comment>
+<comment>
+<author>noukn...@gmail.com</author>
+<when>Sun, 06 Nov 2011 11:52:41 +0000</when>
+<what>Hi, IQ&apos;Eve got the same issue here:
+
+my little casual game (*), involving a little homemade physics engine, and executed on an Alcatel One Touch 990 device (**) generates the same log output several times per second.
+
+My main concern is not about the output itself, but about the consequence in the jitter in terms of framerate: the fps changes constantly and makes the animation jerky.
+
+I would have preferred to be able to completely disable JIT to have (maybe lower but at least) constant fps, but I didnQ&apos;Et found any way to do the same. 
+
+Regards,
+
+Nouknouk.
+
+
+(*) https://market.android.com/details?id=fr.bouncebox.beta.app
+
+(**) donQ&apos;Et know if it helps, but:
+- CPU Single core, 600 MHz, QUALCOMM MSM 7227-1
+- version 2.2.2
+- kernel 2.6.32.9-perf
+- build FRG83G.v58L-0
+
+</what>
+</comment>
+</bug>
+<bug>
+<bugid>1322</bugid>
+<title>BIG issue....Notification bar/alarm very buggy and inconsistent.</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>2008-12-17T16:36:33.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Applications</component>
+<stars>6</stars>
+<reportedBy>jmejiaa</reportedBy>
+<openedDate>Mon, 17 Nov 2008 20:20:01 +0000</openedDate>
+<description>The notifications bar is buggy. if you leave your messaging program in a
+conversation (for example, you pressed the home button instead of the
+back button after replying) and another message comes, even if the phone
+is locked, all notifications and alarms stop making sound or vibrating.
+I used to rely on my phone for all alarms but I canQ&apos;Et now.</description>
+<comment>
+<author>ryannosa...@gmail.com</author>
+<when>Thu, 20 Nov 2008 18:23:34 +0000</when>
+<what>+1 on this... see issue 1229 here:
+
+http://code.google.com/p/android/issues/detail?id=1229Q&amp;Esort=-idQ&amp;Ecolspec=ID%20Type%20Version%20Security%20Status%20Owner%20SummaryQ&amp;Estart=100
+
+</what>
+</comment>
+<comment>
+<author>jmejiaa</author>
+<when>Tue, 25 Nov 2008 21:19:58 +0000</when>
+<what>I just recreated it. Try this:
+
+Send yourself a test email, pull down the notification bar and open the email, now
+press home. Send yourself a second email, for me it vibrated and showed up for two
+seconds then disappeared.
+
+Maybe itQ&apos;Es only when you leave new emails open and press home. </what>
+</comment>
+<comment>
+<author>sull...@gmail.com</author>
+<when>Tue, 25 Nov 2008 22:08:50 +0000</when>
+<what> It seems that android keeps the messaging programs running in the background as if 
+they were in the foreground; when a new message comes in it assumes the messaging 
+window is already displayed and you see it even though the messages program is 
+running in the background.
+
+As issue 1229 says, Android sould be able to know when a messaging/notification 
+window is open in the forground vs. open in the background.  Notifications should 
+not be removed until the notification window, whether it is gmail, messaging, or 
+calllog, is set to visible and the user interacts with the screen in some way.  Say 
+you get a new email when the phone is locked, even if the last window on the screen 
+was gmail the notification should not be removed until the phone is unlocked and the 
+user touches the email or scrolls or something similar.  This would ensure that not 
+only does the window have to be active, but the user also has to be interacting with 
+the screen so the phone knows it was seen.
+
+It also appears that this same bug can mess up the alarm and needs to be debugged so 
+an open gmail or messaging window doesnQ&apos;Et prevent your alarm clock from going off.</what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 17 Dec 2008 16:36:33 +0000</when>
+<what>duplicate of issue 1229
+
+the issue isnQ&apos;Et in the notification bar, itQ&apos;Es in the apps themselves.</what>
+</comment>
+<comment>
+<author>ryannosa...@gmail.com</author>
+<when>Thu, 18 Dec 2008 19:36:09 +0000</when>
+<what>OK, letQ&apos;Es revise the problem then: which default Android apps are perpetrators?
+Messaging? Email? Dialer/call log?</what>
+</comment>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Wed, 26 Aug 2009 15:05:36 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>5804</bugid>
+<title>Build Issue</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>2010-01-04T04:58:39.000Z</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>linux.ne...@gmail.com</reportedBy>
+<openedDate>Mon, 04 Jan 2010 03:13:52 +0000</openedDate>
+<description>I downloaded the android source and gave make command (didnt modify any
+thing) and libwebcore is not building. Below is the part of make log.
+Can anyone let me know the root cause for this issue and the way to
+solve it? Host = ubuntu9.10 java version Q&quot;E1.5.0_19Q&quot;E Java(TM) 2 Runtime
+Environment, Standard Edition (build 1.5.0_19-b02) Java H otSpot(TM)
+Client VM (build 1.5.0_19-b02, mixed mode, sharing) flex 2.5.35 bison
+(GNU Bison) 2.4.1 GNU gperf 3.0.4 target Prelink: libwbxml_jni
+(out/target/product/generic/symbols/system/lib/libwbxml_jni.so)
+libelfcopy: Warning: Range lists in .debug_info section arenQ&apos;Et in
+ascending order! libelfcopy: Warning: Range lists in .debug_ranges
+section start at 0x730 target Strip: libwbxml_jni
+(out/target/product/generic/obj/lib/ libwbxml_jni.so) Install:
+out/target/product/generic/system/lib/libwbxml_jni.so target thumb C++:
+libwebcore Q&lt;E= external/webkit/WebKit/android/jni/WebCoreJniOnLoad.cpp In
+file included from external/webkit/WebKit/android/JavaVM/jni.h:29, from
+external/webkit/WebCore/bridge/jni/jni_utility.h: 34, from
+external/webkit/WebKit/android/jni/WebCoreJniOnLoad.cpp:29:
+dalvik/libnativehelper/include/nativehelper/jni.h:489: note: the
+mangling of Q&apos;Eva_listQ&apos;E has changed in GCC 4.4 Generating
+CSSPropertyNames.h Q&lt;E= CSSPropertyNames.in Generating CSSValueKeywords.h
+Q&lt;E= CSSValueKeywords.in target Generated: libwebcore Q&lt;E=
+external/webkit/WebCore/html/HTMLEntityNames.gperf target Generated:
+libwebcore Q&lt;E= external/webkit/WebCore/platform/ ColorData.gperf WebCore
+Yacc: libwebcore Q&lt;E= external/webkit/WebCore/css/CSSGrammar.y make: ***
+[out/target/product/generic/obj/STATIC_LIBRARIES/
+libwebcore_intermediates/WebCore/CSSGrammar.cpp] Broken pipe</description>
+<comment>
+<author>romaingu...@gtempaccount.com</author>
+<when>Mon, 04 Jan 2010 04:58:39 +0000</when>
+<what>This is not the place to discuss build/configuration issues. Please ask on the mailing list 
+or on IRC (#android on freenode.)</what>
+</comment>
+</bug>
+<bug>
+<bugid>9968</bugid>
+<title>Alarm clock sometimes doesnQ&apos;Et work</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>3</stars>
+<reportedBy>piotr.sa...@gmail.com</reportedBy>
+<openedDate>Fri, 23 Jul 2010 05:46:23 +0000</openedDate>
+<description>Yesterday I set my alarm clock on 5:30. But it didnQ&apos;Et ring today. At.
+5:33 I saw that interface becamy laggy and slow. When I turn off alarm
+lags disappeared. I send log file in attachment.</description>
+<comment>
+<author>piotr.sa...@gmail.com</author>
+<when>Fri, 23 Jul 2010 05:51:04 +0000</when>
+<what>Some additional informations:
+- cellphone Samsung Galaxy S GT-I9000
+- software version: 2.1-update1
+</what>
+</comment>
+</bug>
+<bug>
+<bugid>1259</bugid>
+<title>Edit/Delete notes from Google Notebook</title>
+<status>Declined</status>
+<owner>null</owner>
+<closedOn>2009-08-25T00:15:52.000Z</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>6</stars>
+<reportedBy>clubma...@gmail.com</reportedBy>
+<openedDate>Wed, 12 Nov 2008 04:41:54 +0000</openedDate>
+<description>I can add notes via android to Google Notebooks but I can not edit them
+or delete them. it would really be great to do this.</description>
+<comment>
+<author>jbq+legacy@google.com</author>
+<when>Thu, 29 Jan 2009 01:23:00 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>james.fl...@gmail.com</author>
+<when>Thu, 12 Mar 2009 11:47:32 +0000</when>
+<what>bump</what>
+</comment>
+<comment>
+<author>jlapenna@google.com</author>
+<when>Tue, 25 Aug 2009 00:15:52 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>cnye...@gmail.com</author>
+<when>Sun, 11 Oct 2009 10:59:56 +0000</when>
+<what>so disappoint that this feature request is declined...</what>
+</comment>
+</bug>
+<bug>
+<bugid>9961</bugid>
+<title>Browser sometimes doesnQ&apos;Et register pressing HTML input submit button controls</title>
+<status>NeedsInfo</status>
+<owner>cary%and...@gtempaccount.com</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Browser</component>
+<stars>5</stars>
+<reportedBy>Kaleb...@gmail.com</reportedBy>
+<openedDate>Fri, 23 Jul 2010 00:00:23 +0000</openedDate>
+<description>Sometimes when pressing buttons in the browser, it will register the
+touch, but not actually _press_ the button. For example, on a log in
+page, pressing a Q&quot;Elog inQ&quot;E button should log me in and proceed to load a
+new page (as indicated in the progress bar). However, this bug makes it
+so pressing a Q&quot;Elog inQ&quot;E button will highlight the button, yet will load
+nothing and just stay on the log in page (no progress bar). The problem
+seems erratic and differs by website and time. Model: Droid Firmware v.:
+2.1-update1 Baseband v.: C_01.3E.03P Kernel v.: 2.6.29-omap1-g7fa8788
+android-build@apa26 #1 Build #: ESE81</description>
+<comment>
+<author>cccandr...@gmail.com</author>
+<when>Mon, 26 Jul 2010 15:53:05 +0000</when>
+<what>Please cite a website which frequently exhibits this problem. Also, it would be helpful to know what you see (e.g., did the button turn yellow or orange) when the button appears to have been pressed but has no effect. And, can you get an Q&apos;Eadb logcatQ&apos;E when it fails?
+
+Thanks</what>
+</comment>
+<comment>
+<author>Kaleb...@gmail.com</author>
+<when>Thu, 29 Jul 2010 17:56:34 +0000</when>
+<what>Unfortunately, there is no particular website where this happens frequently. It seems to happen on different websites at random times. If I find any site where this happens with consistency, I will report it.
+
+Yes, the button turns an orange-ish hue when being pressed. As stated above, the button is highlighted, but no action is taken.
+
+I donQ&apos;Et know what an Q&apos;Eadb logcatQ&apos;E is. But if you can point me to some information, I will try to get it when the problem next occurs. Thanks.</what>
+</comment>
+<comment>
+<author>morri...@google.com</author>
+<when>Fri, 20 Aug 2010 22:00:39 +0000</when>
+<what></what>
+</comment>
+<comment>
+<author>anderdro...@gmail.com</author>
+<when>Sun, 24 Apr 2011 06:13:50 +0000</when>
+<what>REVIVED.
+
+CanQ&apos;Et login to Admob.com because the submit button wonQ&apos;Et work. And IQ&apos;Em on a stock Nexus S on Gingerbread! Figures. Now that is what I call unacceptable!</what>
+</comment>
+<comment>
+<author>elstenso...@gmail.com</author>
+<when>Mon, 25 Jul 2011 08:52:04 +0000</when>
+<what>I see this all the time, it seems particularly bad with image submit buttons.
+
+Model: Motorola Defy
+Firmware v.: 2.1-update1
+Baseband v.: EPU93_ST2_U_03.0A.01
+Kernel v.: 2.6.29 jfqk83@zch68lnxdroid07 #1
+Build #: JRDNEM_U3_2.51.1
+
+Websites where it occurs:
+
+http://m.tfl.gov.uk/mt/journeyplanner.tfl.gov.uk/user/XSLT_TRIP_REQUEST2?language=en (click search)
+http://mobile.live.com
+http://www.cellartracker.com when filling in a tasting note</what>
+</comment>
+<comment>
+<author>acorn...@bas-llc.com</author>
+<when>Tue, 25 Oct 2011 15:13:55 +0000</when>
+<what>I can confirm this on 2.3.7 using the attached file.</what>
+</comment>
+<comment>
+<author>acorn...@bas-llc.com</author>
+<when>Tue, 25 Oct 2011 15:26:09 +0000</when>
+<what>In a strange twist, after killing Q&quot;EBrowserQ&quot;E and clearing all its data, the test file now works.</what>
+</comment>
+<comment>
+<author>elstenso...@gmail.com</author>
+<when>Tue, 25 Oct 2011 17:11:11 +0000</when>
+<what>Yes, I have also found that by killing the browser from the app menu and restarting it begins to work again.</what>
+</comment>
+</bug>
+<bug>
+<bugid>8694</bugid>
+<title>touch screen always not get my correct click position</title>
+<status>NeedsInfo</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>dev...@gmail.com</reportedBy>
+<openedDate>Fri, 28 May 2010 04:55:20 +0000</openedDate>
+<description>touch screen always not get my correct click position, if I press home
+to lock it and then unlock the screen, it may work well for few minutes</description>
+<comment>
+<author>romaingu...@gtempaccount.com</author>
+<when>Fri, 28 May 2010 17:20:20 +0000</when>
+<what>Can you please give more information? What device and version of Android are you using? When does it start 
+happening? What exactly happens?</what>
+</comment>
+</bug>
+<bug>
+<bugid>5464</bugid>
+<title>Google Finance, unable to retrieve portfolios </title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>4</stars>
+<reportedBy>gustadm...@gmail.com</reportedBy>
+<openedDate>Tue, 15 Dec 2009 18:12:06 +0000</openedDate>
+<description>Unable to retrieve portfolios created on the Google Finance web site to
+be added to the Google Finance android app. Google Finance always gets
+stuck in Q&quot;ELoading portfolios from Google FinanceQ&quot;E. The only way I was
+able to get a portfolio partially loaded was by adding a ticker within
+Android, and then separately on my PC/web interface adding more tickers
+to that portfolio. This is makes Google Finance essentially useless for
+checking portfolios that were created online. I think this might be due
+to my large portfolios which have 20+ tickers.</description>
+<comment>
+<author>nitsu...@gmail.com</author>
+<when>Sun, 10 Jan 2010 23:50:12 +0000</when>
+<what>same problem. HTC Hero - Sprint. after large 20+ ticker portfolios created online,
+app freezes on Q&quot;Eloading portfolios from Google financeQ&quot;E...</what>
+</comment>
+<comment>
+<author>jlev...@gmail.com</author>
+<when>Wed, 21 Apr 2010 19:27:25 +0000</when>
+<what>Same Problem My Touch (Google)</what>
+</comment>
+<comment>
+<author>vjper...@gmail.com</author>
+<when>Tue, 07 Jun 2011 22:25:34 +0000</when>
+<what>Have Samsung Galaxy S- Captivate and every time I open Google Finance it says 23 portfolioQ&apos;Es successfully synced...but no portfolioQ&apos;Es synced. I then created a portfolio on my phone and it successfully synced with finance from a desktop browser. Was able to see Q&quot;Emobile portfolioQ&quot;E in my browser. However uninstalled google finance and upon installation mobile portfolio did not sync. Added ticker in mobile app again and it sync in desktop browser but still do not get syncing in mobile app. </what>
+</comment>
+<comment>
+<author>wxyzs...@gmail.com</author>
+<when>Wed, 17 Aug 2011 04:50:09 +0000</when>
+<what>Take a look at Portfolios from WxyzSoft on the Android market.  ItQ&apos;Es a very simple app that seamlessly integrates with your Google finance accounts to keep track of your portfolios.</what>
+</comment>
+</bug>
+<bug>
+<bugid>11280</bugid>
+<title>Open a Contact with birthday field without birth year causes force close on Galaxy S Vibrant</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>jon.bond...@gmail.com</reportedBy>
+<openedDate>Thu, 16 Sep 2010 15:42:45 +0000</openedDate>
+<description>Create a new Contact or use an existing Contact from web using GMail
+Contacts. Add Birthday Month and Day without year. Synchonize contacts
+on Samsung Galaxy S Vibrant (t-mobile). Attempt to Open this Contact
+with birthday month and day only, Force Close occurs. Correct behavior
+would be not to crash if the birth year is omitted. Workaround, add year
+to the Birthday field or delete the birthday field.</description>
+<comment>
+<author>olson.lukas</author>
+<when>Mon, 01 Nov 2010 16:17:56 +0000</when>
+<what>IQ&apos;Em also getting this error.
+
+Here is the stack trace:
+
+10-31 06:59:37.196 E/AndroidRuntime(25973): Uncaught handler: thread main exiting due to uncaught exception
+10-31 06:59:37.251 E/AndroidRuntime(25973): java.lang.StringIndexOutOfBoundsException
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at java.lang.String.substring(String.java:1646)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.contacts.ViewContactActivity.checkDateValue(ViewContactActivity.java:4468)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.contacts.ViewContactActivity.buildEntries(ViewContactActivity.java:2435)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.contacts.ViewContactActivity.bindData(ViewContactActivity.java:973)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.contacts.ViewContactActivity.considerBindData(ViewContactActivity.java:966)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.contacts.ViewContactActivity.onQueryComplete(ViewContactActivity.java:646)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.contacts.util.NotifyingAsyncQueryHandler.onQueryComplete(NotifyingAsyncQueryHandler.java:65)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at android.content.AsyncQueryHandler.handleMessage(AsyncQueryHandler.java:408)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at android.os.Handler.dispatchMessage(Handler.java:99)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at android.os.Looper.loop(Looper.java:123)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at android.app.ActivityThread.main(ActivityThread.java:4363)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at java.lang.reflect.Method.invokeNative(Native Method)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at java.lang.reflect.Method.invoke(Method.java:521)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:862)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:620)
+10-31 06:59:37.251 E/AndroidRuntime(25973): 	at dalvik.system.NativeStart.main(Native Method)</what>
+</comment>
+<comment>
+<author>olson.lukas</author>
+<when>Mon, 01 Nov 2010 16:18:18 +0000</when>
+<what>(Forgot to post that I have a Samsung Captivate.)</what>
+</comment>
+</bug>
+<bug>
+<bugid>9985</bugid>
+<title>incoming call treated as notification</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>3</stars>
+<reportedBy>sonisoe74@gmail.com</reportedBy>
+<openedDate>Sun, 25 Jul 2010 03:34:21 +0000</openedDate>
+<description>when iQ&apos;Em texting, browsing, writing notes, etc, i dont want an incoming
+call to take over what iQ&apos;Em doing,... it should just appear on the
+notification bar with an option to accept, reject, or send quick sms...
+i believe its not the first time someone has reported in, but i cant
+find the thread in the forum...</description>
+</bug>
+<bug>
+<bugid>5401</bugid>
+<title>Droid (2.0.1) gps coordinates not saved with picture created using inbox camera</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>investment675-web@yahoo.com</reportedBy>
+<openedDate>Sat, 12 Dec 2009 05:31:22 +0000</openedDate>
+<description>Device : Motorola Droid. Firmware Android 2.0.1 took a picture using the
+built in camera application - Store Location (ON) - Uploaded to picassa
+GPS coordinates were not available in the picture Expected result: GPS
+tags (latitude and longitude) should have been available in the metadata
+of the picture.</description>
+<comment>
+<author>wuchen...@google.com</author>
+<when>Tue, 15 Dec 2009 15:59:37 +0000</when>
+<what>Did you see the gps icon when you took the picture? Sometimes you need to wait some 
+time to get a gps fix.</what>
+</comment>
+</bug>
+<bug>
+<bugid>3475</bugid>
+<title>Home screen Folders can fail to open</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component>Applications</component>
+<stars>9</stars>
+<reportedBy>nemo...@gmail.com</reportedBy>
+<openedDate>Wed, 05 Aug 2009 16:50:06 +0000</openedDate>
+<description>I have ten folders on my home screens, which have been working fine. Now
+I find that one has stopped working - I can move it, I can highlight it,
+but it ignores clicks and will not open! All other folders open fine. A
+reboot fixed it, but thereQ&apos;Es some vulnerability there.</description>
+</bug>
+<bug>
+<bugid>18931</bugid>
+<title>android 2.0 webkit browsers loosing cookies when killed forcefully</title>
+<status>New</status>
+<owner>bse...@android.com</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>2</stars>
+<reportedBy>upinder....@gmail.com</reportedBy>
+<openedDate>Sat, 30 Jul 2011 20:03:07 +0000</openedDate>
+<description>we have a mobile app that we developed to run on the android platform,
+that app has a feature to remember username during login which work as
+follow: 1. user selects the save user name feature at the login screen
+2. At every successful login mobile app send the request to server with
+user selection. 3. Based on mobile request server generates the unique
+ID and masked username mapped to that particular username ( note that
+for security purposes we decided not to store the username on the
+device) 4. mobile app receives the newly generated token and masked
+username to set the http cookies on the client. 5. every subsequent
+login, username field is prefilled with masked username from the stored
+cookies and the saved token cookie is send back to server along with
+password for authentication. 6. server find the username based on
+recieved token and proceed with authentication.It also deletes the
+existing token, and regenerates the new token and send back 7. mobile
+web updates/sets the cookie with new token value. This whole flow works
+flawlessly on desktop browsers including safari, chrome and firefox. but
+on android browser cookie values are not getting persisted. If user
+force stop the browser it looses the stored cookie information.and most
+recent token value never get persisted on the browsers cookies, hance
+login fails. we have also seen the andriod OS automatically
+shutting/killing the running browser in case of high memory usage, hence
+it looses all its cookie state. We would like to know how the memory
+mangement is been done at the android OS, and at what point the cookies
+value are getting sunc and persistent to the local storage. Is there any
+possible way that we could use to force the android browser to
+write/persist the cookies? Thank you for the help</description>
+<comment>
+<author>n...@google.com</author>
+<when>Mon, 31 Oct 2011 16:43:36 +0000</when>
+<what></what>
+</comment>
+</bug>
+<bug>
+<bugid>8193</bugid>
+<title>Search window over YouTube screen</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>eko...@gmail.com</reportedBy>
+<openedDate>Thu, 06 May 2010 17:47:08 +0000</openedDate>
+<description>NOTE: This form is only for reporting user bugs. For all other user
+discussions please visit: http://groups.google.com/group/android-discuss
+Please describe the problem in detail. Be sure to include: - Steps to
+reproduce the problem. 1) Launch YouTube 2) Search video by several key
+words 3) Long press on video Q&gt;E Send YouTube via my Gmail account 4)
+While sending Gmail, press option Q&gt;E search 5) Gmail notification is
+incoming Q&gt;E drag down notification bar Q&gt;E Select arrived mail Q&gt;E select
+YouTube url 6) You can see the search box on YouTube screen - What
+happened. : Search window over YouTube screen - What you think the
+correct behavior should be. : Search window should be disappeared DonQ&apos;Et
+forget to mention which device you have, and which version of Android is
+installed on it. (Find it under Home Q&gt;E Menu Q&gt;E Settings Q&gt;E About phone.)
+If you happen to have a development environment, please also run Q&quot;Eadb
+bugreportQ&quot;E and archive the output as it could help diagnose the problem.</description>
+</bug>
+<bug>
+<bugid>6327</bugid>
+<title>new sms Q&quot;EtoQ&quot;E field does not interface with contact list</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>3</stars>
+<reportedBy>daniele....@gmail.com</reportedBy>
+<openedDate>Thu, 28 Jan 2010 15:59:05 +0000</openedDate>
+<description>I have a Nexus One. When I open the default sms application and tap Q&quot;Enew
+messageQ&quot;E I get to the screen with the Q&quot;Esend toQ&quot;E and Q&quot;Etext bodyQ&quot;E fields.
+If I type, for exhample Q&quot;EcarQ&quot;E in the Q&quot;Esend toQ&quot;E field, I expect a drop
+down menu showing my contacts being filtered down to, say, Q&quot;ECarl, Carol
+and CarsonQ&quot;E; instead nothing happens. If I enter the exact name of a
+contact I receive an error message as well. The field seems to only
+accept entries which are phone numbers already. I think this is not the
+way it was designed to behave. Please forgive me if some Q&quot;ElabelQ&quot;E is
+inaccurate, I donQ&apos;Et use the interface in english, I hope my description
+is clear enough and I am at your dsposal for further clarifications.</description>
+<comment>
+<author>daniele....@gmail.com</author>
+<when>Fri, 29 Jan 2010 07:46:32 +0000</when>
+<what>Update, I was partially wrong, the name completion does work but only with the
+contacts created by the phone itself (or merged from google as far as I could see).
+Contacts imported from the SIM are not recognized. I was going to Q&quot;Etidy upQ&quot;E my
+contact list anyway but still it is a bit uncomfortable.</what>
+</comment>
+<comment>
+<author>sharath....@wipro.com</author>
+<when>Wed, 04 May 2011 14:00:50 +0000</when>
+<what>Name completion does work with contacts on Nexus one with Android 2.3.3 Gingerbread version.</what>
+</comment>
+</bug>
+<bug>
+<bugid>11869</bugid>
+<title>Add support for EAP-AKA</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Defect</type>
+<priority>Medium</priority>
+<component></component>
+<stars>25</stars>
+<reportedBy>cuihtlau...@gmail.com</reportedBy>
+<openedDate>Thu, 14 Oct 2010 07:55:02 +0000</openedDate>
+<description>In order to allow 3G USIM card based authentication, an API exposing
+EAP-AKA is needed. Issue 9329 requests EAP-SIM. This is for 2G one way
+SIM based authentication, 3G (AKA) authentication is mutual.
+Additionally issue 9329 seems to imply EAP-SIM is only useful for WPA
+authentication. While wifi is definitely an important use case for
+EAP-SIM and EAP-AKA, however, it is not the only one. Therefore, a
+standalone API for EAP-AKA and EAP-SIM is probably better, ideally as
+part of a SIM access API.
+http://code.google.com/p/android/issues/detail?id=9329</description>
+</bug>
+<bug>
+<bugid>11798</bugid>
+<title>news and weather, custom topic</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>1</stars>
+<reportedBy>bdm...@gmail.com</reportedBy>
+<openedDate>Mon, 11 Oct 2010 03:26:15 +0000</openedDate>
+<description>1. applications - news and weather - options key - settings 2. news
+settings - select news topics - custom topic - input Q&apos;Esports/OKQ&apos;E 3.
+custom topic - input Q&apos;Esports/OKQ&apos;E - Q&apos;EPresent the same topicQ&apos;E Should be On
+the pop-up display.</description>
+</bug>
+<bug>
+<bugid>13020</bugid>
+<title>Changing primary Google Account without factory reset</title>
+<status>New</status>
+<owner>null</owner>
+<closedOn>null</closedOn>
+<type>Enhancement</type>
+<priority>Medium</priority>
+<component></component>
+<stars>5</stars>
+<reportedBy>nicholas...@gmail.com</reportedBy>
+<openedDate>Tue, 07 Dec 2010 22:41:38 +0000</openedDate>
+<description>BACKGROUND: There are times in life when one wishes to stop using one
+particular e-mail address and start using another instead. This is
+without having to lose old e-mails and other kind of personal data that
+in some way or another is connected with that said e-mail address. In
+the case of Android, one has this primary Google Account that one links
+up the whole system (the phone) with. To have to wipe the system just
+because one wants to start using another Google Account instead of the
+old one is not a very smart design. FEATURE REQUEST: Since one now can
+add multiple Google Accounts in Android, I request a feature to choose
+the primary among them. Alternatively, or in addition, that one can tick
+a box while adding a new account to make it the new primary one.</description>
+</bug>
+</Android_Bugs>
