@@ -26,30 +26,40 @@ package util;
 
 public enum ParametersEnum {
 
-    XML_DEFAULT_PATH(".//data"),
-    DB_DEFAULT_PATH(".//inputLDA"),
-    INDEX_DEFAULT_PATH(".//index"),
-    MALLET_PROPERTIE_FILE_DEFAULT_PATH(".//properties//malletLDA.properties"),
+    XML_DEFAULT_PATH(".\\data"),    
+    INDEX_DEFAULT_PATH(".\\index"),
+    
+    LOG4J_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\log4j.properties"),
+        
+    H2_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\h2.properties"),
     DB_URL("db.url"),
     DB_NAME("db.name"),
     DB_USER("db.user"),
     DB_PASS("db.password"),
     DB_SQUEMA_URL("db.squema"),
+    
+    MALLET_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\malletLDA.properties"),
     LDA_STOP_WORDS("lda.stopwords"),
     LDA_ITERATIONS("lda.iterations"),
     LDA_NUM_TOPICS("lda.num_topics"),
     LDA_ALPHA("lda.alpha"),
     LDA_BETA("lda.beta"),
     LDA_WORDS_PER_TOPIC("lda.wordsPerTopic"),
+    
     LDA_STEP_DAY("Day"),
     LDA_STEP_MONTH("Month"),
     LDA_STEP_YEAR("Year"),
+    
+    LUCENE_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\lucene.properties"),
+    LUCENE_STOP_WORDS("stopwords"),
+    
     INDEX_FIELD1("Id"),
     INDEX_FIELD2("Date"),
     INDEX_FIELD3("Text"),
+    INDEX_FIELD4("Score"),
     INDEX_DEFAULT(" Simple Analyzer"),
     INDEX_WHITESPACE_ANALYZER(" Whitespace Analyser"),
-    INDEX_SIMPLE_ANALYZER(" Simple Analyzer"),
+    INDEX_SIMPLE_ANALYZER(" Simple Analyzer"),    
     INDEX_STOP_ANALYZER(" Stop Analyzer"),
     INDEX_STANDAR_ANALYZER(" Standar Analyzer"),
     INDEX_HITS(" HITS"),

@@ -59,15 +59,14 @@ public class AboutBoxView extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(view.MainApp.class).getContext().getResourceMap(AboutBoxView.class);
-        setTitle(resourceMap.getString("title")); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
+        setTitle(bundle.getString("AboutBoxView.Title")); // NOI18N
         setModal(true);
         setName("aboutBox"); // NOI18N
         setResizable(false);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(view.MainApp.class).getContext().getActionMap(AboutBoxView.class, this);
         closeButton.setAction(actionMap.get("closeAboutBox")); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("view/Bundle"); // NOI18N
         closeButton.setText(bundle.getString("AboutBoxView.closeButton")); // NOI18N
         closeButton.setName("closeButton"); // NOI18N
 
@@ -88,6 +87,7 @@ public class AboutBoxView extends javax.swing.JDialog {
         appDescLabel.setText(bundle.getString("AboutBoxView.appDescLabel")); // NOI18N
         appDescLabel.setName("appDescLabel"); // NOI18N
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(view.MainApp.class).getContext().getResourceMap(AboutBoxView.class);
         imageLabel.setIcon(resourceMap.getIcon("imageLabel.icon")); // NOI18N
         imageLabel.setName("imageLabel"); // NOI18N
 

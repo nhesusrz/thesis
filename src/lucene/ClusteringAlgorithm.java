@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import logger.ThesisLogger;
 import org.carrot2.core.Cluster;
 import org.carrot2.core.Controller;
 import org.carrot2.core.ControllerFactory;
@@ -40,7 +41,7 @@ public class ClusteringAlgorithm {
     private final IClusteringAlgorithm algorithm;
     private final String name;
 
-    public ClusteringAlgorithm(IClusteringAlgorithm algorithm, String nombre) {
+    public ClusteringAlgorithm(IClusteringAlgorithm algorithm, String nombre) {        
         this.algorithm = algorithm;
         this.name = nombre;
     }
@@ -62,9 +63,11 @@ public class ClusteringAlgorithm {
      * @throws IOException 
      */
     public List<Cluster> Process(String indexPath, List scd_list) throws IOException {
-        Controller carrotController = ControllerFactory.createSimple();
+        Controller carrotController = ControllerFactory.createSimple(); 
+        ThesisLogger.get().addAppender(org.carrot2.log4j.BufferingAppender.attach("carrot2"));
+        //ThesisLogger.get().getAppender("carrot2")
         Map<String, Object> luceneGlobalAttributes = new HashMap<String, Object>();
         carrotController.init(new HashMap<String, Object>(), new ProcessingComponentConfiguration(LuceneDocumentSource.class, "lucene", luceneGlobalAttributes));        
-        return carrotController.process(scd_list, null, this.algorithm.getClass()).getClusters();
+        return carrotController.process(scd_list, null, algorithm.getClass()).getClusters();
     }
 }

@@ -93,7 +93,7 @@ public class Parser extends DefaultHandler implements Runnable, Observer {
             parserController.notify(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"));
         }
     }
-
+   
     public boolean hasResults() {
         return bugsParsed > 0;
     }

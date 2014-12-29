@@ -30,6 +30,7 @@ import java.awt.Dimension;
 import java.awt.Stroke;
 import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.ResourceBundle;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -137,10 +138,10 @@ public class XYSplineChart extends Chart {
     }
 
     private JFreeChart createChart(XYSeriesCollection dataSet) {
-        JFreeChart chart = ChartFactory.createXYLineChart(
-                "Metric Evolution",
-                "Version",
-                "Metric",
+        JFreeChart chart = ChartFactory.createXYLineChart(                
+                ResourceBundle.getBundle("view/Bundle").getString("Chart3.Title"),
+                ResourceBundle.getBundle("view/Bundle").getString("Chart3.XLabel"),
+                ResourceBundle.getBundle("view/Bundle").getString("Chart3.YLabel"),
                 dataSet,
                 PlotOrientation.VERTICAL,
                 true,
@@ -171,7 +172,7 @@ public class XYSplineChart extends Chart {
         chart.getXYPlot().setRangeGridlinePaint(Color.lightGray);
         chart.getXYPlot().setOutlinePaint(Color.white);
         chart.getXYPlot().getDomainAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-
+        chart.getXYPlot().setNoDataMessage(ResourceBundle.getBundle("view/Bundle").getString("Chart.NoData"));
         return chart;
     }
 

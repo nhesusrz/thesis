@@ -51,8 +51,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Locale;
-import java.util.Locale;
 import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Observer;
@@ -69,7 +67,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.DefaultCaret;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.html.HTMLDocument;
 import logger.ThesisLogger;
 import lucene.ClusteringAlgorithm;
 import lucene.LuceneManager;
@@ -88,8 +87,8 @@ import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.TaskMonitor;
 import org.jfree.ui.ExtensionFileFilter;
-import util.PropertiesApp;
 import util.ParametersEnum;
+import util.PropertiesApp;
 import util.TextAreaRenderer;
 
 /**
@@ -160,7 +159,7 @@ public class MainView extends FrameView implements Observer {
         });
         AlgorithmManager.getInstance().addObserver(this);
         DAOManager.getInstance().addObserver(this);
-        iniElementsView();        
+        iniElementsView();
     }
 
     @Action
@@ -201,15 +200,15 @@ public class MainView extends FrameView implements Observer {
         if (ret == jFileChooser2.APPROVE_OPTION) {
             indexDir = jFileChooser2.getSelectedFile();
             if (!indexDir.exists()) {
-                showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("General.Mensage2"));
+                showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("General.Error2"));
             } else {
                 if (!indexDir.isDirectory()) {
-                    showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("General.Mensage3"));
+                    showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("General.Error3"));
                 } else {
                     try {
                         jTextField2.setText(indexDir.getCanonicalPath());
                     } catch (IOException e) {
-                        showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("General.Mensage1"));
+                        showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("General.Error1"));
                         ThesisLogger.get().error("MainView.selectIndexDir: " + e.toString());
                     }
                 }
@@ -221,14 +220,17 @@ public class MainView extends FrameView implements Observer {
     public void index() {
         if (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName()).getCount() > 0) {
             ParametersEnum analyzer = ((ParametersEnum) jList1.getSelectedValue());
-            if (analyzer != null && !analyzer.equals("")) {
-                LuceneManager.getInstance(analyzer).indexing(indexDir, !this.jCheckBox1.isSelected());
+            if (analyzer != null && !analyzer.getValue().equals("")) {
+                LuceneManager.getInstance(analyzer).addObserver(this);
+                if (LuceneManager.getInstance().hasErrorCreatedAnalyzer()) {
+                    showIndexResults(ResourceBundle.getBundle("view/Bundle").getString("Analyzer.create.StopWords"));
+                }
+                LuceneManager.getInstance().indexing(indexDir, !this.jCheckBox1.isSelected());
             } else {
                 LuceneManager.getInstance(ParametersEnum.INDEX_DEFAULT).indexing(indexDir, !this.jCheckBox1.isSelected());
             }
-            LuceneManager.getInstance().addObserver(this);
         } else {
-            showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Mensage3"));
+            showIndexResults(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Mensage3"));
         }
     }
 
@@ -243,17 +245,18 @@ public class MainView extends FrameView implements Observer {
         if (!query.equals("")) {
             ParametersEnum analyzer = (ParametersEnum) jList1.getSelectedValue();
             if (analyzer != null && !analyzer.equals("")) {
-                LuceneManager.getInstance(analyzer).search(indexDir, query, 
-                        ((Integer) jComboBox2.getSelectedItem()), 
+                LuceneManager.getInstance(analyzer).addObserver(this);
+                LuceneManager.getInstance().search(indexDir, query,
+                        ((Integer) jComboBox2.getSelectedItem()),
                         ((ClusteringAlgorithm) jComboBox3.getSelectedItem()));
             } else {
-                LuceneManager.getInstance(ParametersEnum.INDEX_DEFAULT).search(indexDir, query, 
-                        ((Integer) jComboBox2.getSelectedItem()), 
+                LuceneManager.getInstance(ParametersEnum.INDEX_DEFAULT).addObserver(this);
+                LuceneManager.getInstance().search(indexDir, query,
+                        ((Integer) jComboBox2.getSelectedItem()),
                         ((ClusteringAlgorithm) jComboBox3.getSelectedItem()));
             }
-            LuceneManager.getInstance().addObserver(this);
         } else {
-            showActivityMessage(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage1"));
+            showIndexResults(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage1"));
         }
     }
 
@@ -292,7 +295,8 @@ public class MainView extends FrameView implements Observer {
     @Action
     public void runLDA() {
         if (jDateChooser1.getDate() != null && jDateChooser2.getDate() != null) {
-            AlgorithmManager.getInstance().lda(((Integer) jSpinner1.getValue()).intValue(),
+            AlgorithmManager.getInstance().lda(
+                    ((Integer) jSpinner1.getValue()).intValue(),
                     ((Integer) jSpinner3.getValue()).intValue(),
                     ((Double) jSpinner5.getValue()).doubleValue(),
                     ((Double) jSpinner6.getValue()).doubleValue(),
@@ -321,8 +325,8 @@ public class MainView extends FrameView implements Observer {
         iniLabels();
         iniButtons();
         iniJSpinners();
-        iniTopicComboBox();   
-        iniVersionComboBox(); 
+        iniTopicComboBox();
+        iniVersionComboBox();
         refreshTablesDocumentTopicMatrix();
         if (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()).getCount() > 0) {
             bugComponentDistributionData.generateData();
@@ -330,28 +334,50 @@ public class MainView extends FrameView implements Observer {
         }
         refreshJLists();
     }
-    
+
     public void iniVersionComboBox() {
-        ParametersEnum typeVersion = ((VersionDAO)DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getTypeVersion();
-        if(typeVersion != null)
+        ParametersEnum typeVersion = ((VersionDAO) DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getTypeVersion();
+        if (typeVersion != null) {
             jComboBox6.setSelectedItem(typeVersion);
+        }
     }
-    
+
     private void iniTopicComboBox() {
         int topicsCount = (DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount();
+        jComboBox1.removeAllItems();
         for (int tIndx = 1; tIndx <= topicsCount; tIndx++) {
             jComboBox1.addItem(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicWords(tIndx));
         }
     }
 
     private void showActivityMessage(String msj) {
-        jTextArea1.append(jTextArea1.getLineCount() + " - " + msj + "\n");
-        jTextArea1.setCaretPosition(jTextArea1.getText().length());
+        HTMLDocument doc = (HTMLDocument) jTextPane2.getStyledDocument();
+        try {
+            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()),
+                    "<span style=\"font-size:9px;\"><span style=\"font-family:lucida sans unicode,lucida grande,sans-serif;\">"
+                    + msj
+                    + "</span></span><br/>");
+            jTextPane2.setCaretPosition(doc.getLength());
+        } catch (BadLocationException ex) {
+            ThesisLogger.get().error("MainView.showActivityMessage: " + ex.toString());
+        } catch (IOException ex) {
+            ThesisLogger.get().error("MainView.showActivityMessage: " + ex.toString());
+        }
     }
 
     private void showIndexResults(String msj) {
-        jTextArea2.append(jTextArea2.getLineCount() + " - " + msj + "\n");
-        jTextArea2.setCaretPosition(jTextArea2.getText().length());
+        HTMLDocument doc = (HTMLDocument) jTextPane1.getStyledDocument();
+        try {
+            doc.insertAfterEnd(doc.getCharacterElement(doc.getLength()),
+                    "<span style=\"font-size:9px;\"><span style=\"font-family:lucida sans unicode,lucida grande,sans-serif;\">"
+                    + msj
+                    + "</span></span><br/>");
+            jTextPane1.setCaretPosition(doc.getLength());
+        } catch (BadLocationException ex) {
+            ThesisLogger.get().error("MainView.showIndexResults: " + ex.toString());
+        } catch (IOException ex) {
+            ThesisLogger.get().error("MainView.showIndexResults: " + ex.toString());
+        }
     }
 
     private void iniLabels() {
@@ -363,7 +389,7 @@ public class MainView extends FrameView implements Observer {
         progressBar.setVisible(true);
         progressBar.setMinimum(0);
     }
-    
+
     private void iniTextFields() {
         jTextField8.setText(Integer.toString((DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCount()));
         jTextField9.setText(Integer.toString((DAOManager.getDAO(DAONameEnum.BUG_DAO.getName())).getCount()));
@@ -392,9 +418,10 @@ public class MainView extends FrameView implements Observer {
         jSpinner1.setValue(new Integer(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_ITERATIONS.toString())));
         jSpinner2.setValue(new Integer(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_WORDS_PER_TOPIC.toString())));
         jSpinner3.setValue(new Integer(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_NUM_TOPICS.toString())));
-        Integer stepVersion = ((VersionDAO)DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getStepVersion();
-        if(stepVersion != null)
+        Integer stepVersion = ((VersionDAO) DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getStepVersion();
+        if (stepVersion != null) {
             jSpinner4.setValue(stepVersion);
+        }
         jSpinner5.setValue(new Double(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_ALPHA.toString())));
         jSpinner6.setValue(new Double(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_BETA.toString())));
     }
@@ -446,7 +473,7 @@ public class MainView extends FrameView implements Observer {
             query.append(" -" + jTextField6.getText().toLowerCase().replace(" ", " -"));
         }
         if (!jTextField7.getText().equals("")) {
-            query.append(" " + ((String) jComboBox4.getSelectedItem()).toLowerCase() + ":(" + jTextField7.getText().toLowerCase() + ")^20.0");
+            query.append(" " + ((ParametersEnum) jComboBox4.getSelectedItem()).toString().toLowerCase() + ":(" + jTextField7.getText().toLowerCase() + ")^20.0");
         }
         return query.toString();
     }
@@ -469,7 +496,7 @@ public class MainView extends FrameView implements Observer {
             // Delete tables.
             deleteTables();
             DefaultTableCellRenderer centerRenderer2 = new DefaultTableCellRenderer();
-            centerRenderer2.setHorizontalAlignment(JLabel.CENTER);            
+            centerRenderer2.setHorizontalAlignment(JLabel.CENTER);
             if (jComboBox1.getSelectedItem() != null) {
                 int tIndx = ((TopicDTO) jComboBox1.getSelectedItem()).getID();
                 TopicDTO topic = ((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicWords(tIndx);
@@ -485,7 +512,7 @@ public class MainView extends FrameView implements Observer {
                 jTable1.getColumnModel().getColumn(0).setMaxWidth(300);
                 jTable3.getColumnModel().getColumn(0).setMinWidth(400);
                 jTable3.getColumnModel().getColumn(0).setMaxWidth(400);
-            }           
+            }
         }
     }
 
@@ -614,10 +641,10 @@ public class MainView extends FrameView implements Observer {
 
     private void inicDocumentTable() {
         DefaultTableModel tableModel6 = (javax.swing.table.DefaultTableModel) jTable6.getModel();
-        tableModel6.setRowCount(0); 
+        tableModel6.setRowCount(0);
         tableModel6.setColumnCount(0);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -644,7 +671,7 @@ public class MainView extends FrameView implements Observer {
         jTextField10 = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextPane2 = new javax.swing.JTextPane();
         jLabel13 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -759,8 +786,8 @@ public class MainView extends FrameView implements Observer {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -896,15 +923,10 @@ public class MainView extends FrameView implements Observer {
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jTextArea1.setText("");
-        jTextArea1.setEditable(false);
-        DefaultCaret caret = (DefaultCaret)jTextArea1.getCaret();
-        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setName("jTextArea1"); // NOI18N
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextPane2.setEditable(false);
+        jTextPane2.setContentType("text/html"); // NOI18N
+        jTextPane2.setName("jTextPane2"); // NOI18N
+        jScrollPane1.setViewportView(jTextPane2);
 
         jLabel13.setText(bundle.getString("MainView.jLabel13.text")); // NOI18N
         jLabel13.setName("jLabel13"); // NOI18N
@@ -1230,7 +1252,7 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 381, Short.MAX_VALUE)))
+                    .addGap(0, 361, Short.MAX_VALUE)))
             .addContainerGap())
     );
     jPanel1Layout.setVerticalGroup(
@@ -1424,7 +1446,7 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
             .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
                 .addComponent(jScrollPane8))
             .addContainerGap())
     );
@@ -1576,7 +1598,7 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGap(34, 34, 34)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
             .addGap(34, 34, 34)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addContainerGap())
@@ -1702,7 +1724,7 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
         .addGroup(jPanel10Layout.createSequentialGroup()
             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 927, Short.MAX_VALUE))
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE))
     );
     jPanel10Layout.setVerticalGroup(
         jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1789,7 +1811,7 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
                             .addComponent(jButton7)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButton4))
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(10, 10, 10)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1843,24 +1865,15 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
     jLabel5.setText(bundle.getString("MainView.jLabel5.text")); // NOI18N
     jLabel5.setName("jLabel5"); // NOI18N
 
-    jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new ClusteringAlgorithm[] {
-        new ClusteringAlgorithm(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),
-        new ClusteringAlgorithm(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),
-        new ClusteringAlgorithm(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),
-        new ClusteringAlgorithm(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())}));
+    jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new lucene.ClusteringAlgorithm[] {
+        new lucene.ClusteringAlgorithm(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),
+        new lucene.ClusteringAlgorithm(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),
+        new lucene.ClusteringAlgorithm(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),
+        new lucene.ClusteringAlgorithm(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())}));
 jComboBox3.setName("jComboBox3"); // NOI18N
 
 jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] {
-new Integer(4),
-new Integer(10),
-new Integer(20),
-new Integer(30),
-new Integer(50),
-new Integer(100),
-new Integer(500),
-new Integer(1000),
-new Integer(5000),
-new Integer(10000)}));
+4, 10,20,  30, 50, 100, 500, 1000, 5000, 10000}));
 jComboBox2.setName("jComboBox2"); // NOI18N
 
 jLabel11.setText(bundle.getString("MainView.jLabel11.text")); // NOI18N
@@ -1868,77 +1881,102 @@ jLabel11.setName("jLabel11"); // NOI18N
 
 jTextField3.setText(bundle.getString("MainView.jTextField3.text")); // NOI18N
 jTextField3.setName("jTextField3"); // NOI18N
+jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        jTextField3KeyPressed(evt);
+    }
+    });
 
-jTextField4.setText(bundle.getString("MainView.jTextField4.text")); // NOI18N
-jTextField4.setName("jTextField4"); // NOI18N
+    jTextField4.setText(bundle.getString("MainView.jTextField4.text")); // NOI18N
+    jTextField4.setName("jTextField4"); // NOI18N
+    jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField4KeyPressed(evt);
+        }
+    });
 
-jTextField5.setText(bundle.getString("MainView.jTextField5.text")); // NOI18N
-jTextField5.setName("jTextField5"); // NOI18N
+    jTextField5.setText(bundle.getString("MainView.jTextField5.text")); // NOI18N
+    jTextField5.setName("jTextField5"); // NOI18N
+    jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField5KeyPressed(evt);
+        }
+    });
 
-jTextField6.setText(bundle.getString("MainView.jTextField6.text")); // NOI18N
-jTextField6.setName("jTextField6"); // NOI18N
+    jTextField6.setText(bundle.getString("MainView.jTextField6.text")); // NOI18N
+    jTextField6.setName("jTextField6"); // NOI18N
+    jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField6KeyPressed(evt);
+        }
+    });
 
-jTextField7.setText(bundle.getString("MainView.jTextField7.text")); // NOI18N
-jTextField7.setName("jTextField7"); // NOI18N
+    jTextField7.setText(bundle.getString("MainView.jTextField7.text")); // NOI18N
+    jTextField7.setName("jTextField7"); // NOI18N
+    jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField7KeyPressed(evt);
+        }
+    });
 
-jLabel10.setText(bundle.getString("MainView.jLabel10.text")); // NOI18N
-jLabel10.setName("jLabel10"); // NOI18N
+    jLabel10.setText(bundle.getString("MainView.jLabel10.text")); // NOI18N
+    jLabel10.setName("jLabel10"); // NOI18N
 
-jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
-    ParametersEnum.INDEX_FIELD1,
-    ParametersEnum.INDEX_FIELD2,
-    ParametersEnum.INDEX_FIELD3}));
-    jComboBox4.setName("jComboBox4"); // NOI18N
+    jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
+        ParametersEnum.INDEX_FIELD1,
+        ParametersEnum.INDEX_FIELD2,
+        ParametersEnum.INDEX_FIELD3}));
+jComboBox4.setName("jComboBox4"); // NOI18N
 
-    jButton5.setAction(actionMap.get("search")); // NOI18N
-    jButton5.setText(bundle.getString("MainView.jButton5.text")); // NOI18N
-    jButton5.setName("jButton5"); // NOI18N
+jButton5.setAction(actionMap.get("search")); // NOI18N
+jButton5.setText(bundle.getString("MainView.jButton5.text")); // NOI18N
+jButton5.setName("jButton5"); // NOI18N
 
-    jButton6.setAction(actionMap.get("stopSearching")); // NOI18N
-    jButton6.setText(bundle.getString("MainView.jButton6.text")); // NOI18N
-    jButton6.setName("jButton6"); // NOI18N
+jButton6.setAction(actionMap.get("stopSearching")); // NOI18N
+jButton6.setText(bundle.getString("MainView.jButton6.text")); // NOI18N
+jButton6.setName("jButton6"); // NOI18N
 
-    javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-    jPanel6.setLayout(jPanel6Layout);
-    jPanel6Layout.setHorizontalGroup(
-        jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+jPanel6.setLayout(jPanel6Layout);
+jPanel6Layout.setHorizontalGroup(
+jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+.addGroup(jPanel6Layout.createSequentialGroup()
+    .addContainerGap()
+    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+    .addGap(4, 4, 4)
+    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel6Layout.createSequentialGroup()
-            .addContainerGap()
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-            .addGap(4, 4, 4)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addComponent(jTextField7)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel10)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jTextField6)
-                .addComponent(jTextField5)
-                .addComponent(jTextField4)
-                .addComponent(jTextField3))
-            .addContainerGap())
-        .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel6Layout.createSequentialGroup()
-            .addGap(236, 236, 236)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel6Layout.createSequentialGroup()
-                    .addComponent(jButton5)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton6))
-                .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel6Layout.createSequentialGroup()
-                    .addComponent(jLabel5)
-                    .addGap(4, 4, 4)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel11)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGap(269, 269, 269))
+            .addComponent(jTextField7)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jLabel10)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addComponent(jTextField6)
+        .addComponent(jTextField5)
+        .addComponent(jTextField4)
+        .addComponent(jTextField3))
+    .addContainerGap())
+    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel6Layout.createSequentialGroup()
+        .addGap(236, 236, 236)
+        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel6Layout.createSequentialGroup()
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6))
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addGap(4, 4, 4)
+                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        .addGap(269, 269, 269))
     );
     jPanel6Layout.setVerticalGroup(
         jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1981,18 +2019,12 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
     jLabel33.setText(bundle.getString("MainView.jLabel33.text")); // NOI18N
     jLabel33.setName("jLabel33"); // NOI18N
 
-    jScrollPane11.setName("jScrollPane11"); // NOI18N
+    jScrollPane14.setName("jScrollPane14"); // NOI18N
 
-    jTextArea2.setText("");
-    jTextArea2.setEditable(false);
-    caret = (DefaultCaret)jTextArea2.getCaret();
-    caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
-    jTextArea2.setEditable(false);
-    jTextArea2.setColumns(20);
-    jTextArea2.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-    jTextArea2.setRows(5);
-    jTextArea2.setName("jTextArea2"); // NOI18N
-    jScrollPane11.setViewportView(jTextArea2);
+    jTextPane1.setEditable(false);
+    jTextPane1.setContentType("text/html"); // NOI18N
+    jTextPane1.setName("jTextPane1"); // NOI18N
+    jScrollPane14.setViewportView(jTextPane1);
 
     javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
     jPanel15.setLayout(jPanel15Layout);
@@ -2001,14 +2033,14 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
         .addGroup(jPanel15Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane14)
                 .addGroup(jPanel15Layout.createSequentialGroup()
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel15Layout.createSequentialGroup()
                     .addComponent(jLabel33)
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addComponent(jScrollPane11))
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
     );
     jPanel15Layout.setVerticalGroup(
@@ -2021,7 +2053,7 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel33)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+            .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
             .addContainerGap())
     );
 
@@ -2031,7 +2063,10 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
     mainPanel.setLayout(mainPanelLayout);
     mainPanelLayout.setHorizontalGroup(
         mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+        .addGroup(mainPanelLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(jTabbedPane1)
+            .addContainerGap())
     );
     mainPanelLayout.setVerticalGroup(
         mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2183,7 +2218,7 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
                 showVersionTable(version);
             }
         } else {
-            jSpinner8.setValue(new Integer(0));
+            jSpinner8.setValue(0);
             inicVersionTable();
         }
     }//GEN-LAST:event_jSpinner8StateChanged
@@ -2200,7 +2235,7 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
                 showDocumentTable(document);
             }
         } else {
-            jSpinner9.setValue(new Integer(0));
+            jSpinner9.setValue(0);
             inicDocumentTable();
         }
     }//GEN-LAST:event_jSpinner9StateChanged
@@ -2218,6 +2253,36 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
             inicBugTable();
         }
     }//GEN-LAST:event_jSpinner7StateChanged
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            this.search();
+        }
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            this.search();
+        }
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            this.search();
+        }
+    }//GEN-LAST:event_jTextField3KeyPressed
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            this.search();
+        }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            this.search();
+        }
+    }//GEN-LAST:event_jTextField7KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -2303,9 +2368,9 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -2331,8 +2396,6 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -2345,6 +2408,8 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
@@ -2385,13 +2450,14 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
             repaintProgressBar(progressBar.getValue() + 1);
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"))) {
             bugComponentDistributionData.generateData();
+            bugDistributionData.generateData();
             jButton1.setEnabled(true);
             jButton3.setEnabled(true);
             jButton8.setEnabled(false);
             setProgressBar(0);
             setLabelBar("");
         } else // Base de datos.
-                if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("H2.Action.Inic"))) {
+        if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("H2.Action.Inic"))) {
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("DocGen.Action.Inic"))) {
             setProgressBar((DAOManager.getDAO(DAONameEnum.BUG_DAO.getName())).getCount() + (DAOManager.getDAO(DAONameEnum.COMMENT_DAO.getName())).getCount());
             setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("DocGen.Status"));
@@ -2415,7 +2481,7 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("H2.Action.Run.PutComment"))) {
             jTextField10.setText(Integer.toString(DAOManager.getDAO(DAONameEnum.COMMENT_DAO.getName()).getCount()));
         } else // Indexador.
-                if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.Inic"))) {
+        if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.Inic"))) {
             setProgressBar((DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCount());
             setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Status"));
             jButton2.setEnabled(false);
@@ -2430,7 +2496,7 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
             setProgressBar(0);
             setLabelBar("");
         } else // Buscador.
-                if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.Inic"))) {
+        if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.Inic"))) {
             setProgressBar(10);
             repaintProgressBar(8);
             setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Status"));
@@ -2444,18 +2510,18 @@ jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
             setProgressBar(0);
             setLabelBar("");
         } else // DOCUMENT-TOPIC MATRIX.
-//        if (((String) arg).equals(PostLDAMessages.INIC.getMessage())) {
-//            setProgressBar((DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount());
-//            setLabelBar(PostLDAMessages.M00.getMessage());
-//            jButton10.setEnabled(true);
-//        } else if (((String) arg).equals(PostLDAMessages.RUN.getMessage())) {
-//            repaintProgressBar(progressBar.getValue() + 1);
-//        } else if (((String) arg).equals(PostLDAMessages.END.getMessage())) {
-//            jButton10.setEnabled(false);
-//            setProgressBar(0);
-//            setLabelBar("");
-//        } else // LDA. TOPIC-TERM MATRIX.
-                if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("LDA.Action.Inic"))) {
+        //        if (((String) arg).equals(PostLDAMessages.INIC.getMessage())) {
+        //            setProgressBar((DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount());
+        //            setLabelBar(PostLDAMessages.M00.getMessage());
+        //            jButton10.setEnabled(true);
+        //        } else if (((String) arg).equals(PostLDAMessages.RUN.getMessage())) {
+        //            repaintProgressBar(progressBar.getValue() + 1);
+        //        } else if (((String) arg).equals(PostLDAMessages.END.getMessage())) {
+        //            jButton10.setEnabled(false);
+        //            setProgressBar(0);
+        //            setLabelBar("");
+        //        } else // LDA. TOPIC-TERM MATRIX.
+        if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("LDA.Action.Inic"))) {
             setProgressBar((Integer) jSpinner1.getValue());
             setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("LDA.Status"));
             jButton9.setEnabled(false);

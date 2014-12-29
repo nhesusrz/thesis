@@ -24,8 +24,13 @@
  */
 package logger;
 
-import org.apache.log4j.PropertyConfigurator;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import util.ParametersEnum;
 
 public class ThesisLogger {
 
@@ -34,7 +39,13 @@ public class ThesisLogger {
 
     public ThesisLogger() {
         logger = Logger.getLogger(this.getClass());
-        PropertyConfigurator.configure(this.getClass().getResource("log4j.properties"));
+        Properties props = new Properties();
+        try {
+            props.load(new FileInputStream(ParametersEnum.LOG4J_PROPERTIE_FILE_DEFAULT_PATH.getValue()));
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(ThesisLogger.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        PropertyConfigurator.configure(props);
     }
 
     public static Logger get() {

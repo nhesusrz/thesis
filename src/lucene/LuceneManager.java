@@ -29,6 +29,9 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import logger.ThesisLogger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.SimpleAnalyzer;
 import org.apache.lucene.analysis.StopAnalyzer;
@@ -39,17 +42,20 @@ import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.util.Version;
 import util.ParametersEnum;
+import util.PropertiesApp;
 
 public class LuceneManager extends Observable implements Observer {
 
     private static LuceneManager instance;
     private Analyzer analyzer;
+    private boolean error_creating_index;
     private Indexer indexer;
     private Searcher searcher;
     private Thread t;
 
     public LuceneManager(ParametersEnum analyzerType) {
         instance = null;
+        error_creating_index = false;
         analyzer = getAnalyzer(analyzerType);
         indexer = null;
         searcher = null;
@@ -91,16 +97,26 @@ public class LuceneManager extends Observable implements Observer {
         return analyzer;
     }
 
+    public boolean hasErrorCreatedAnalyzer() {
+        return error_creating_index;
+    }
+
     private Analyzer getAnalyzer(ParametersEnum type) {
-        if (type.equals("Whitespace Analyser")) {
+        if (type.getValue().equals(ParametersEnum.INDEX_WHITESPACE_ANALYZER.getValue())) {
             return new WhitespaceAnalyzer(Version.LUCENE_36);
-        } else if (type.equals("Simple Analyzer")) {
+        } else if (type.getValue().equals(ParametersEnum.INDEX_SIMPLE_ANALYZER.getValue())) {
             return new SimpleAnalyzer(Version.LUCENE_36);
-        } else if (type.equals("Stop Analyzer")) {
-            return new StopAnalyzer(Version.LUCENE_36);
-        } else {
-            return new StandardAnalyzer(Version.LUCENE_36);
+        } else if (type.getValue().equals(ParametersEnum.INDEX_STOP_ANALYZER.getValue())) {
+            try {
+                PropertiesApp.getInstance().fileLoad(ParametersEnum.LUCENE_PROPERTIE_FILE_DEFAULT_PATH.getValue());
+                return new StopAnalyzer(Version.LUCENE_36, new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.LUCENE_STOP_WORDS.getValue())));
+            } catch (IOException ex) {
+                ThesisLogger.get().error("LuceneManager.getAnalyzer: " + ex.toString());
+                error_creating_index = true;
+                return new StandardAnalyzer(Version.LUCENE_36);
+            }
         }
+        return new StandardAnalyzer(Version.LUCENE_36);
     }
 
     /**
@@ -150,9 +166,10 @@ public class LuceneManager extends Observable implements Observer {
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("General.Mensage1"));
         }
     }
+
     /**
      * Execute an searcher thread.
-     * 
+     *
      * @param indexDir Directory of the index.
      * @param queryString Lucene query.
      * @param limit Result size.

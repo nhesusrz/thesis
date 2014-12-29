@@ -130,6 +130,7 @@ public class AlgorithmManager extends Observable implements Observer {
      * Execute the Mallet LDA algorithm for extract topics from de previous
      * generated documents.
      *
+     * @param numIerations Number of iteration of the algorithm.
      * @param numTopics Indicates the number of topics will be generated.
      * @param alpha Dirichlet(alpha,alpha,...) is the distribution over topics.
      * @param beta Prior on per-topic multinomial distribution over words.

@@ -34,6 +34,7 @@ import dto.TopicDTO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 import metrics.Metric;
 
 public class BugComponentDistributionGenerator extends DataChartGenerator {
@@ -53,7 +54,7 @@ public class BugComponentDistributionGenerator extends DataChartGenerator {
             BugDTO bug = (BugDTO) ((BugDAO) (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()))).get(i);
             String component = bug.getComponent();
             if (component.equals("")) {
-                component = "No component";
+                component = ResourceBundle.getBundle("view/Bundle").getString("Chart1.NoComponent");
             }
             if (distribution.containsKey(component)) {
                 distribution.put(component, distribution.get(component) + 1);

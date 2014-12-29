@@ -32,6 +32,7 @@ import dao.DAONameEnum;
 import dto.TopicDTO;
 import dto.VersionDTO;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import metrics.Metric;
 
 public class BugCommentDistributionGenerator extends DataChartGenerator {
@@ -44,11 +45,11 @@ public class BugCommentDistributionGenerator extends DataChartGenerator {
     public void generateData() {
         int versionCount = (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount();
         chart.destroy();
-        ((XYSplineChart) chart).setYLabel("Number");
-        ((XYSplineChart) chart).setTitle("Bug and Comments Distribution");
-        ((XYSplineChart) chart).createNewSerie(1, "Open Bugs");
-        ((XYSplineChart) chart).createNewSerie(2, "Closed Bugs");
-        ((XYSplineChart) chart).createNewSerie(3, "Comments");
+        ((XYSplineChart) chart).setYLabel(ResourceBundle.getBundle("view/Bundle").getString("Chart2.YLabel"));
+        ((XYSplineChart) chart).setTitle(ResourceBundle.getBundle("view/Bundle").getString("Chart2.Title"));
+        ((XYSplineChart) chart).createNewSerie(1, ResourceBundle.getBundle("view/Bundle").getString("Chart2.Serie1"));
+        ((XYSplineChart) chart).createNewSerie(2, ResourceBundle.getBundle("view/Bundle").getString("Chart2.Serie2"));
+        ((XYSplineChart) chart).createNewSerie(3, ResourceBundle.getBundle("view/Bundle").getString("Chart2.Serie3"));
         ((XYSplineChart) chart).setDefaultXYItemRenderer();
         ((XYSplineChart) chart).setSeriesShapesVisible(0, false);
         ((XYSplineChart) chart).setSeriesShapesVisible(1, false);

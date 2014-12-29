@@ -28,6 +28,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ResourceBundle;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -75,7 +76,7 @@ public class PieChart extends Chart {
 
     private static JFreeChart createChart(PieDataset dataSet) {
         JFreeChart chart = ChartFactory.createPieChart(
-                "Bug Component Distribution",
+                ResourceBundle.getBundle("view/Bundle").getString("Chart1.Title"),
                 dataSet,
                 true,
                 true,
@@ -83,7 +84,7 @@ public class PieChart extends Chart {
         );
         chart.setBackgroundPaint(Color.white);
         final PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setNoDataMessage("No data available");
+        plot.setNoDataMessage(ResourceBundle.getBundle("view/Bundle").getString("Chart.NoData"));
         plot.setBackgroundPaint(Color.white);
         plot.setOutlinePaint(Color.white);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}= {2}", NumberFormat.getNumberInstance(), new DecimalFormat("0.00%")));

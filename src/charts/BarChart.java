@@ -26,6 +26,7 @@ package charts;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ResourceBundle;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -89,14 +90,14 @@ public class BarChart extends Chart {
 
     private static JFreeChart createChart(DefaultCategoryDataset dataSet) {
         JFreeChart chart = ChartFactory.createBarChart(
-                "Bug Component Distribution",
-                "Components",
-                "Percentage",
-                dataSet,
-                PlotOrientation.VERTICAL,
-                true,
-                true,
-                false
+            ResourceBundle.getBundle("view/Bundle").getString("Chart.Title"),
+            ResourceBundle.getBundle("view/Bundle").getString("Chart.YLabel"),
+            ResourceBundle.getBundle("view/Bundle").getString("Chart.XLabel"),
+            dataSet,
+            PlotOrientation.VERTICAL,
+            true,
+            true,
+            false
         );
         chart.getCategoryPlot().getRenderer().setBaseItemLabelsVisible(true);
         chart.getCategoryPlot().getRenderer().setBaseSeriesVisibleInLegend(false);

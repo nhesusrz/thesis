@@ -32,7 +32,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import logger.ThesisLogger;
 import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.document.DateTools;
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
@@ -77,6 +81,8 @@ public class Searcher extends Observable implements Runnable {
         } catch (IOException e) {
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("General.Mensage1"));
+        } catch (java.text.ParseException ex) {
+            ThesisLogger.get().error("Searcher.run: " + ex.toString());
         }
     }
 
@@ -91,7 +97,7 @@ public class Searcher extends Observable implements Runnable {
      *
      * @throws IOException
      */
-    private void search() throws IOException {
+    private void search() throws IOException, java.text.ParseException {
         normalSearchWithAlgorithm();
     }
     /**
@@ -99,28 +105,33 @@ public class Searcher extends Observable implements Runnable {
      *
      * @throws IOException
      */
-    private void normalSearchWithAlgorithm() throws IOException {
+    private void normalSearchWithAlgorithm() throws IOException, java.text.ParseException {
         setChanged();
         notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.Inic"));
         long start = new Date().getTime();
         ScoreDoc[] scoreDocs = indexSearcher.search(query, counter).scoreDocs;
-        MapingLuceneDocsToCarrotDocs(scoreDocs);
-        List<Cluster> clusters = clusteringAlgorithm.Process(indexDir, MapingLuceneDocsToCarrotDocs(scoreDocs));
+        List<Cluster> clusters = new ArrayList();
+        if(scoreDocs.length > 1) {
+            clusters = clusteringAlgorithm.Process(indexDir, ConvertLuceneDocsToCarrotDocs(scoreDocs));
+        }
         setChanged();
         notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.End"));
         setChanged();
         notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage3"), clusters.size(), scoreDocs.length, System.currentTimeMillis() - start));
-        if (clusters != null) {
-            for (int i = 0; i < clusters.size(); i++) {
-                Cluster cluster = clusters.get(i);
-                List<Document> cluster_docs = cluster.getDocuments();
+        for (int i = 0; i < clusters.size(); i++) {
+            Cluster cluster = clusters.get(i);
+            List<Document> cluster_docs = cluster.getDocuments();
+            if(!cluster_docs.isEmpty()) {
                 List<String> frases = cluster.getPhrases();
                 setChanged();
                 notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage4"), (i + 1), frases.toString()));
                 for (Document doc : cluster_docs) {
                     setChanged();
-                    notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage5"), doc.getId(), (Float) doc.getField("score")));
-                }
+                    notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage5"), 
+                            doc.getField(ParametersEnum.INDEX_FIELD1.toString()), 
+                            DateTools.stringToDate((String) doc.getField(ParametersEnum.INDEX_FIELD2.toString())),                           
+                            (Float) doc.getField(ParametersEnum.INDEX_FIELD4.toString())));
+                }                    
             }
         }
     }
@@ -131,14 +142,17 @@ public class Searcher extends Observable implements Runnable {
      * @throws CorruptIndexException
      * @throws IOException
      */
-    private List<Document> MapingLuceneDocsToCarrotDocs(ScoreDoc[] scd) throws CorruptIndexException, IOException {
+    private List<Document> ConvertLuceneDocsToCarrotDocs(ScoreDoc[] scd) throws CorruptIndexException, IOException {
         scd_list = new ArrayList<Document>(); // Inicio la lista de Documentos Carrot.        
         for (ScoreDoc scd1 : scd) {
             Document d = new Document(
-                indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD1.toString()).stringValue(), 
-                indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD2.toString()).stringValue(), 
+                /*indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD1.toString()).stringValue(), 
+                indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD2.toString()).stringValue(), */
                 indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD3.toString()).stringValue());
-            d.setField("score", scd1.score);
+            d.setField(ParametersEnum.INDEX_FIELD1.toString(), indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD1.toString()).stringValue());
+            d.setField(ParametersEnum.INDEX_FIELD2.toString(), indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD2.toString()).stringValue());
+            //d.setField(ParametersEnum.INDEX_FIELD3.toString(), indexSearcher.doc(scd1.doc).getField(ParametersEnum.INDEX_FIELD3.toString()).stringValue());
+            d.setField(ParametersEnum.INDEX_FIELD4.toString(), scd1.score);
             scd_list.add(d);
         }
         return scd_list;

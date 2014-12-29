@@ -10,7 +10,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTabbedPane1" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -59,7 +63,7 @@
                                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="381" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="361" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -296,19 +300,12 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextPane" name="jTextPane2">
                       <Properties>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Monospaced" size="12" style="1"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="jTextArea1" noResource="true"/>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="jTextPane2" noResource="true"/>
                       </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextArea()"/>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextArea1.setText(&quot;&quot;);&#xa;jTextArea1.setEditable(false);&#xa;DefaultCaret caret = (DefaultCaret)jTextArea1.getCaret();&#xa;caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);"/>
-                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -888,7 +885,7 @@
                               <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane9" pref="633" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane9" pref="613" max="32767" attributes="0"/>
                                   <Component id="jScrollPane8" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -1214,7 +1211,7 @@
                                   <Component id="jScrollPane5" min="-2" pref="326" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="510" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="490" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" min="-2" pref="301" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -1412,7 +1409,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane6" pref="927" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" pref="907" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1566,9 +1563,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane14" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel4" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -1578,7 +1576,6 @@
                                   <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane11" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1595,7 +1592,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane11" pref="341" max="32767" attributes="0"/>
+                          <Component id="jScrollPane14" pref="341" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1627,7 +1624,7 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jTextField2" alignment="2" pref="333" max="32767" attributes="0"/>
+                                          <Component id="jTextField2" alignment="2" pref="313" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
@@ -1934,7 +1931,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBox2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.DefaultComboBoxModel(new Integer[] {&#xa;    new Integer(4),&#xa;    new Integer(10),&#xa;    new Integer(20),&#xa;    new Integer(30),&#xa;    new Integer(50),&#xa;    new Integer(100),&#xa;    new Integer(500),&#xa;    new Integer(1000),&#xa;    new Integer(5000),&#xa;    new Integer(10000)})" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel(new Integer[] {&#xa;    4, 10,20,  30, 50, 100, 500, 1000, 5000, 10000})" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="jComboBox2" noResource="true"/>
                       </Properties>
@@ -1954,6 +1951,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="jTextField3" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField3KeyPressed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField4">
                       <Properties>
@@ -1962,6 +1962,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="jTextField4" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField4KeyPressed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField5">
                       <Properties>
@@ -1970,6 +1973,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="jTextField5" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField5KeyPressed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField6">
                       <Properties>
@@ -1978,6 +1984,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="jTextField6" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField6KeyPressed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField7">
                       <Properties>
@@ -1986,6 +1995,9 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="jTextField7" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField7KeyPressed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
@@ -2035,9 +2047,9 @@
                     <Property name="name" type="java.lang.String" value="jLabel33" noResource="true"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane11">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane14">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="jScrollPane11" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="jScrollPane14" noResource="true"/>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -2045,20 +2057,12 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                    <Component class="javax.swing.JTextPane" name="jTextPane1">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Monospaced" size="12" style="1"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="name" type="java.lang.String" value="jTextArea2" noResource="true"/>
+                        <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="jTextPane1" noResource="true"/>
                       </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTextArea()"/>
-                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jTextArea2.setText(&quot;&quot;);&#xa;jTextArea2.setEditable(false);&#xa;caret = (DefaultCaret)jTextArea2.getCaret();&#xa;caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);"/>
-                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

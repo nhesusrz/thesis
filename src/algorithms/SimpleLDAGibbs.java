@@ -77,9 +77,9 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
      * Internal parameters of LDA
      */
     // Dates to get the document texts
-    Date dateFrom, dateTo;
+    private Date dateFrom, dateTo;
     // <IdDocLDA, IdDocDB>
-    HashMap<Integer, Integer> docsId = new HashMap<Integer, Integer>();
+    private HashMap<Integer, Integer> docsId = new HashMap<Integer, Integer>();
     // The input acepted for LDA
     private InstanceList training;
     // The training instances and their topic assignments
@@ -349,8 +349,8 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
         pipeList.add(new CharSequenceLowercase());
         pipeList.add(new CharSequence2TokenSequence(Pattern.compile("\\p{L}[\\p{L}\\p{P}]+\\p{L}")));
         if (removeStopWordrs) {
-            PropertiesApp.getInstance().fileLoad(".\\properties\\malletLDA.properties");
-            stopWordsFile = new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_STOP_WORDS.toString()));
+            PropertiesApp.getInstance().fileLoad(ParametersEnum.MALLET_PROPERTIE_FILE_DEFAULT_PATH.getValue());
+            stopWordsFile = new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.LDA_STOP_WORDS.getValue()));
             pipeList.add(new TokenSequenceRemoveStopwords(stopWordsFile, "UTF-8", false, false, false));
         }
         pipeList.add((Pipe) new TokenSequence2FeatureSequence());
@@ -392,7 +392,8 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
         text = text.replaceAll("\\!", " ");
         text = text.replaceAll("-", " ");
         text = text.replaceAll("\\\\", " ");
-        text = text.replaceAll("_", " ");
+        //text = text.replaceAll("_", " ");
+        text = text.replaceAll(",", " ");
         return text;
     }
 
@@ -425,5 +426,4 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
 
         }
     }
-
 }

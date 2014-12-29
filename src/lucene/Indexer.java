@@ -126,20 +126,15 @@ public class Indexer extends Observable implements Runnable {
     private void indexDocs() throws IOException, FileNotFoundException, SAXException {
         docsCount = ((DocumentDAO) DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCount();
         for (int i = 1; i <= docsCount; i++) {
-            //Bug bug = DBController.getInstance().getBug(i);            
             dto.DocumentDTO docSource = (dto.DocumentDTO) ((DocumentDAO) DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).get(i);
             Document docLucene = new Document();
             Field field = new Field(ParametersEnum.INDEX_FIELD1.toString(), Integer.toString(i), Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS, Field.TermVector.YES);
             docLucene.add(field);
-            //System.out.println("METO DATE: " + docSource.getDate().toString());
-            //System.out.println("O METO DATE: " + DateTools.timeToString(docSource.getDate().getTime(), DateTools.Resolution.MINUTE).toString());
             field = new Field(ParametersEnum.INDEX_FIELD2.toString(), DateTools.timeToString(docSource.getDate().getTime(), DateTools.Resolution.MINUTE), Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS, Field.TermVector.YES);
-            //field.setBoost((float)0.2);
             docLucene.add(field);
-            field = new Field(ParametersEnum.INDEX_FIELD3.toString(), docSource.getText(), Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+            field = new Field(ParametersEnum.INDEX_FIELD3.toString(), docSource.getText().toLowerCase(), Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             //field.setBoost((float) 1.5);
             docLucene.add(field);
-            //Field.setOmitTermFreqAndPositions(true);           
             index_writer.addDocument(docLucene);
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.Run"));

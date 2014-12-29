@@ -72,6 +72,10 @@ public class TopicDTO extends BaseDTO {
             }
             i++;
         }
+        if (i <= 2) {
+            result = result.replace(", ", " ");
+            result += "</i> }</html>";
+        }
         return result;
     }
 
