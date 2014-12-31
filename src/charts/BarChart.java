@@ -24,12 +24,19 @@
  */
 package charts;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
+import java.io.IOException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
@@ -99,20 +106,14 @@ public class BarChart extends Chart {
             true,
             false
         );
-        chart.getCategoryPlot().getRenderer().setBaseItemLabelsVisible(true);
-        chart.getCategoryPlot().getRenderer().setBaseSeriesVisibleInLegend(false);
-        chart.getCategoryPlot().getRenderer().setSeriesPaint(0, Color.blue);
-        chart.setBackgroundPaint(Color.white);
-        chart.getCategoryPlot().setBackgroundPaint(Color.white);
-        chart.getCategoryPlot().setDomainGridlinePaint(Color.lightGray);
-        chart.getCategoryPlot().setRangeGridlinePaint(Color.lightGray);
-        chart.getCategoryPlot().setOutlinePaint(Color.white);
-        final BarRenderer renderer = (BarRenderer) chart.getCategoryPlot().getRenderer();
-        renderer.setShadowVisible(false);
-        renderer.setDrawBarOutline(false);
-        renderer.setBarPainter(new StandardBarPainter());
-
-        chart.getCategoryPlot().getRangeAxis().setAutoRange(true);
+//        chart.getCategoryPlot().getRenderer().setBaseItemLabelsVisible(true);
+//        chart.getCategoryPlot().getRenderer().setBaseSeriesVisibleInLegend(false);
+//        chart.setBackgroundPaint(Color.white);
+//        chart.getCategoryPlot().setBackgroundPaint(Color.white);
+//        chart.getCategoryPlot().setDomainGridlinePaint(Color.lightGray);
+//        chart.getCategoryPlot().setRangeGridlinePaint(Color.lightGray);
+//        chart.getCategoryPlot().setOutlinePaint(Color.white);
+//        chart.getCategoryPlot().getRangeAxis().setAutoRange(true);
         return chart;
     }
 

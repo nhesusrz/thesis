@@ -25,6 +25,7 @@
 package dao;
 
 import java.sql.Date;
+import java.util.HashMap;
 
 public interface BugDAO extends BaseDAO {
 
@@ -38,5 +39,6 @@ public interface BugDAO extends BaseDAO {
      * @return Int value
      */
     public int getCountBeetwDatesClosed(Date dateFrom, Date dateTo, boolean closed);
-
+    
+     public HashMap<String, Integer> getDistributionComponent();
 }

@@ -29,17 +29,13 @@ import charts.PieChart;
 import dao.BugDAO;
 import dao.DAOManager;
 import dao.DAONameEnum;
-import dto.BugDTO;
 import dto.TopicDTO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 import metrics.Metric;
 
 public class BugComponentDistributionGenerator extends DataChartGenerator {
-
-    private HashMap<String, Integer> distribution;
 
     public BugComponentDistributionGenerator(Chart chart) {
         super(chart);
@@ -48,20 +44,8 @@ public class BugComponentDistributionGenerator extends DataChartGenerator {
     @Override
     public void generateData() {
         int bugCount = (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName())).getCount();
-        distribution = new HashMap<String, Integer>();
+        HashMap<String, Integer> distribution = ((BugDAO) (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()))).getDistributionComponent();
         chart.destroy();
-        for (int i = 1; i <= bugCount; i++) {
-            BugDTO bug = (BugDTO) ((BugDAO) (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()))).get(i);
-            String component = bug.getComponent();
-            if (component.equals("")) {
-                component = ResourceBundle.getBundle("view/Bundle").getString("Chart1.NoComponent");
-            }
-            if (distribution.containsKey(component)) {
-                distribution.put(component, distribution.get(component) + 1);
-            } else {
-                distribution.put(component, 1);
-            }
-        }
         for (Map.Entry<String, Integer> entry : distribution.entrySet()) {
             ((PieChart) chart).addValue(new Double(entry.getValue()) / bugCount, entry.getKey());
         }

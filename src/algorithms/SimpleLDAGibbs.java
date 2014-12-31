@@ -108,7 +108,7 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
     private double alphaSum;
     private double beta;   // Prior on per-topic multinomial distribution over words
     private double betaSum;
-    public static final double DEFAULT_BETA = 0.01;
+    //public static final double DEFAULT_BETA = 0.01;
     /**
      * External parameters of LDA
      *
@@ -323,7 +323,7 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
         IDSorter[] sortedWords = new IDSorter[numTypes];
         for (int topicId = 0; topicId < numTopics; topicId++) {
             TopicDTO topic = new TopicDTO();
-            for (int type = 0; type < numTypes && type < wordsPerTopic; type++) {
+            for (int type = 0; type < numTypes /*&& type < wordsPerTopic*/; type++) {
                 sortedWords[type] = new IDSorter(type, typeTopicCounts[type][topicId]);
                 if (sortedWords[type].getWeight() != 0) {
                     topic.putWord(alphabet.lookupObject(sortedWords[type].getID()).toString(), new BigDecimal(sortedWords[type].getWeight() / tokensPerTopic[topicId]));
@@ -403,27 +403,23 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
      * @param training Is the list of intances.
      */
     private void addInstances(InstanceList training) {
-        if (training.size() > 0) {
-            alphabet = training.getDataAlphabet();
-            numTypes = alphabet.size();
-            betaSum = beta * numTypes;
-            typeTopicCounts = new int[numTypes][numTopics];
-            for (Instance instance : training) {
-                FeatureSequence tokens = (FeatureSequence) instance.getData();
-                LabelSequence topicSequence = new LabelSequence(topicAlphabet, new int[tokens.size()]);
-                int[] topics = topicSequence.getFeatures();
-                for (int position = 0; position < tokens.size(); position++) {
-                    int topic = random.nextInt(numTopics);
-                    topics[position] = topic;
-                    tokensPerTopic[topic]++;
-                    int type = tokens.getIndexAtPosition(position);
-                    typeTopicCounts[type][topic]++;
-                }
-                TopicAssignment t = new TopicAssignment(instance, topicSequence);
-                data.add(t);
+        alphabet = training.getDataAlphabet();
+        numTypes = alphabet.size();
+        betaSum = beta * numTypes;
+        typeTopicCounts = new int[numTypes][numTopics];
+        for (Instance instance : training) {
+            FeatureSequence tokens = (FeatureSequence) instance.getData();
+            LabelSequence topicSequence = new LabelSequence(topicAlphabet, new int[tokens.size()]);
+            int[] topics = topicSequence.getFeatures();
+            for (int position = 0; position < tokens.size(); position++) {
+                int topic = random.nextInt(numTopics);
+                topics[position] = topic;
+                tokensPerTopic[topic]++;
+                int type = tokens.getIndexAtPosition(position);
+                typeTopicCounts[type][topic]++;
             }
-        } else {
-
+            TopicAssignment t = new TopicAssignment(instance, topicSequence);
+            data.add(t);
         }
     }
 }

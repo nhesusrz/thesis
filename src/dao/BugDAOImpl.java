@@ -32,6 +32,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observer;
@@ -41,6 +42,7 @@ import logger.ThesisLogger;
 public class BugDAOImpl extends DAOManager implements BugDAO {
 
     private int bugCount;
+    HashMap<String, Integer> distributionComponent = new HashMap<String, Integer>();
 
     public BugDAOImpl(Observer observer) {
         if (observer != null) {
@@ -53,6 +55,11 @@ public class BugDAOImpl extends DAOManager implements BugDAO {
                     rs.next();
                     bugCount = ((Long) rs.getObject(1)).intValue();
                 }
+                rs = executeQuery("SELECT COMPONENT FROM BUG");
+                while (rs.next()) {
+                    insertComponent((String) rs.getObject(1));
+                }
+                rs.close();
             } catch (SQLException ex) {
                 ThesisLogger.get().error("BugDAOImpl.executeQuery: " + ex.toString());
             }
@@ -64,6 +71,17 @@ public class BugDAOImpl extends DAOManager implements BugDAO {
     @Override
     public int getCount() {
         return bugCount;
+    }
+
+    /**
+     * Gets the components count.
+     *
+     * @return A hash map with Key = Component and Value = Amount of this
+     * component.
+     */
+    @Override
+    public HashMap<String, Integer> getDistributionComponent() {
+        return distributionComponent;
     }
 
     @Override
@@ -109,7 +127,7 @@ public class BugDAOImpl extends DAOManager implements BugDAO {
     @Override
     public boolean insert(BaseDTO dto) {
         boolean error = false;
-        if (connectionActive) {            
+        if (connectionActive) {
             String sqlClosedDate;
             if (((BugDTO) dto).getClosedDate() != null) {
                 sqlClosedDate = "'" + (new java.sql.Date(((BugDTO) dto).getClosedDate().getTime())).toString() + "'";
@@ -124,14 +142,15 @@ public class BugDAOImpl extends DAOManager implements BugDAO {
                     + ((BugDTO) dto).getOwner() + "', '"
                     + ((BugDTO) dto).getType() + "', '"
                     + ((BugDTO) dto).getPriority() + "', '"
-                    + ((BugDTO) dto).getComponent() + "', " 
-                    + sqlClosedDate + ", '"                                  
+                    + ((BugDTO) dto).getComponent() + "', "
+                    + sqlClosedDate + ", '"
                     + ((BugDTO) dto).getStars() + "', '"
                     + ((BugDTO) dto).getReportedBY() + "', '"
                     + this.sqlDate.toString() + "', '"
                     + replaceSpecialCharactersSQL(((BugDTO) dto).getDescription()) + "' );");
             if (!error) {
                 bugCount++;
+                insertComponent(((BugDTO) dto).getComponent());
                 setChanged();
                 notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("H2.Action.Run.PutBug"));
             }
@@ -238,4 +257,14 @@ public class BugDAOImpl extends DAOManager implements BugDAO {
         return false;
     }
 
+    private void insertComponent(String component) {
+        if (component.equals("")) {
+            component = ResourceBundle.getBundle("view/Bundle").getString("Chart1.NoComponent");
+        }
+        if (distributionComponent.containsKey(component)) {
+            distributionComponent.put(component, distributionComponent.get(component) + 1);
+        } else {
+            distributionComponent.put(component, 1);
+        }
+    }
 }

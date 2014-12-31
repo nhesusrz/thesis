@@ -138,7 +138,7 @@ public class XYSplineChart extends Chart {
     }
 
     private JFreeChart createChart(XYSeriesCollection dataSet) {
-        JFreeChart chart = ChartFactory.createXYLineChart(                
+        JFreeChart chart = ChartFactory.createXYLineChart(
                 ResourceBundle.getBundle("view/Bundle").getString("Chart3.Title"),
                 ResourceBundle.getBundle("view/Bundle").getString("Chart3.XLabel"),
                 ResourceBundle.getBundle("view/Bundle").getString("Chart3.YLabel"),
@@ -158,7 +158,7 @@ public class XYSplineChart extends Chart {
             }
         };;
 
-        XYItemLabelGenerator xy = new StandardXYItemLabelGenerator("v{1}= {2}", NumberFormat.getNumberInstance(), NumberFormat.getNumberInstance());
+        XYItemLabelGenerator xy = new StandardXYItemLabelGenerator("v{1}\n= {2}", NumberFormat.getNumberInstance(), NumberFormat.getNumberInstance());
 
         renderer.setBaseItemLabelGenerator(xy);
         renderer.setBaseItemLabelsVisible(true);

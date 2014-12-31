@@ -33,7 +33,7 @@ public class VersionDTO extends BaseDTO {
     private Integer step;
     private ParametersEnum step_type;
     private Date dateFrom, dateTo;
-    
+            
     public VersionDTO() {
         id = -1;
         dateFrom = dateTo = null;
