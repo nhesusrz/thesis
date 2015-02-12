@@ -24,13 +24,15 @@
  */
 package metrics;
 
+import java.util.ResourceBundle;
+
 public enum MetricNameEnum {
 
-    ASSIGMENT(1, "Assigment"),
-    WEIGHT(2, "Weight"),
-    SCATTERING(3, "Scattering"),
-    FOCUS(4, "Focus"),
-    TREND(5, "Trend");
+    ASSIGNMENT(1, ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox5.metric.assignment")),
+    WEIGHT(2, ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox5.metric.weight")),
+    SCATTERING(3, ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox5.metric.scattering")),
+    FOCUS(4, ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox5.metric.focus"));
+    //TREND(5, "Trend");
 
     private final String name;
     private final Integer code;

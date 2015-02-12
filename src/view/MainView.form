@@ -1479,7 +1479,7 @@
                         <Component class="javax.swing.JComboBox" name="jComboBox5">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="new javax.swing.DefaultComboBoxModel(new Metric[] {&#xa;    new Assigment(),&#xa;    new Weight(),&#xa;    new Scattering(),&#xa;    new Focus()})" type="code"/>
+                              <Connection code="new javax.swing.DefaultComboBoxModel(new Metric[] {&#xa;    new metrics.Assignment(),&#xa;    new Weight(),&#xa;    new Scattering(),&#xa;    new Focus()})" type="code"/>
                             </Property>
                             <Property name="name" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="&quot;jComboBox5&quot;" type="code"/>
@@ -1489,7 +1489,7 @@
                             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox5ItemStateChanged"/>
                           </Events>
                           <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//jComboBox5.removeAllItems();&#xa;//jComboBox5.addItem(new Assigment());&#xa;//jComboBox5.addItem(new Weight());        &#xa;//jComboBox5.addItem(new Scattering());&#xa;//jComboBox5.addItem(new Focus());"/>
+                            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="//jComboBox5.removeAllItems();&#xa;//jComboBox5.addItem(new metrics.Assignment());&#xa;//jComboBox5.addItem(new Weight());        &#xa;//jComboBox5.addItem(new Scattering());&#xa;//jComboBox5.addItem(new Focus());"/>
                             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox()"/>
                           </AuxValues>
                         </Component>
@@ -1923,7 +1923,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBox3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.DefaultComboBoxModel(new lucene.ClusteringAlgorithm[] { &#xa;new lucene.ClusteringAlgorithm(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),&#xa;new lucene.ClusteringAlgorithm(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),&#xa;new lucene.ClusteringAlgorithm(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),&#xa;new lucene.ClusteringAlgorithm(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())})" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel(new algorithms.ClusteringAlgorithm[] { &#xa;new algorithms.ClusteringAlgorithm(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),&#xa;new algorithms.ClusteringAlgorithm(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),&#xa;new algorithms.ClusteringAlgorithm(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),&#xa;new algorithms.ClusteringAlgorithm(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())})" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="jComboBox3" noResource="true"/>
                       </Properties>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Reverse engineered algorithms 2015.02.11 21-35-34-590">
+  <ClassDiagramComponents>
+    <Class xPosition="20.0" yPosition="20.0" package="algorithms" name="AlgorithmManager" visibility="public">
+      <Constructors>
+        <Constructor name="AlgorithmManager" visibility="public"/>
+      </Constructors>
+      <Fields>
+        <Field name="instance" visibility="public" type="AlgorithmManager" isStatic="true"/>
+        <Field name="thread" visibility="private" type="Thread" isStatic="true"/>
+      </Fields>
+      <Methods>
+        <Method name="destroy" visibility="public" returnType="void"/>
+        <Method name="getInstance" visibility="public" returnType="AlgorithmManager" isStatic="true"/>
+        <Method name="parse" visibility="public" returnType="void">
+          <Argument type="String" name="fileName"/>
+          <Argument type="boolean" name="resetDB"/>
+        </Method>
+        <Method name="stopParse" visibility="public" returnType="void"/>
+        <Method name="generateVersions" visibility="public" returnType="void">
+          <Argument type="ParametersEnum" name="type"/>
+          <Argument type="Integer" name="step"/>
+          <Argument type="java.sql.Date" name="dateFrom"/>
+          <Argument type="java.sql.Date" name="dateTo"/>
+        </Method>
+        <Method name="stopGenerateVersions" visibility="public" returnType="void"/>
+        <Method name="generateDocs" visibility="public" returnType="void"/>
+        <Method name="stopGenerateDocs" visibility="public" returnType="void"/>
+        <Method name="lda" visibility="public" returnType="void">
+          <Argument type="int" name="numIerations"/>
+          <Argument type="int" name="numTopics"/>
+          <Argument type="double" name="alpha"/>
+          <Argument type="double" name="beta"/>
+          <Argument type="int" name="wordsPerTopic"/>
+          <Argument type="boolean" name="removeStopWords"/>
+          <Argument type="Date" name="dateFrom"/>
+          <Argument type="Date" name="dateTo"/>
+        </Method>
+        <Method name="stopLDA" visibility="public" returnType="void"/>
+        <Method name="notify" visibility="public" returnType="void">
+          <Argument type="String" name="msj"/>
+        </Method>
+        <Method name="update" visibility="public" returnType="void">
+          <Argument type="Observable" name="o"/>
+          <Argument type="Object" name="arg"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="546.0" yPosition="449.0" package="algorithms" name="ClusteringAlgorithm" visibility="public">
+      <Constructors>
+        <Constructor name="ClusteringAlgorithm" visibility="public">
+          <Argument type="IClusteringAlgorithm" name="algorithm"/>
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="algorithm" visibility="private" type="IClusteringAlgorithm" isFinal="true"/>
+        <Field name="name" visibility="private" type="String" isFinal="true"/>
+      </Fields>
+      <Methods>
+        <Method name="toString" visibility="public" returnType="String"/>
+        <Method name="getAlgoritmo" visibility="public" returnType="IClusteringAlgorithm"/>
+        <Method name="Process" visibility="public" returnType="List&lt;Cluster&gt;">
+          <Argument type="String" name="indexPath"/>
+          <Argument type="List" name="scd_list"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="546.0" yPosition="723.0" package="algorithms" name="GenDocs" visibility="public">
+      <Constructors>
+        <Constructor name="GenDocs" visibility="public"/>
+      </Constructors>
+      <Fields>
+        <Field name="instance" visibility="private" type="GenDocs" isStatic="true"/>
+      </Fields>
+      <Methods>
+        <Method name="getInstance" visibility="public" returnType="GenDocs" isStatic="true"/>
+        <Method name="run" visibility="public" returnType="void"/>
+      </Methods>
+    </Class>
+    <Class xPosition="788.0" yPosition="704.0" package="algorithms" name="GenVersions" visibility="public">
+      <Constructors>
+        <Constructor name="GenVersions" visibility="public"/>
+      </Constructors>
+      <Fields>
+        <Field name="instance" visibility="private" type="GenVersions" isStatic="true"/>
+        <Field name="untitledField" visibility="private" type="Object"/>
+      </Fields>
+      <Methods>
+        <Method name="getInstance" visibility="public" returnType="GenVersions" isStatic="true"/>
+        <Method name="run" visibility="public" returnType="void"/>
+        <Method name="update" visibility="public" returnType="void">
+          <Argument type="Observable" name="o"/>
+          <Argument type="Object" name="arg"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="20.0" yPosition="449.0" package="algorithms" name="Parser" visibility="public">
+      <Constructors>
+        <Constructor name="Parser" visibility="public">
+          <Argument type="String" name="fileName"/>
+          <Argument type="boolean" name="resetDB"/>
+          <Argument type="AlgorithmManager" name="controllerParser"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="parserController" visibility="package" type="AlgorithmManager"/>
+        <Field name="bugsParsed" visibility="package" type="Integer"/>
+        <Field name="fileName" visibility="package" type="String"/>
+        <Field name="tmpBug" visibility="package" type="BugDTO"/>
+        <Field name="commentTmp" visibility="package" type="CommentDTO"/>
+        <Field name="stringBufferTmp" visibility="package" type="StringBuffer"/>
+        <Field name="simpleDateFormat1" visibility="package" type="SimpleDateFormat"/>
+        <Field name="resetDB" visibility="package" type="boolean"/>
+      </Fields>
+      <Methods>
+        <Method name="destroy" visibility="package" returnType="void"/>
+        <Method name="run" visibility="public" returnType="void"/>
+        <Method name="hasResults" visibility="public" returnType="boolean"/>
+        <Method name="startDocument" visibility="public" returnType="void"/>
+        <Method name="endDocument" visibility="public" returnType="void"/>
+        <Method name="startElement" visibility="public" returnType="void">
+          <Argument type="String" name="namespaceURI"/>
+          <Argument type="String" name="localName"/>
+          <Argument type="String" name="qName"/>
+          <Argument type="Attributes" name="atts"/>
+        </Method>
+        <Method name="characters" visibility="public" returnType="void">
+          <Argument type="char[]" name="buffer"/>
+          <Argument type="int" name="start"/>
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="endElement" visibility="public" returnType="void">
+          <Argument type="String" name="namespaceURI"/>
+          <Argument type="String" name="localName"/>
+          <Argument type="String" name="qName"/>
+        </Method>
+        <Method name="parseDocument" visibility="private" returnType="void"/>
+        <Method name="putBug" visibility="private" returnType="void" isSynchronized="true">
+          <Argument type="BugDTO" name="tmpBug"/>
+        </Method>
+        <Method name="replaceSpecialCharactersXML" visibility="private" returnType="String">
+          <Argument type="String" name="source"/>
+        </Method>
+        <Method name="update" visibility="public" returnType="void">
+          <Argument type="Observable" name="arg0"/>
+          <Argument type="Object" name="arg1"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class xPosition="20.0" yPosition="941.0" package="algorithms" name="SimpleLDAGibbs" visibility="public">
+      <Constructors>
+        <Constructor name="SimpleLDAGibbs" visibility="public"/>
+        <Constructor name="SimpleLDAGibbs" visibility="public">
+          <Argument type="int" name="numIerations"/>
+          <Argument type="int" name="numTopics"/>
+          <Argument type="double" name="alpha"/>
+          <Argument type="double" name="beta"/>
+          <Argument type="int" name="wordsPerTopic"/>
+          <Argument type="boolean" name="removeStopWords"/>
+          <Argument type="Date" name="dateFrom"/>
+          <Argument type="Date" name="dateTo"/>
+        </Constructor>
+      </Constructors>
+      <Fields>
+        <Field name="instance" visibility="private" type="SimpleLDAGibbs" isStatic="true"/>
+        <Field name="dateFrom" visibility="private" type="Date"/>
+        <Field name="docsId" visibility="private" type="HashMap&lt;Integer, Integer&gt;"/>
+        <Field name="training" visibility="private" type="InstanceList"/>
+        <Field name="data" visibility="private" type="ArrayList&lt;TopicAssignment&gt;"/>
+        <Field name="alphabet" visibility="private" type="Alphabet"/>
+        <Field name="topicAlphabet" visibility="private" type="LabelAlphabet"/>
+        <Field name="pipeList" visibility="private" type="ArrayList&lt;Pipe&gt;"/>
+        <Field name="removeStopWordrs" visibility="private" type="boolean"/>
+        <Field name="stopWordsFile" visibility="private" type="File"/>
+        <Field name="numIerations" visibility="private" type="int"/>
+        <Field name="numTopics" visibility="private" type="int"/>
+        <Field name="numTypes" visibility="private" type="int"/>
+        <Field name="alpha" visibility="private" type="double"/>
+        <Field name="alphaSum" visibility="private" type="double"/>
+        <Field name="beta" visibility="private" type="double"/>
+        <Field name="betaSum" visibility="private" type="double"/>
+        <Field name="typeTopicCounts" visibility="private" type="int[][]"/>
+        <Field name="tokensPerTopic" visibility="private" type="int[]"/>
+        <Field name="docTopicProbs" visibility="private" type="double[][]"/>
+        <Field name="wordsPerTopic" visibility="private" type="int"/>
+        <Field name="random" visibility="private" type="Randoms"/>
+        <Field name="formatter" visibility="private" type="NumberFormat"/>
+        <Field name="printLogLikelihood" visibility="protected" type="boolean"/>
+      </Fields>
+      <Methods>
+        <Method name="getInstance" visibility="public" returnType="SimpleLDAGibbs" isStatic="true">
+          <Argument type="int" name="numIerations"/>
+          <Argument type="int" name="numTopics"/>
+          <Argument type="double" name="alpha"/>
+          <Argument type="double" name="beta"/>
+          <Argument type="int" name="wordsPerTopic"/>
+          <Argument type="boolean" name="removeStopWords"/>
+          <Argument type="Date" name="dateFrom"/>
+          <Argument type="Date" name="dateTo"/>
+        </Method>
+        <Method name="getInstance" visibility="public" returnType="SimpleLDAGibbs" isStatic="true"/>
+        <Method name="run" visibility="public" returnType="void"/>
+        <Method name="stop" visibility="public" returnType="void"/>
+        <Method name="getAlphabet" visibility="public" returnType="Alphabet"/>
+        <Method name="getTopicAlphabet" visibility="public" returnType="LabelAlphabet"/>
+        <Method name="getNumTopics" visibility="public" returnType="int"/>
+        <Method name="getData" visibility="public" returnType="ArrayList&lt;TopicAssignment&gt;"/>
+        <Method name="sample" visibility="private" returnType="void">
+          <Argument type="int" name="iterations"/>
+        </Method>
+        <Method name="sampleTopicsForOneDoc" visibility="private" returnType="void">
+          <Argument type="FeatureSequence" name="tokenSequence"/>
+          <Argument type="FeatureSequence" name="topicSequence"/>
+          <Argument type="int" name="doc"/>
+        </Method>
+        <Method name="insertTopicsAndDocuments" visibility="private" returnType="void"/>
+        <Method name="setParametersForPipes" visibility="private" returnType="void"/>
+        <Method name="removeChars" visibility="private" returnType="String">
+          <Argument type="String" name="text"/>
+        </Method>
+        <Method name="addInstances" visibility="private" returnType="void">
+          <Argument type="InstanceList" name="training"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="SimpleLDAGibbs" target="SimpleLDAGibbs" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="AlgorithmManager" target="AlgorithmManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="parserController" source="Parser" target="AlgorithmManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="GenVersions" target="GenVersions" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="GenDocs" target="GenDocs" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="SimpleLDAGibbs" target="SimpleLDAGibbs" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="algorithm" source="ClusteringAlgorithm" target="ClusteringAlgorithm" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ClusteringAlgorithm" target="ClusteringAlgorithm" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GenDocs" target="GenDocs" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GenVersions" target="GenVersions" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="instance" source="AlgorithmManager" target="AlgorithmManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

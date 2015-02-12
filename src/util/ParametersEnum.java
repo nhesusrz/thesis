@@ -24,6 +24,8 @@
  */
 package util;
 
+import java.util.ResourceBundle;
+
 public enum ParametersEnum {
 
     XML_DEFAULT_PATH(".\\data"),    
@@ -46,9 +48,9 @@ public enum ParametersEnum {
     LDA_BETA("lda.beta"),
     LDA_WORDS_PER_TOPIC("lda.wordsPerTopic"),
     
-    LDA_STEP_DAY("Day"),
-    LDA_STEP_MONTH("Month"),
-    LDA_STEP_YEAR("Year"),
+    LDA_STEP_DAY(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.day")),
+    LDA_STEP_MONTH(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.month")),
+    LDA_STEP_YEAR(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.year")),
     
     LUCENE_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\lucene.properties"),
     LUCENE_STOP_WORDS("stopwords"),

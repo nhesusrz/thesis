@@ -24,6 +24,7 @@
  */
 package lucene;
 
+import algorithms.ClusteringAlgorithm;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -32,8 +33,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import logger.ThesisLogger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.DateTools;

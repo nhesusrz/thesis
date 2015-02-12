@@ -15140,3 +15140,365 @@
 5125 31-12-2014 01:07:08 [Thread-6] DEBUG org.carrot2.text.clustering.MultilingualClustering : Performing monolingual clustering in: English
 30206 31-12-2014 01:07:33 [Thread-7] DEBUG org.carrot2.text.clustering.MultilingualClustering : Performing monolingual clustering in: English
 74324 31-12-2014 01:08:17 [Thread-8] DEBUG org.carrot2.text.clustering.MultilingualClustering : Performing monolingual clustering in: English
+0    09-01-2015 12:36:25 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-01-01' AND '2007-02-01' [90030-173]
+594  09-01-2015 12:36:26 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-02-01' AND '2007-03-01' [90030-173]
+1126 09-01-2015 12:36:26 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-03-01' AND '2007-04-01' [90030-173]
+1658 09-01-2015 12:36:27 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-04-01' AND '2007-05-01' [90030-173]
+2205 09-01-2015 12:36:27 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-05-01' AND '2007-06-01' [90030-173]
+2752 09-01-2015 12:36:28 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-06-01' AND '2007-07-01' [90030-173]
+3267 09-01-2015 12:36:28 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-07-01' AND '2007-08-01' [90030-173]
+3830 09-01-2015 12:36:29 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-08-01' AND '2007-09-01' [90030-173]
+4408 09-01-2015 12:36:30 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-09-01' AND '2007-10-01' [90030-173]
+5017 09-01-2015 12:36:30 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-10-01' AND '2007-11-01' [90030-173]
+5564 09-01-2015 12:36:31 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-11-01' AND '2007-12-01' [90030-173]
+6111 09-01-2015 12:36:31 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2007-12-01' AND '2008-01-01' [90030-173]
+6658 09-01-2015 12:36:32 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-01-01' AND '2008-02-01' [90030-173]
+7189 09-01-2015 12:36:32 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-02-01' AND '2008-03-01' [90030-173]
+7722 09-01-2015 12:36:33 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-03-01' AND '2008-04-01' [90030-173]
+8269 09-01-2015 12:36:33 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-04-01' AND '2008-05-01' [90030-173]
+8815 09-01-2015 12:36:34 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-05-01' AND '2008-06-01' [90030-173]
+9362 09-01-2015 12:36:34 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-06-01' AND '2008-07-01' [90030-173]
+9909 09-01-2015 12:36:35 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-07-01' AND '2008-08-01' [90030-173]
+10456 09-01-2015 12:36:36 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-08-01' AND '2008-09-01' [90030-173]
+11159 09-01-2015 12:36:36 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-09-01' AND '2008-10-01' [90030-173]
+11731 09-01-2015 12:36:37 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-10-01' AND '2008-11-01' [90030-173]
+12293 09-01-2015 12:36:37 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-11-01' AND '2008-12-01' [90030-173]
+12840 09-01-2015 12:36:38 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2008-12-01' AND '2009-01-01' [90030-173]
+13372 09-01-2015 12:36:38 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-01-01' AND '2009-02-01' [90030-173]
+13934 09-01-2015 12:36:39 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-02-01' AND '2009-03-01' [90030-173]
+14497 09-01-2015 12:36:40 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-03-01' AND '2009-04-01' [90030-173]
+15059 09-01-2015 12:36:40 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-04-01' AND '2009-05-01' [90030-173]
+15606 09-01-2015 12:36:41 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-05-01' AND '2009-06-01' [90030-173]
+16137 09-01-2015 12:36:41 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-06-01' AND '2009-07-01' [90030-173]
+16684 09-01-2015 12:36:42 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-07-01' AND '2009-08-01' [90030-173]
+17216 09-01-2015 12:36:42 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-08-01' AND '2009-09-01' [90030-173]
+17747 09-01-2015 12:36:43 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-09-01' AND '2009-10-01' [90030-173]
+18294 09-01-2015 12:36:43 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-10-01' AND '2009-11-01' [90030-173]
+18859 09-01-2015 12:36:44 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-11-01' AND '2009-12-01' [90030-173]
+19406 09-01-2015 12:36:45 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2009-12-01' AND '2010-01-01' [90030-173]
+19953 09-01-2015 12:36:45 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-01-01' AND '2010-02-01' [90030-173]
+20484 09-01-2015 12:36:46 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-02-01' AND '2010-03-01' [90030-173]
+21032 09-01-2015 12:36:46 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-03-01' AND '2010-04-01' [90030-173]
+21595 09-01-2015 12:36:47 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-04-01' AND '2010-05-01' [90030-173]
+22126 09-01-2015 12:36:47 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-05-01' AND '2010-06-01' [90030-173]
+22689 09-01-2015 12:36:48 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-06-01' AND '2010-07-01' [90030-173]
+23314 09-01-2015 12:36:48 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-07-01' AND '2010-08-01' [90030-173]
+23876 09-01-2015 12:36:49 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-08-01' AND '2010-09-01' [90030-173]
+24454 09-01-2015 12:36:50 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-09-01' AND '2010-10-01' [90030-173]
+24989 09-01-2015 12:36:50 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-10-01' AND '2010-11-01' [90030-173]
+25567 09-01-2015 12:36:51 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-11-01' AND '2010-12-01' [90030-173]
+26130 09-01-2015 12:36:51 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: File corrupted while reading record: "[10248] stream data key:108 pos:11 remaining:0". Possible solution: use the recovery tool; SQL statement:
+SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-12-01' AND '2011-01-01' [90030-173]
+0    10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.text.clustering.MultilingualClustering : Performing monolingual clustering in: English
+125  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceCache : Loading resources, locations: [org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]]
+125  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ar
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ar
+125  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ar
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ar
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.bg
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.bg
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.bg
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.bg
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.cz
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.cz
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.cz
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.cz
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.zh_cn
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.zh_cn
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.zh_cn
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.zh_cn
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.hr
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.hr
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.da
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.da
+156  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.da
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.da
+172  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.nl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.nl
+172  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.nl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.nl
+172  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.en
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.en
+172  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.en
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.en
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ee
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ee
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ee
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ee
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.fi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.fi
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.fi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.fi
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.fr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.fr
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.fr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.fr
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.de
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.de
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.de
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.de
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.gr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.gr
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.gr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.gr
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hu
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.hu
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hu
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.hu
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.hi
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.hi
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.it
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.it
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.it
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.it
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ie
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ie
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ie
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ie
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ja
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ja
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ja
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ja
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ko
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ko
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ko
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ko
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.lv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.lv
+187  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.lv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.lv
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.lt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.lt
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.lt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.lt
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.mt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.mt
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.mt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.mt
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.no
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.no
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.no
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.no
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.pl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.pl
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.pl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.pl
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.pt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.pt
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.pt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.pt
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ro
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ro
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ro
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ro
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ru
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.ru
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ru
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.ru
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sk
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.sk
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sk
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.sk
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.sl
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.sl
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.es
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.es
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.es
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.es
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.sv
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.sv
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.th
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.th
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.th
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.th
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.tr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stopwords.tr
+203  10-02-2015 13:02:14 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.tr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@126b249]
+		- jar:file:/C:/Users/nhesusrz/Dropbox/Facultad/Proyecto%20Final/Tesis/Aplicaci%c3%b3n/Thesis/dist/lib/carrot2-core-3.9.4.jar!/stoplabels.tr
