@@ -24,7 +24,7 @@
  */
 package lucene;
 
-import algorithms.ClusteringAlgorithm;
+import algorithms.Clustering;
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
@@ -46,7 +46,7 @@ import util.PropertiesApp;
 public class LuceneManager extends Observable implements Observer {
 
     private static LuceneManager instance;
-    private Analyzer analyzer;
+    private final Analyzer analyzer;
     private boolean error_creating_index;
     private Indexer indexer;
     private Searcher searcher;
@@ -174,7 +174,7 @@ public class LuceneManager extends Observable implements Observer {
      * @param limit Result size.
      * @param clusteringAlgorithm
      */
-    public void search(File indexDir, String queryString, int limit, ClusteringAlgorithm clusteringAlgorithm) {
+    public void search(File indexDir, String queryString, int limit, Clustering clusteringAlgorithm) {
         try {
             // if() Preguntar si el indice esta bien.
             searcher = new Searcher(analyzer, indexDir, queryString, limit, clusteringAlgorithm);

@@ -24,7 +24,8 @@
  */
 package lucene;
 
-import algorithms.ClusteringAlgorithm;
+import algorithms.AlgorithmManager;
+import algorithms.Clustering;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -32,7 +33,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logger.ThesisLogger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.DateTools;
@@ -50,7 +55,7 @@ import org.carrot2.core.Cluster;
 import org.carrot2.core.Document;
 import util.ParametersEnum;
 
-public class Searcher extends Observable implements Runnable {
+public class Searcher extends Observable implements Observer, Runnable {
 
     private final Analyzer analyzer;
     private final IndexReader index_reader;
@@ -58,19 +63,18 @@ public class Searcher extends Observable implements Runnable {
     private final QueryParser mqp;
     private final Query query;
     private final int counter;   
-    private final String indexDir;
     private List<Document> scd_list;
-    private final ClusteringAlgorithm clusteringAlgorithm;
-
-    public Searcher(Analyzer analyer, File indexDir, String frase, int counter, ClusteringAlgorithm clusteringAlgorithm) throws CorruptIndexException, IOException, ParseException {
-        this.indexDir = indexDir.getPath();
+    private final Clustering clusteringAlgorithm;
+    private Semaphore waitResultMutex;
+        
+    public Searcher(Analyzer analyer, File indexDir, String frase, int counter, Clustering clusteringAlgorithm) throws CorruptIndexException, IOException, ParseException {        
         index_reader = IndexReader.open(new SimpleFSDirectory(indexDir));
         indexSearcher = new IndexSearcher(index_reader);
         this.analyzer = analyer;
         this.counter = counter;
         this.clusteringAlgorithm = clusteringAlgorithm;
         mqp = new MultiFieldQueryParser(Version.LUCENE_32, new String[]{ParametersEnum.INDEX_FIELD3.toString()}, analyzer);
-        query = mqp.parse(frase);
+        query = mqp.parse(frase);        
     }
 
     @Override
@@ -107,32 +111,39 @@ public class Searcher extends Observable implements Runnable {
     private void normalSearchWithAlgorithm() throws IOException, java.text.ParseException {
         setChanged();
         notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.Inic"));
+        waitResultMutex = new Semaphore(0);
         long start = new Date().getTime();
         ScoreDoc[] scoreDocs = indexSearcher.search(query, counter).scoreDocs;
         List<Cluster> clusters = new ArrayList();
         if(scoreDocs.length > 1) {
-            clusters = clusteringAlgorithm.Process(indexDir, ConvertLuceneDocsToCarrotDocs(scoreDocs));
-        }
-        setChanged();
-        notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.End"));
-        setChanged();
-        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage3"), clusters.size(), scoreDocs.length, System.currentTimeMillis() - start));
-        for (int i = 0; i < clusters.size(); i++) {
-            Cluster cluster = clusters.get(i);
-            List<Document> cluster_docs = cluster.getDocuments();
-            if(!cluster_docs.isEmpty()) {
-                List<String> frases = cluster.getPhrases();
-                setChanged();
-                notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage4"), (i + 1), frases.toString()));
-                for (Document doc : cluster_docs) {
-                    setChanged();
-                    notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage5"), 
-                            doc.getField(ParametersEnum.INDEX_FIELD1.toString()), 
-                            DateTools.stringToDate((String) doc.getField(ParametersEnum.INDEX_FIELD2.toString())),                           
-                            (Float) doc.getField(ParametersEnum.INDEX_FIELD4.toString())));
-                }                    
+            AlgorithmManager.getInstance().excuteClustering(this, clusteringAlgorithm.getAlgoritmo(), clusteringAlgorithm.toString(), ConvertLuceneDocsToCarrotDocs(scoreDocs));
+            try {
+                waitResultMutex.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Searcher.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+            clusters = AlgorithmManager.getInstance().getClustering().getResult();            
+            setChanged();
+            notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.End"));
+            setChanged();
+            notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage3"), clusteringAlgorithm.toString(), counter,clusters.size(), scoreDocs.length, System.currentTimeMillis() - start));
+            for (int i = 0; i < clusters.size(); i++) {
+                Cluster cluster = clusters.get(i);
+                List<Document> cluster_docs = cluster.getDocuments();
+                if(!cluster_docs.isEmpty()) {
+                    List<String> frases = cluster.getPhrases();
+                    setChanged();
+                    notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage4"), (i + 1), frases.toString()));
+                    for (Document doc : cluster_docs) {
+                        setChanged();
+                        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage5"), 
+                                doc.getField(ParametersEnum.INDEX_FIELD1.toString()), 
+                                DateTools.stringToDate((String) doc.getField(ParametersEnum.INDEX_FIELD2.toString())),                           
+                                (Float) doc.getField(ParametersEnum.INDEX_FIELD4.toString())));
+                    }                    
+                }
+            }
+        }        
     }
     /**
      * Maps the Lucene documents to Carrot documents.
@@ -155,5 +166,10 @@ public class Searcher extends Observable implements Runnable {
             scd_list.add(d);
         }
         return scd_list;
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {        
+        waitResultMutex.release();
     }
 }

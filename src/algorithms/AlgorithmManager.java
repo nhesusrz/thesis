@@ -28,9 +28,11 @@ import dao.DAOManager;
 import dao.DAONameEnum;
 import dao.VersionDAO;
 import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
+import org.carrot2.core.IClusteringAlgorithm;
 import util.ParametersEnum;
 
 public class AlgorithmManager extends Observable implements Observer {
@@ -155,7 +157,31 @@ public class AlgorithmManager extends Observable implements Observer {
         setChanged();
         notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("LDA.Action.End"));
     }
-
+    
+    /**
+     * Execute the clustering algorithm over lucene's documents.
+     * 
+     * @param observer The class to return the results.
+     * @param algorithm The type of clustering algorithm.
+     * @param nombre The name of the algorithm.
+     * @param scd_list The list of lucene's documents.
+     */
+    public void excuteClustering(Observer observer, IClusteringAlgorithm algorithm, String nombre, List scd_list) {
+        Clustering.getInstance(algorithm, nombre, scd_list).addObserver(observer);        
+        thread = new Thread( Clustering.getInstance());
+        thread.start();
+    }
+    
+    /**
+     * 
+     * @return The result 
+     */
+    public Clustering getClustering(){
+        if(Clustering.getInstance() != null)
+            return Clustering.getInstance();
+        return null;
+    }
+   
     /**
      * This method exits because in the SAX parser class can't extends from
      * Observable.

@@ -25,6 +25,7 @@
 package view;
 
 import algorithms.AlgorithmManager;
+import algorithms.Clustering;
 import charts.PieChart;
 import charts.XYSplineChart;
 import charts.data.BugCommentDistributionGenerator;
@@ -70,9 +71,7 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTMLDocument;
 import logger.ThesisLogger;
-import algorithms.ClusteringAlgorithm;
 import lucene.LuceneManager;
-import metrics.Assignment;
 import metrics.Focus;
 import metrics.Metric;
 import metrics.Scattering;
@@ -248,12 +247,12 @@ public class MainView extends FrameView implements Observer {
                 LuceneManager.getInstance(analyzer).addObserver(this);
                 LuceneManager.getInstance().search(indexDir, query,
                         ((Integer) jComboBox2.getSelectedItem()),
-                        ((ClusteringAlgorithm) jComboBox3.getSelectedItem()));
+                        ((Clustering) jComboBox3.getSelectedItem()));
             } else {
                 LuceneManager.getInstance(ParametersEnum.INDEX_DEFAULT).addObserver(this);
                 LuceneManager.getInstance().search(indexDir, query,
                         ((Integer) jComboBox2.getSelectedItem()),
-                        ((ClusteringAlgorithm) jComboBox3.getSelectedItem()));
+                        ((Clustering) jComboBox3.getSelectedItem()));
             }
         } else {
             showIndexResults(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage1"));
@@ -1650,7 +1649,7 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
     jLabel28.setName("jLabel28"); // NOI18N
 
     jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new Metric[] {
-        new Assignment(),
+        new metrics.Assignment(),
         new Weight(),
         new Scattering(),
         new Focus()}));
@@ -1710,7 +1709,7 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
     );
 
     //jComboBox5.removeAllItems();
-    //jComboBox5.addItem(new Assignment());
+    //jComboBox5.addItem(new metrics.Assignment());
     //jComboBox5.addItem(new Weight());
     //jComboBox5.addItem(new Scattering());
     //jComboBox5.addItem(new Focus());
@@ -1865,11 +1864,11 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
     jLabel5.setText(bundle.getString("MainView.jLabel5.text")); // NOI18N
     jLabel5.setName("jLabel5"); // NOI18N
 
-    jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new algorithms.ClusteringAlgorithm[] {
-        new algorithms.ClusteringAlgorithm(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),
-        new algorithms.ClusteringAlgorithm(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),
-        new algorithms.ClusteringAlgorithm(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),
-        new algorithms.ClusteringAlgorithm(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())}));
+    jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new algorithms.Clustering[] {
+        new algorithms.Clustering(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),
+        new algorithms.Clustering(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),
+        new algorithms.Clustering(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),
+        new algorithms.Clustering(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())}));
 jComboBox3.setName("jComboBox3"); // NOI18N
 
 jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new Integer[] {

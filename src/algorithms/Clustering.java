@@ -28,6 +28,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import logger.ThesisLogger;
 import org.carrot2.core.Cluster;
 import org.carrot2.core.Controller;
@@ -36,14 +39,34 @@ import org.carrot2.core.IClusteringAlgorithm;
 import org.carrot2.core.ProcessingComponentConfiguration;
 import org.carrot2.source.lucene.LuceneDocumentSource;
 
-public class ClusteringAlgorithm {
+public class Clustering extends Observable implements Runnable {
+
+    private static Clustering instance = null;
 
     private final IClusteringAlgorithm algorithm;
-    private final String name;
+    private final String name;    
+    private List scd_list;
+    private List<Cluster> result_list;
+    
 
-    public ClusteringAlgorithm(IClusteringAlgorithm algorithm, String nombre) {        
+    public Clustering(IClusteringAlgorithm algorithm, String nombre) {
         this.algorithm = algorithm;
-        this.name = nombre;
+        this.name = nombre;        
+        
+    }
+
+    public static Clustering getInstance(IClusteringAlgorithm algorithm, String nombre, List scd_list) {
+        if ((instance == null) || ((instance != null) && !(instance.name.equals(nombre)))) {
+            instance = new Clustering(algorithm, nombre);
+        }
+        instance.scd_list = scd_list;  // Replace the lucene's query documents.    
+        return instance;
+    }
+    
+    public static Clustering getInstance() {
+        if (instance != null)
+            return instance;
+        return null;
     }
 
     @Override
@@ -54,20 +77,37 @@ public class ClusteringAlgorithm {
     public IClusteringAlgorithm getAlgoritmo() {
         return algorithm;
     }
+
+    @Override
+    public void run() {
+        try {
+            Process();
+        } catch (IOException ex) {
+            Logger.getLogger(Clustering.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * @return The list with clusters.
+     */
+    public List<Cluster> getResult() {
+        return result_list;        
+    }
+
     /**
      * Performs processing result of the clustering algorithm.
-     * 
-     * @param indexPath Index url path.
-     * @param scd_list Lucene documents.
+     *
      * @return List of Carrot clusters.
-     * @throws IOException 
+     * @throws IOException
      */
-    public List<Cluster> Process(String indexPath, List scd_list) throws IOException {
-        Controller carrotController = ControllerFactory.createSimple(); 
+    private void Process() throws IOException {
+        Controller carrotController = ControllerFactory.createSimple();
         ThesisLogger.get().addAppender(org.carrot2.log4j.BufferingAppender.attach("carrot2"));
         //ThesisLogger.get().getAppender("carrot2")
         Map<String, Object> luceneGlobalAttributes = new HashMap<String, Object>();
-        carrotController.init(new HashMap<String, Object>(), new ProcessingComponentConfiguration(LuceneDocumentSource.class, "lucene", luceneGlobalAttributes));        
-        return carrotController.process(scd_list, null, algorithm.getClass()).getClusters();
+        carrotController.init(new HashMap<String, Object>(), new ProcessingComponentConfiguration(LuceneDocumentSource.class, "lucene", luceneGlobalAttributes));
+        result_list = carrotController.process(scd_list, null, algorithm.getClass()).getClusters();
+        setChanged();
+        notifyObservers();              
     }
 }

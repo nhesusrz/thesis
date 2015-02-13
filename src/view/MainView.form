@@ -1923,7 +1923,7 @@
                     <Component class="javax.swing.JComboBox" name="jComboBox3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new javax.swing.DefaultComboBoxModel(new algorithms.ClusteringAlgorithm[] { &#xa;new algorithms.ClusteringAlgorithm(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),&#xa;new algorithms.ClusteringAlgorithm(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),&#xa;new algorithms.ClusteringAlgorithm(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),&#xa;new algorithms.ClusteringAlgorithm(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())})" type="code"/>
+                          <Connection code="new javax.swing.DefaultComboBoxModel(new algorithms.Clustering[] {&#xa;    new algorithms.Clustering(new BisectingKMeansClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_KMEANS.toString()),&#xa;    new algorithms.Clustering(new STCClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SUFFIX.toString()),&#xa;    new algorithms.Clustering(new LingoClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_LINGO.toString()),&#xa;    new algorithms.Clustering(new ByFieldClusteringAlgorithm(), ParametersEnum.SEARCH_ALGORITHM_SYNTHETIC.toString())})" type="code"/>
                         </Property>
                         <Property name="name" type="java.lang.String" value="jComboBox3" noResource="true"/>
                       </Properties>
