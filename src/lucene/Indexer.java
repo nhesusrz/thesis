@@ -44,6 +44,7 @@ import org.apache.lucene.index.IndexWriter.MaxFieldLength;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.store.SimpleFSDirectory;
 import org.xml.sax.SAXException;
+import util.Duration;
 import util.ParametersEnum;
 
 public class Indexer extends Observable implements Runnable {
@@ -112,7 +113,7 @@ public class Indexer extends Observable implements Runnable {
         setChanged();
         notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.End"));
         setChanged();
-        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Mensage1"), docsCount, (end - start)));
+        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Mensage1"), docsCount, Duration.getDurationBreakdown(end - start)));
         docsCount = 0;
     }
 
