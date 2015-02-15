@@ -72,18 +72,14 @@ public class VersionDAOImpl extends DAOManager implements VersionDAO {
         try {
             ResultSet rs = executeQuery("SELECT * FROM VERSION WHERE COUNTER_ID='1'");
             if (rs != null) {
-                rs.next();                    
-                switch ((String) rs.getObject(2)) {
-                    case "Day":
+                rs.next();     
+                if(((String) rs.getObject(2)).equals(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.day"))) {
                         typeVersion = ParametersEnum.VERSION_STEP_DAY;
-                        break;
-                    case "Month":
+                    } else if(((String) rs.getObject(2)).equals(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.month"))) {
                         typeVersion = ParametersEnum.VERSION_STEP_MONTH;
-                        break;
-                    default:
+                    } else {
                         typeVersion = ParametersEnum.VERSION_STEP_YEAR;
-                        break;
-                }
+                    }
                 stepVersion = ((Integer) rs.getObject(3));
             }
         } catch (SQLException ex) {
