@@ -40,7 +40,7 @@ public class BugDTO extends BaseDTO {
     private String type;
     private String priority;
     private String component;
-    private Integer starts;
+    private Integer stars;
     private String reportedBY;
     private Date openedDate;
     private String descripcion;
@@ -67,7 +67,7 @@ public class BugDTO extends BaseDTO {
         this.type = type;
         this.priority = priority;
         this.component = component;
-        this.starts = starts;
+        this.stars = starts;
         this.reportedBY = reportedBY;
         this.openedDate = openedDate;
         this.descripcion = description;
@@ -128,7 +128,7 @@ public class BugDTO extends BaseDTO {
     }
 
     public Integer getStars() {
-        return starts;
+        return stars;
     }
 
     public String getReportedBY() {
@@ -184,7 +184,7 @@ public class BugDTO extends BaseDTO {
     }
 
     public void setStars(Integer starts) {
-        this.starts = starts;
+        this.stars = starts;
     }
 
     public void setReportedBY(String reportedBY) {

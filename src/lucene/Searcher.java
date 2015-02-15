@@ -53,6 +53,7 @@ import org.apache.lucene.store.SimpleFSDirectory;
 import org.apache.lucene.util.Version;
 import org.carrot2.core.Cluster;
 import org.carrot2.core.Document;
+import util.Duration;
 import util.ParametersEnum;
 
 public class Searcher extends Observable implements Observer, Runnable {
@@ -117,6 +118,7 @@ public class Searcher extends Observable implements Observer, Runnable {
         List<Cluster> clusters = new ArrayList();
         if(scoreDocs.length > 1) {
             AlgorithmManager.getInstance().excuteClustering(this, clusteringAlgorithm.getAlgoritmo(), clusteringAlgorithm.toString(), ConvertLuceneDocsToCarrotDocs(scoreDocs));
+            long end = System.currentTimeMillis() - start;
             try {
                 waitResultMutex.acquire();
             } catch (InterruptedException ex) {
@@ -126,7 +128,7 @@ public class Searcher extends Observable implements Observer, Runnable {
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.End"));
             setChanged();
-            notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage3"), clusteringAlgorithm.toString(), counter,clusters.size(), scoreDocs.length, System.currentTimeMillis() - start));
+            notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Mensage3"), clusteringAlgorithm.toString(), counter,clusters.size(), scoreDocs.length, Duration.getDurationBreakdown(end)));
             for (int i = 0; i < clusters.size(); i++) {
                 Cluster cluster = clusters.get(i);
                 List<Document> cluster_docs = cluster.getDocuments();

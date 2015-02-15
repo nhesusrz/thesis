@@ -185,6 +185,7 @@ public class AlgorithmManager extends Observable implements Observer {
     /**
      * This method exits because in the SAX parser class can't extends from
      * Observable.
+     * @param msj
      */
 
     public void notify(String msj) {

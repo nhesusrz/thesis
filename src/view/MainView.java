@@ -953,9 +953,9 @@ public class MainView extends FrameView implements Observer {
         jButton12.setName("jButton12"); // NOI18N
 
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new ParametersEnum[] {
-            ParametersEnum.LDA_STEP_DAY,
-            ParametersEnum.LDA_STEP_MONTH,
-            ParametersEnum.LDA_STEP_YEAR }));
+            ParametersEnum.VERSION_STEP_DAY,
+            ParametersEnum.VERSION_STEP_MONTH,
+            ParametersEnum.VERSION_STEP_YEAR }));
 jComboBox6.setSelectedIndex(0);
 jComboBox6.setName("jComboBox6"); // NOI18N
 

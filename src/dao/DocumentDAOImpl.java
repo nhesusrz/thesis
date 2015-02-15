@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import logger.ThesisLogger;
+import util.Duration;
 
 public class DocumentDAOImpl extends DAOManager implements DocumentDAO {
 
@@ -238,7 +239,7 @@ public class DocumentDAOImpl extends DAOManager implements DocumentDAO {
                 long end = System.currentTimeMillis() - start;
                 ldaDocCount = +docLDAcountTemp;
                 setChanged();
-                notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("DocGen.Mensage1"), docLDAcountTemp, end));                                      
+                notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("DocGen.Mensage1"), docLDAcountTemp, Duration.getDurationBreakdown(end)));                                      
             } else {
                 setChanged();
                 notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("DocGen.Error1"));

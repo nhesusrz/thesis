@@ -44,6 +44,7 @@ import logger.ThesisLogger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+import util.Duration;
 
 public class Parser extends DefaultHandler implements Runnable, Observer {
 
@@ -89,7 +90,7 @@ public class Parser extends DefaultHandler implements Runnable, Observer {
             parserController.notify(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"));
         } catch (IOException e) {
             ThesisLogger.get().error("Parse.run: " + e.toString());
-            parserController.notify(ResourceBundle.getBundle("view/Bundle").getString("General.Mensage1"));
+            parserController.notify(ResourceBundle.getBundle("view/Bundle").getString("Parser.Error3"));
             parserController.notify(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"));
         }
     }
@@ -213,10 +214,10 @@ public class Parser extends DefaultHandler implements Runnable, Observer {
             DAOManager.getInstance().deleteTablesForParsing();
         }
         long start = System.currentTimeMillis();
-        parser.parse(fileName.replace("C:", "file:"), this); // Uses file: not c:
+        parser.parse("file:///"+ fileName, this);
         long end = System.currentTimeMillis() - start;
         parserController.notify(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"));
-        parserController.notify(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Parser.Mensage2"), bugsParsed, commentsParsed, end));
+        parserController.notify(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("Parser.Mensage2"), bugsParsed, commentsParsed, Duration.getDurationBreakdown(end)));
         bugsParsed = 0;
     }
 

@@ -67,6 +67,7 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import logger.ThesisLogger;
+import util.Duration;
 import util.PropertiesApp;
 import util.ParametersEnum;
 
@@ -246,7 +247,7 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
         long end = System.currentTimeMillis() - start;
         insertTopicsAndDocuments();
         setChanged();
-        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("LDA.Mensage1"), DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName()).getCount(), end));
+        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("LDA.Mensage1"), DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName()).getCount(), Duration.getDurationBreakdown(end)));
     }
 
     /**

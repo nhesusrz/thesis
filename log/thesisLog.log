@@ -18981,3 +18981,9 @@ SELECT COUNT(COUNTER_ID) FROM COMMENT WHERE WHEN BETWEEN '2010-12-01' AND '2011-
 	stoplabels.tr
 	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@750159]
 		- jar:file:/C:/Program%20Files/Java/Librerias/Carrot2/carrot2-java-api-3.9.4/lib/required/carrot2-core-3.9.4.jar!/stoplabels.tr
+0    14-02-2015 22:36:36 [Thread-5] ERROR logger.ThesisLogger : Parse.run: java.io.EOFException: no more input
+170005 14-02-2015 22:39:26 [Thread-6] ERROR logger.ThesisLogger : Parse.run: java.io.EOFException: no more input
+244029 14-02-2015 22:40:40 [Thread-7] ERROR logger.ThesisLogger : Parse.run: java.io.EOFException: no more input
+285317 14-02-2015 22:41:21 [Thread-8] ERROR logger.ThesisLogger : Parse.run: java.io.EOFException: no more input
+427399 14-02-2015 22:43:43 [Thread-9] ERROR logger.ThesisLogger : Parse.run: java.io.EOFException: no more input
+0    14-02-2015 22:43:56 [Thread-5] ERROR logger.ThesisLogger : Parse.run: java.io.EOFException: no more input

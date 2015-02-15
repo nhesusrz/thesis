@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import logger.ThesisLogger;
+import util.Duration;
 import util.ParametersEnum;
 
 public class VersionDAOImpl extends DAOManager implements VersionDAO {
@@ -74,13 +75,13 @@ public class VersionDAOImpl extends DAOManager implements VersionDAO {
                 rs.next();                    
                 switch ((String) rs.getObject(2)) {
                     case "Day":
-                        typeVersion = ParametersEnum.LDA_STEP_DAY;
+                        typeVersion = ParametersEnum.VERSION_STEP_DAY;
                         break;
                     case "Month":
-                        typeVersion = ParametersEnum.LDA_STEP_MONTH;
+                        typeVersion = ParametersEnum.VERSION_STEP_MONTH;
                         break;
                     default:
-                        typeVersion = ParametersEnum.LDA_STEP_YEAR;
+                        typeVersion = ParametersEnum.VERSION_STEP_YEAR;
                         break;
                 }
                 stepVersion = ((Integer) rs.getObject(3));
@@ -193,39 +194,31 @@ public class VersionDAOImpl extends DAOManager implements VersionDAO {
                     notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.Run"));
                     java.util.Date dini = new java.util.Date(dateFromVersion.getTime());
                     java.util.Date dtemp = new java.util.Date(dateFromVersion.getTime());
-                    switch (typeVersion.toString()) {
-                        case "Day":
-                            dtemp.setDate(dtemp.getDate() + stepVersion);
-                            break;
-                        case "Month":
-                            dtemp.setMonth(dtemp.getMonth() + stepVersion);
-                            break;
-                        default:
-                            dtemp.setYear(dtemp.getYear() + stepVersion);
-                            break;
-                    }
+                    if(typeVersion.toString().equals(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.day"))) {
+                        dtemp.setDate(dtemp.getDate() + stepVersion);
+                    } else if(typeVersion.toString().equals(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.month"))) {
+                        dtemp.setMonth(dtemp.getMonth() + stepVersion);
+                    } else {
+                        dtemp.setYear(dtemp.getYear() + stepVersion);
+                    }         
                     java.util.Date dend = new java.util.Date(dateToVersion.getTime());
                     VersionDTO versionDto = new VersionDTO();
                     versionDto.setDateFrom(dini);
                     versionDto.setDateTo(dtemp);
                     versionDto.setStep(stepVersion);
-                    versionDto.setStepType(typeVersion);
+                    versionDto.setStepType(typeVersion);             
                     while (dend.after(dtemp)) {
                         error = this.insert(versionDto);
                         if (!error) {                            
                             dini = new java.util.Date(dtemp.getTime());
                             versionDto.setDateFrom(dini);
-                            switch (typeVersion.toString()) {
-                                case "Day":
-                                    dtemp.setDate(dtemp.getDate() + stepVersion);
-                                    break;
-                                case "Month":
-                                    dtemp.setMonth(dtemp.getMonth() + stepVersion);
-                                    break;
-                                default:
-                                    dtemp.setYear(dtemp.getYear() + stepVersion);
-                                    break;
-                            }
+                            if(typeVersion.toString().equals(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.day"))) {
+                                dtemp.setDate(dtemp.getDate() + stepVersion);
+                            } else if(typeVersion.toString().equals(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.month"))) {
+                                dtemp.setMonth(dtemp.getMonth() + stepVersion);
+                            } else {
+                                dtemp.setYear(dtemp.getYear() + stepVersion);
+                            }                            
                             versionDto.setDateTo(dtemp);
                         }
                     }
@@ -240,7 +233,7 @@ public class VersionDAOImpl extends DAOManager implements VersionDAO {
                     notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.End"));
                     if (!error) {
                         setChanged();
-                        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Mensage1"), versionCount, end));
+                        notifyObservers(MessageFormat.format(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Mensage1"), versionCount, Duration.getDurationBreakdown(end)));
                     }
                 } else {
                     setChanged();

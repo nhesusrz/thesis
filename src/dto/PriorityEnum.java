@@ -26,10 +26,8 @@ package dto;
 
 public enum PriorityEnum {
 
-    small,
-    medium,
-    high,
     critical,
-    blocker,
-
+    high,
+    medium,
+    low,
 }
