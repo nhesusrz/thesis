@@ -63,9 +63,9 @@ public class TopicDTO extends BaseDTO {
     public String toString() {
         String result = "<html><b>Z" + id + "</b>:{ <i>";
         int i = 0;
-        for (Iterator<Map.Entry<String, BigDecimal>> it = getSortDataWords().entrySet().iterator(); it.hasNext() && (i < 3);) {
+        for (Iterator<Map.Entry<String, BigDecimal>> it = getSortDataWords().entrySet().iterator(); it.hasNext() && (i < 5);) {
             Map.Entry<String, BigDecimal> entry = it.next();
-            if (i == 2) {
+            if (i == 4) {
                 result += entry.getKey() + "</i> }</html>";
             } else {
                 result += entry.getKey() + ", ";

@@ -43,6 +43,7 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriter.MaxFieldLength;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.store.SimpleFSDirectory;
+import org.tartarus.snowball.ext.EnglishStemmer;
 import org.xml.sax.SAXException;
 import util.Duration;
 import util.ParametersEnum;
@@ -133,12 +134,60 @@ public class Indexer extends Observable implements Runnable {
             docLucene.add(field);
             field = new Field(ParametersEnum.INDEX_FIELD2.toString(), DateTools.timeToString(docSource.getDate().getTime(), DateTools.Resolution.MINUTE), Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS, Field.TermVector.YES);
             docLucene.add(field);
-            field = new Field(ParametersEnum.INDEX_FIELD3.toString(), docSource.getText().toLowerCase(), Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+            field = new Field(ParametersEnum.INDEX_FIELD3.toString(), applyStemming(removeSimbols(docSource.getText().toLowerCase())), Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             //field.setBoost((float) 1.5);
             docLucene.add(field);
             index_writer.addDocument(docLucene);
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.Run"));
         }
+    }
+    
+    /**
+     * This remove some noice from the text documents.
+     */
+    private String removeSimbols(String text) {
+        // Regular exp for url.
+        //text = text.replaceAll("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text); 
+        // Regular exp for 24 hours time.
+        //text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
+        // Regular exp for 12 hours time.
+        //text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
+        // Regular exp for 12 hours time.
+        text = text.replaceAll("^(\\d+\\\\.)?(\\d+\\\\.)?(\\\\*|\\d+)$", text);
+        text = text.replaceAll("\\.", " ");
+        text = text.replaceAll(":", " ");
+        text = text.replaceAll("/", " ");
+        text = text.replaceAll("\\(", " ");
+        text = text.replaceAll("\\)", " ");
+        text = text.replaceAll("\"", " ");
+        text = text.replaceAll("\\?", " ");
+        text = text.replaceAll("\\!", " ");
+        text = text.replaceAll("-", " ");
+        text = text.replaceAll("\\\\", " ");
+        //text = text.replaceAll("_", " ");
+        text = text.replaceAll(",", " ");
+        text = text.replaceAll("'s", " ");
+        return text;
+    }
+    
+    /**
+     * Reduce all words in the string to each stem.
+     *
+     * @param text Text to reduce.
+     * @return Text with stems.
+     */
+    private String applyStemming(String text) {
+        String textResult = new String();
+        EnglishStemmer stemmer = new EnglishStemmer();
+        String delim= "[ .,;?!¡¿\'\"\\[\\]]+";
+        String[] textArray = text.split(delim);
+        for (String word : textArray) {
+            stemmer.setCurrent(word);
+            stemmer.stem(); 
+            if(!stemmer.getCurrent().isEmpty())
+                textResult = textResult +  stemmer.getCurrent() + " ";            
+        }
+        return textResult;
     }
 }

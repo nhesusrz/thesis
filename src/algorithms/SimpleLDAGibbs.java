@@ -67,6 +67,7 @@ import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import logger.ThesisLogger;
+import org.tartarus.snowball.ext.EnglishStemmer;
 import util.Duration;
 import util.PropertiesApp;
 import util.ParametersEnum;
@@ -361,11 +362,11 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
          * the pipe.
          */
         List<BaseDTO> docs = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(dateFrom.getTime()), new java.sql.Date(dateTo.getTime()));
-        int idDocLDA = 0;
+        int idDocLDA = 0;        
         for (BaseDTO baseDto : docs) {
             DocumentDTO doc = (DocumentDTO) baseDto;
             docsId.put(idDocLDA, doc.getId());
-            training.addThruPipe(new StringArrayIterator(new String[]{removeChars(doc.getText())}));
+            training.addThruPipe(new StringArrayIterator(new String[]{applyStemming(removeSimbols(doc.getText()))}));
             idDocLDA++;
         }
 
@@ -374,7 +375,7 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
     /**
      * This remove some noice from the text documents.
      */
-    private String removeChars(String text) {
+    private String removeSimbols(String text) {
         // Regular exp for url.
         //text = text.replaceAll("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text); 
         // Regular exp for 24 hours time.
@@ -395,7 +396,28 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
         text = text.replaceAll("\\\\", " ");
         //text = text.replaceAll("_", " ");
         text = text.replaceAll(",", " ");
+        text = text.replaceAll("'s", " ");
         return text;
+    }
+
+    /**
+     * Reduce all words in the string to each stem.
+     *
+     * @param text Text to reduce.
+     * @return Text with stems.
+     */
+    private String applyStemming(String text) {
+        String textResult = new String();
+        EnglishStemmer stemmer = new EnglishStemmer();
+        String delim= "[ .,;?!¡¿\'\"\\[\\]]+";
+        String[] textArray = text.split(delim);
+        for (String word : textArray) {
+            stemmer.setCurrent(word);
+            stemmer.stem(); 
+            if(!stemmer.getCurrent().isEmpty())
+                textResult = textResult +  stemmer.getCurrent() + " ";            
+        }
+        return textResult;
     }
 
     /**

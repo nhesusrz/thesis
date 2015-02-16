@@ -324,7 +324,7 @@ public class MainView extends FrameView implements Observer {
         iniLabels();
         iniButtons();
         iniJSpinners();
-        iniTopicComboBox();
+//        iniTopicComboBox();
         iniVersionComboBox();
         refreshTablesDocumentTopicMatrix();
         if (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()).getCount() > 0) {
@@ -341,13 +341,13 @@ public class MainView extends FrameView implements Observer {
         }
     }
 
-    private void iniTopicComboBox() {
-        int topicsCount = (DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount();
-        jComboBox1.removeAllItems();
-        for (int tIndx = 1; tIndx <= topicsCount; tIndx++) {
-            jComboBox1.addItem(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicWords(tIndx));
-        }
-    }
+//    private void iniTopicComboBox() {
+//        int topicsCount = (DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount();
+//        jComboBox1.removeAllItems();
+//        for (int tIndx = 1; tIndx <= topicsCount; tIndx++) {
+//            jComboBox1.addItem(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicWords(tIndx));
+//        }
+//    }
 
     private void showActivityMessage(String msj) {
         HTMLDocument doc = (HTMLDocument) jTextPane2.getStyledDocument();
@@ -433,6 +433,7 @@ public class MainView extends FrameView implements Observer {
                 topics[topicId - 1] = (TopicDTO) ((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).get(topicId);
             }
             jList2.setListData(topics);
+            jList3.setListData(topics);
         }
     }
 
@@ -486,9 +487,9 @@ public class MainView extends FrameView implements Observer {
         TableRowSorter<TableModel> rowShorter2 = new TableRowSorter<TableModel>(tableModel2);
         jTable2.setRowSorter(rowShorter2);
 
-        tableModel3 = (javax.swing.table.DefaultTableModel) jTable3.getModel();
-        TableRowSorter<TableModel> rowShorter3 = new TableRowSorter<TableModel>(tableModel3);
-        jTable3.setRowSorter(rowShorter3);
+//        tableModel3 = (javax.swing.table.DefaultTableModel) jTable3.getModel();
+//        TableRowSorter<TableModel> rowShorter3 = new TableRowSorter<TableModel>(tableModel3);
+//        jTable3.setRowSorter(rowShorter3);
 
         int topicsCount = ((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount();
         if (topicsCount != 0) {
@@ -496,10 +497,10 @@ public class MainView extends FrameView implements Observer {
             deleteTables();
             DefaultTableCellRenderer centerRenderer2 = new DefaultTableCellRenderer();
             centerRenderer2.setHorizontalAlignment(JLabel.CENTER);
-            if (jComboBox1.getSelectedItem() != null) {
-                int tIndx = ((TopicDTO) jComboBox1.getSelectedItem()).getID();
+            if (jList3.getSelectedValue() != null) {//jComboBox1.getSelectedItem() != null) {
+                int tIndx = ((TopicDTO) jList3.getSelectedValue()).getID();
                 TopicDTO topic = ((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicWords(tIndx);
-                fillTableTopic(topic, tableModel3);
+//                fillTableTopic(topic, tableModel3);
                 fillTableTopicTerm(topic, tableModel);
                 topic = ((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicDocs(tIndx);
                 fillTableDocumentTopic(topic, tableModel2);
@@ -509,15 +510,15 @@ public class MainView extends FrameView implements Observer {
                 jTable2.getColumnModel().getColumn(0).setMaxWidth(60);
                 jTable1.getColumnModel().getColumn(0).setMinWidth(300);
                 jTable1.getColumnModel().getColumn(0).setMaxWidth(300);
-                jTable3.getColumnModel().getColumn(0).setMinWidth(400);
-                jTable3.getColumnModel().getColumn(0).setMaxWidth(400);
+//                jTable3.getColumnModel().getColumn(0).setMinWidth(400);
+//                jTable3.getColumnModel().getColumn(0).setMaxWidth(400);
             }
         }
     }
 
     private void deleteTables() {
-        tableModel3.setRowCount(0);
-        tableModel3.setColumnCount(0);
+//        tableModel3.setRowCount(0);
+//        tableModel3.setColumnCount(0);
         tableModel.setRowCount(0);
         tableModel.setColumnCount(1);
         ArrayList terms = (ArrayList) ((TermDAO) DAOManager.getDAO(DAONameEnum.TERM_DAO.getName())).getAllTerm();
@@ -685,8 +686,6 @@ public class MainView extends FrameView implements Observer {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
@@ -707,6 +706,8 @@ public class MainView extends FrameView implements Observer {
         jSpinner6 = new javax.swing.JSpinner();
         jCheckBox2 = new javax.swing.JCheckBox();
         jLabel31 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -736,13 +737,14 @@ public class MainView extends FrameView implements Observer {
         jPanel2 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jList3 = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -983,14 +985,6 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
     jLabel30.setText(bundle.getString("MainView.jLabel30.text")); // NOI18N
     jLabel30.setName("jLabel30"); // NOI18N
 
-    jLabel17.setText(bundle.getString("MainView.jLabel17.text")); // NOI18N
-    jLabel17.setName("jLabel17"); // NOI18N
-
-    jTextField12.setEditable(false);
-    jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-    jTextField12.setText(bundle.getString("MainView.jTextField12.text")); // NOI18N
-    jTextField12.setName("jTextField12"); // NOI18N
-
     jButton13.setAction(actionMap.get("generateVersions")); // NOI18N
     jButton13.setText(bundle.getString("MainView.jButton13.text")); // NOI18N
     jButton13.setName("jButton13"); // NOI18N
@@ -1013,17 +1007,18 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
         jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel8Layout.createSequentialGroup()
             .addGap(88, 88, 88)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.CENTER)
-                .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel8Layout.createSequentialGroup()
-                    .addComponent(jButton13)
+            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addComponent(jLabel37)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGap(4, 4, 4)
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jButton14))
-                .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel8Layout.createSequentialGroup()
-                    .addComponent(jButton11)
+                .addComponent(jLabel22)
+                .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jButton12))
-                .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.CENTER))
+                    .addComponent(jButton12)))
             .addGap(89, 89, 89))
         .addGroup(jPanel8Layout.createSequentialGroup()
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1045,13 +1040,9 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
                         .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel8Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel18)
-                        .addComponent(jLabel17))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField12)
-                        .addComponent(jTextField8))))
+                    .addComponent(jLabel18)
+                    .addGap(10, 10, 10)
+                    .addComponent(jTextField8)))
             .addContainerGap())
     );
     jPanel8Layout.setVerticalGroup(
@@ -1063,15 +1054,11 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                 .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel18))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel17)
-                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGap(18, 18, 18)
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                 .addComponent(jButton12)
                 .addComponent(jButton11))
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
             .addComponent(jLabel37)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -1171,6 +1158,14 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
     jLabel31.setText(bundle.getString("MainView.jLabel31.text")); // NOI18N
     jLabel31.setName("jLabel31"); // NOI18N
 
+    jLabel17.setText(bundle.getString("MainView.jLabel17.text")); // NOI18N
+    jLabel17.setName("jLabel17"); // NOI18N
+
+    jTextField12.setEditable(false);
+    jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+    jTextField12.setText(bundle.getString("MainView.jTextField12.text")); // NOI18N
+    jTextField12.setName("jTextField12"); // NOI18N
+
     javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
     jPanel9.setLayout(jPanel9Layout);
     jPanel9Layout.setHorizontalGroup(
@@ -1189,15 +1184,18 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
                         .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jSpinner5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSpinner6)
-                        .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSpinner5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinner2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinner3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSpinner6)
+                            .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.LEADING)))))
             .addGap(0, 19, Short.MAX_VALUE))
     );
     jPanel9Layout.setVerticalGroup(
@@ -1226,8 +1224,12 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
                 .addComponent(jSpinner6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel27))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel17)
+                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jCheckBox2)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                 .addComponent(jButton10)
                 .addComponent(jButton9))
@@ -1483,33 +1485,18 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
 
     jScrollPane5.setName("jScrollPane5"); // NOI18N
 
-    jTable3.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-        },
-        new String [] {
-
+    jList3.setModel(new javax.swing.AbstractListModel() {
+        TopicDTO[] topcis = {};
+        public int getSize() { return topcis.length; }
+        public TopicDTO getElementAt(int i) { return topcis[i]; }
+    });
+    jList3.setName("jList3"); // NOI18N
+    jList3.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+            jList3ValueChanged(evt);
         }
-    ){
-        Class[] types = new Class [] {
-            java.lang.String.class, java.math.BigDecimal.class
-        };
-        boolean[] canEdit = new boolean [] {
-            false, false
-        };
-
-        public boolean isCellEditable (int row, int column) {
-            return false; //canEdit [column];
-        }
-    }
-
-    );
-    jTable3.setToolTipText(bundle.getString("MainView.jTable3.toolTipText")); // NOI18N
-    jScrollPane5.setViewportView(jTable3);
-    //jTable3.setRowHeight(20);
-    DefaultTableCellRenderer centerRenderer3 = new DefaultTableCellRenderer();
-    centerRenderer3.setHorizontalAlignment(JLabel.CENTER);
-    jScrollPane5.setViewportView(jTable3);
-    jTable3.getAccessibleContext().setAccessibleName(bundle.getString("MainView.jTable3.AccessibleContext.accessibleName")); // NOI18N
+    });
+    jScrollPane5.setViewportView(jList3);
 
     jScrollPane2.setName("jScrollPane2"); // NOI18N
 
@@ -1574,45 +1561,47 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
     jScrollPane3.setViewportView(jTable2);
     jTable2.getAccessibleContext().setAccessibleName(bundle.getString("MainView.jTable2.AccessibleContext.accessibleName")); // NOI18N
 
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new TopicDTO[] { }));
-    jComboBox1.setName("jComboBox1");
-    jComboBox1.addItemListener(new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-            jComboBox1ItemStateChanged(evt);
-        }
-    });
+    jLabel14.setText(bundle.getString("MainView.jLabel14.text")); // NOI18N
+    jLabel14.setName("jLabel14"); // NOI18N
 
     jLabel35.setText(bundle.getString("MainView.jLabel35.text")); // NOI18N
     jLabel35.setName("jLabel35"); // NOI18N
+
+    jLabel39.setText(bundle.getString("MainView.jLabel39.text")); // NOI18N
+    jLabel39.setName("jLabel39"); // NOI18N
 
     javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
     jPanel7.setLayout(jPanel7Layout);
     jPanel7Layout.setHorizontalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel7Layout.createSequentialGroup()
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addComponent(jLabel35)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGap(34, 34, 34)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-            .addGap(34, 34, 34)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap())
+                    .addComponent(jLabel14)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel35))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel39)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(19, 19, 19))
     );
     jPanel7Layout.setVerticalGroup(
         jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel7Layout.createSequentialGroup()
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(jLabel35))
-            .addGap(18, 18, 18)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel14)
+                .addComponent(jLabel35)
+                .addComponent(jLabel39))
+            .addGap(9, 9, 9)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane5)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
-                .addComponent(jScrollPane3))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING))
             .addContainerGap())
     );
 
@@ -1688,10 +1677,10 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 .addGroup(jPanel11Layout.createSequentialGroup()
                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel28)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel29))
                     .addGap(0, 0, Short.MAX_VALUE))
-                .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
             .addContainerGap())
     );
     jPanel11Layout.setVerticalGroup(
@@ -1723,7 +1712,7 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
         .addGroup(jPanel10Layout.createSequentialGroup()
             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 907, Short.MAX_VALUE))
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE))
     );
     jPanel10Layout.setVerticalGroup(
         jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2222,10 +2211,6 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         }
     }//GEN-LAST:event_jSpinner8StateChanged
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
-        refreshTablesDocumentTopicMatrix();
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
-
     private void jSpinner9StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner9StateChanged
         Integer value = (Integer) jSpinner9.getValue();
         if (value > 0 && value <= (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCount()) {
@@ -2283,6 +2268,14 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         }
     }//GEN-LAST:event_jTextField7KeyPressed
 
+    private void jList3ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList3ValueChanged
+        if (!evt.getValueIsAdjusting()) {
+            if (jList3.getSelectedValue() != null) {
+                refreshTablesDocumentTopicMatrix();
+            }
+        }
+    }//GEN-LAST:event_jList3ValueChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -2301,7 +2294,6 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
@@ -2316,6 +2308,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -2342,6 +2335,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2350,6 +2344,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
     private javax.swing.JList jList2;
+    private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2367,6 +2362,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
@@ -2391,7 +2387,6 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
@@ -2533,7 +2528,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             jButton10.setEnabled(false);
             setProgressBar(0);
             setLabelBar("");
-            iniTopicComboBox();
+//            iniTopicComboBox();
             refreshJLists();
             refreshTablesDocumentTopicMatrix();
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.Inic"))) { // LDA. VERSIONS. 
