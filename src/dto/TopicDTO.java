@@ -253,7 +253,10 @@ public class TopicDTO extends BaseDTO {
         for (Map.Entry<Integer, BigDecimal> entry : docs.entrySet()) {
             result = result.add(entry.getValue().subtract(mu).abs().pow(2));
         }
-        return result.divideToIntegralValue(new BigDecimal(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount()));
+        if (((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount() > 0) {
+            return result.divideToIntegralValue(new BigDecimal(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount()));
+        }
+        return new BigDecimal(0);
     }
 
 }
