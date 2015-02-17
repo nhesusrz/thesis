@@ -53,7 +53,7 @@ public enum ParametersEnum {
     VERSION_STEP_YEAR(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.year")),
     
     LUCENE_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\lucene.properties"),
-    LUCENE_STOP_WORDS("stopwords"),
+    STOP_WORDS("stopwords"),
     
     INDEX_FIELD1("Id"),
     INDEX_FIELD2("Date"),

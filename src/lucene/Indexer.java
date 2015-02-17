@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.DateTools;
 import org.apache.lucene.document.Document;
@@ -43,20 +44,25 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriter.MaxFieldLength;
 import org.apache.lucene.store.LockObtainFailedException;
 import org.apache.lucene.store.SimpleFSDirectory;
-import org.tartarus.snowball.ext.EnglishStemmer;
+import org.tartarus.snowball.ext.PorterStemmer;
 import org.xml.sax.SAXException;
 import util.Duration;
 import util.ParametersEnum;
+import util.PropertiesApp;
 
 public class Indexer extends Observable implements Runnable {
 
     private IndexWriter index_writer;
     private int docsCount;
     private SimpleFSDirectory directory;
+    
+    private String stopWords;
+    PorterStemmer stemmer = new PorterStemmer();
 
     public Indexer(Analyzer analyzer, File indexDir, File dataDir, boolean incremental) throws CorruptIndexException, LockObtainFailedException, IOException {
         index_writer = new IndexWriter(new SimpleFSDirectory(indexDir), analyzer, incremental, MaxFieldLength.UNLIMITED);
         docsCount = 0;
+        loadStopWords();
     }
 
     public Indexer(Analyzer analyzer, File indexDir, boolean incremental) throws CorruptIndexException, LockObtainFailedException, IOException {
@@ -68,6 +74,7 @@ public class Indexer extends Observable implements Runnable {
         }
         index_writer.setUseCompoundFile(true);
         docsCount = 0;
+        loadStopWords();
     }
 
     @Override
@@ -134,7 +141,7 @@ public class Indexer extends Observable implements Runnable {
             docLucene.add(field);
             field = new Field(ParametersEnum.INDEX_FIELD2.toString(), DateTools.timeToString(docSource.getDate().getTime(), DateTools.Resolution.MINUTE), Field.Store.YES, Field.Index.NOT_ANALYZED_NO_NORMS, Field.TermVector.YES);
             docLucene.add(field);
-            field = new Field(ParametersEnum.INDEX_FIELD3.toString(), applyStemming(removeSimbols(docSource.getText().toLowerCase())), Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
+            field = new Field(ParametersEnum.INDEX_FIELD3.toString(), applyStemming(removeSimbols(docSource.getText())).toLowerCase(), Field.Store.YES, Field.Index.ANALYZED, Field.TermVector.YES);
             //field.setBoost((float) 1.5);
             docLucene.add(field);
             index_writer.addDocument(docLucene);
@@ -148,30 +155,38 @@ public class Indexer extends Observable implements Runnable {
      */
     private String removeSimbols(String text) {
         // Regular exp for url.
-        //text = text.replaceAll("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text); 
+        text = text.replaceAll("^(http|https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text);
         // Regular exp for 24 hours time.
-        //text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
+        text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
         // Regular exp for 12 hours time.
-        //text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
+        text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
         // Regular exp for 12 hours time.
         text = text.replaceAll("^(\\d+\\\\.)?(\\d+\\\\.)?(\\\\*|\\d+)$", text);
+        text = text.replaceAll("_", " ");
         text = text.replaceAll("\\.", " ");
         text = text.replaceAll(":", " ");
         text = text.replaceAll("/", " ");
         text = text.replaceAll("\\(", " ");
         text = text.replaceAll("\\)", " ");
         text = text.replaceAll("\"", " ");
+        text = text.replaceAll("¿", " ");
         text = text.replaceAll("\\?", " ");
+        text = text.replaceAll("¡", " ");
         text = text.replaceAll("\\!", " ");
         text = text.replaceAll("-", " ");
         text = text.replaceAll("\\\\", " ");
-        //text = text.replaceAll("_", " ");
+        text = text.replaceAll("_", " ");
         text = text.replaceAll(",", " ");
-        text = text.replaceAll("'s", " ");
+        text = text.replaceAll("\"", " ");
+//        text = text.replaceAll("'s", " ");
+//        text = text.replaceAll("[a-z]{3,}", "[a-z]");
+//        text = text.replaceAll("Z+", "");
+//        text = text.replaceAll("z+", " ");
+//        text = text.replaceAll("Z+", " ");
         return text;
     }
     
-    /**
+   /**
      * Reduce all words in the string to each stem.
      *
      * @param text Text to reduce.
@@ -179,15 +194,59 @@ public class Indexer extends Observable implements Runnable {
      */
     private String applyStemming(String text) {
         String textResult = new String();
-        EnglishStemmer stemmer = new EnglishStemmer();
-        String delim= "[ .,;?!¡¿\'\"\\[\\]]+";
+        String delim = " ";
+        String delimWord = "(?=\\p{Upper})";
         String[] textArray = text.split(delim);
         for (String word : textArray) {
-            stemmer.setCurrent(word);
-            stemmer.stem(); 
-            if(!stemmer.getCurrent().isEmpty())
-                textResult = textResult +  stemmer.getCurrent() + " ";            
+            String[] wordArray = word.split(delimWord);
+            if (wordArray.length > 1) { // For i.e. androidRuntime
+                for (String subWord : wordArray) {
+                    if (!stopWords.contains(subWord) /*&& !wordEnds(subWord)*/) {
+                        textResult = textResult + " " + stemming(subWord);
+                    } else {
+                        textResult = textResult + " " + subWord;
+                    }
+                }
+            } else {
+                if (!stopWords.contains(word) /* && !wordEnds(word)*/) {
+                    textResult = textResult + " " + stemming(word);
+                } else {
+                    textResult = textResult + " " + word;
+                }
+            }
         }
         return textResult;
+    }
+    
+    /**
+     * Applies the Lucene Snowball Porter Stemming.
+     *
+     * @param word To reduce.
+     * @return The stem.
+     */
+    private String stemming(String word) {
+        stemmer.setCurrent(word);
+        stemmer.stem();
+        return stemmer.getCurrent();
+    }
+
+    /**
+     * Loads the stopword in memory to help in the performance of applyStemming
+     * function.
+     */
+    private void loadStopWords() {
+        this.stopWords = new String();
+        PropertiesApp.getInstance().fileLoad(ParametersEnum.LUCENE_PROPERTIE_FILE_DEFAULT_PATH.getValue());
+        File f = new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.STOP_WORDS.getValue()));
+        try {
+            Scanner scanner = new Scanner(f);
+            // Now read the file line by line...           
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                stopWords = stopWords + " " + line;
+            }
+        } catch (FileNotFoundException e) {
+            //handle this
+        }
     }
 }

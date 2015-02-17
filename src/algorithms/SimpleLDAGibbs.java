@@ -65,9 +65,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import logger.ThesisLogger;
-import org.tartarus.snowball.ext.EnglishStemmer;
+import org.tartarus.snowball.ext.PorterStemmer;
 import util.Duration;
 import util.PropertiesApp;
 import util.ParametersEnum;
@@ -99,6 +100,9 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
     // Stop words
     private boolean removeStopWordrs;
     private File stopWordsFile;
+    private String stopWords;
+
+    PorterStemmer stemmer = new PorterStemmer();
     // Numbers of iterations
     private int numIerations;
     // The number of topics requested
@@ -361,8 +365,9 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
          * Getting the documents between the dates. Then put each doc into de
          * the pipe.
          */
+        loadStopWords();
         List<BaseDTO> docs = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(dateFrom.getTime()), new java.sql.Date(dateTo.getTime()));
-        int idDocLDA = 0;        
+        int idDocLDA = 0;
         for (BaseDTO baseDto : docs) {
             DocumentDTO doc = (DocumentDTO) baseDto;
             docsId.put(idDocLDA, doc.getId());
@@ -377,26 +382,34 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
      */
     private String removeSimbols(String text) {
         // Regular exp for url.
-        //text = text.replaceAll("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text); 
+        text = text.replaceAll("^(http|https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text);
         // Regular exp for 24 hours time.
-        //text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
+        text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
         // Regular exp for 12 hours time.
-        //text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
+        text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
         // Regular exp for 12 hours time.
         text = text.replaceAll("^(\\d+\\\\.)?(\\d+\\\\.)?(\\\\*|\\d+)$", text);
+        text = text.replaceAll("_", " ");
         text = text.replaceAll("\\.", " ");
         text = text.replaceAll(":", " ");
         text = text.replaceAll("/", " ");
         text = text.replaceAll("\\(", " ");
         text = text.replaceAll("\\)", " ");
         text = text.replaceAll("\"", " ");
+        text = text.replaceAll("¿", " ");
         text = text.replaceAll("\\?", " ");
+        text = text.replaceAll("¡", " ");
         text = text.replaceAll("\\!", " ");
         text = text.replaceAll("-", " ");
         text = text.replaceAll("\\\\", " ");
-        //text = text.replaceAll("_", " ");
+        text = text.replaceAll("_", " ");
         text = text.replaceAll(",", " ");
-        text = text.replaceAll("'s", " ");
+        text = text.replaceAll("\"", " ");
+//        text = text.replaceAll("'s", " ");
+//        text = text.replaceAll("[a-z]{3,}", "[a-z]");
+//        text = text.replaceAll("Z+", "");
+//        text = text.replaceAll("z+", " ");
+//        text = text.replaceAll("Z+", " ");
         return text;
     }
 
@@ -408,16 +421,136 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
      */
     private String applyStemming(String text) {
         String textResult = new String();
-        EnglishStemmer stemmer = new EnglishStemmer();
-        String delim= "[ .,;?!¡¿\'\"\\[\\]]+";
+        String delim = " ";
+        String delimWord = "(?=\\p{Upper})";
         String[] textArray = text.split(delim);
         for (String word : textArray) {
-            stemmer.setCurrent(word);
-            stemmer.stem(); 
-            if(!stemmer.getCurrent().isEmpty())
-                textResult = textResult +  stemmer.getCurrent() + " ";            
+            String[] wordArray = word.split(delimWord);
+            if (wordArray.length > 1) { // For i.e. androidRuntime
+                for (String subWord : wordArray) {
+                    if (!stopWords.contains(subWord) /*&& !wordEnds(subWord)*/) {
+                        textResult = textResult + " " + stemming(subWord);
+                    } else {
+                        textResult = textResult + " " + subWord;
+                    }
+                }
+            } else {
+                if (!stopWords.contains(word) /* && !wordEnds(word)*/) {
+                    textResult = textResult + " " + stemming(word);
+                } else {
+                    textResult = textResult + " " + word;
+                }
+            }
         }
         return textResult;
+    }
+
+    /**
+     * Applies the Lucene Snowball Porter Stemming.
+     *
+     * @param word To reduce.
+     * @return The stem.
+     */
+    private String stemming(String word) {
+        stemmer.setCurrent(word);
+        stemmer.stem();
+        return stemmer.getCurrent();
+    }
+
+    /**
+     * Loads the stopword in memory to help in the performance of applyStemming
+     * function.
+     */
+    private void loadStopWords() {
+        this.stopWords = new String();
+        PropertiesApp.getInstance().fileLoad(ParametersEnum.LUCENE_PROPERTIE_FILE_DEFAULT_PATH.getValue());
+        File f = new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.STOP_WORDS.getValue()));
+        try {
+            Scanner scanner = new Scanner(f);
+            // Now read the file line by line...           
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                stopWords = stopWords + " " + line;
+            }
+        } catch (FileNotFoundException e) {
+            //handle this
+        }
+    }
+
+    /**
+     * Verifies some special endsWith cases.
+     *
+     * @param word The word to verify
+     * @return True if the word ends with some case. False if not.
+     */
+    private boolean wordEnds(String word) {
+        if (word.endsWith("al")) {
+            return true;
+        }
+        if (word.endsWith("ance")) {
+            return true;
+        }
+        if (word.endsWith("ence")) {
+            return true;
+        }
+        if (word.endsWith("ic")) {
+            return true;
+        }
+        if (word.endsWith("er")) {
+            return true;
+        }
+        if (word.endsWith("able")) {
+            return true;
+        }
+        if (word.endsWith("ible")) {
+            return true;
+        }
+        if (word.endsWith("ant")) {
+            return true;
+        }
+        if (word.endsWith("ement")) {
+            return true;
+        }
+        if (word.endsWith("ment")) {
+            return true;
+        }
+        if (word.endsWith("ent")) {
+            return true;
+        }
+        if (word.endsWith("ion")) {
+            return true;
+        }
+        if (word.endsWith("ism")) {
+            return true;
+        }
+        if (word.endsWith("ate")) {
+            return true;
+        }
+        if (word.endsWith("iti")) {
+            return true;
+        }
+        if (word.endsWith("ity")) {
+            return true;
+        }
+        if (word.endsWith("ous")) {
+            return true;
+        }
+        if (word.endsWith("ive")) {
+            return true;
+        }
+        if (word.endsWith("ize")) {
+            return true;
+        }
+        if (word.endsWith("e")) {
+            return true;
+        }
+        if (word.endsWith("y")) {
+            return true;
+        }
+        if (word.endsWith("ge")) {
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -108,7 +108,7 @@ public class LuceneManager extends Observable implements Observer {
         } else if (type.getValue().equals(ParametersEnum.INDEX_STOP_ANALYZER.getValue())) {
             try {
                 PropertiesApp.getInstance().fileLoad(ParametersEnum.LUCENE_PROPERTIE_FILE_DEFAULT_PATH.getValue());
-                return new StopAnalyzer(Version.LUCENE_36, new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.LUCENE_STOP_WORDS.getValue())));
+                return new StopAnalyzer(Version.LUCENE_36, new File(PropertiesApp.getInstance().getPropertie(ParametersEnum.STOP_WORDS.getValue())));
             } catch (IOException ex) {
                 ThesisLogger.get().error("LuceneManager.getAnalyzer: " + ex.toString());
                 error_creating_index = true;
