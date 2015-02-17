@@ -117,6 +117,14 @@ public class XYSplineChart extends Chart {
     }
 
     /**
+     * Sets the labels in the view chart.
+     * @param show The flag. 
+     */
+    public void showLabels(boolean show) {        
+        chart.getXYPlot().getRenderer().setBaseItemLabelsVisible(show);
+    }
+
+    /**
      * Sets a default renderer for the primary dataset and sends a
      * PlotChangeEvent to all registered listeners. If the renderer is set to
      * null, no data will be displayed.
@@ -163,7 +171,7 @@ public class XYSplineChart extends Chart {
         renderer.setBaseItemLabelGenerator(xy);
         renderer.setBaseItemLabelsVisible(true);
         renderer.setBaseLinesVisible(true);
-        renderer.setBaseItemLabelsVisible(true);
+        renderer.setBaseItemLabelsVisible(false);
 
         chart.getXYPlot().setRenderer(renderer);
         chart.getXYPlot().setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));

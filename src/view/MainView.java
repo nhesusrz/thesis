@@ -541,7 +541,7 @@ public class MainView extends FrameView implements Observer {
         if (topic != null) {
             Object[] terms = new Object[topic.getDataWords().size()];
             int i = 0;
-            for (Iterator<Entry<String, BigDecimal>> it = topic.getSortDataWords().entrySet().iterator(); it.hasNext();) {
+            for (Iterator<Entry<String, BigDecimal>> it = topic.getSortedDataWords().entrySet().iterator(); it.hasNext();) {
                 Entry<String, BigDecimal> entry = it.next();
                 terms[i] = entry.getKey();
                 i++;
@@ -753,6 +753,7 @@ public class MainView extends FrameView implements Observer {
         jLabel29 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
+        jCheckBox4 = new javax.swing.JCheckBox();
         splineChart = new XYSplineChart();
         splineChartGenData = new charts.data.MetricEvolutionGenerator(splineChart);
         jScrollPane6 = new javax.swing.JScrollPane(splineChart.getGraphicPanel());
@@ -1667,6 +1668,14 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
     });
     jScrollPane7.setViewportView(jList2);
 
+    jCheckBox4.setText(bundle.getString("MainView.jCheckBox4.text")); // NOI18N
+    jCheckBox4.setName("jCheckBox4"); // NOI18N
+    jCheckBox4.addItemListener(new java.awt.event.ItemListener() {
+        public void itemStateChanged(java.awt.event.ItemEvent evt) {
+            jCheckBox4ItemStateChanged(evt);
+        }
+    });
+
     javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
     jPanel11.setLayout(jPanel11Layout);
     jPanel11Layout.setHorizontalGroup(
@@ -1674,13 +1683,14 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
         .addGroup(jPanel11Layout.createSequentialGroup()
             .addContainerGap()
             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createSequentialGroup()
                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jCheckBox4)
                         .addComponent(jLabel28)
                         .addComponent(jLabel29))
-                    .addGap(0, 0, Short.MAX_VALUE))
-                .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
             .addContainerGap())
     );
     jPanel11Layout.setVerticalGroup(
@@ -1693,8 +1703,9 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel29)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
-            .addContainerGap())
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(jCheckBox4))
     );
 
     //jComboBox5.removeAllItems();
@@ -2276,6 +2287,10 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         }
     }//GEN-LAST:event_jList3ValueChanged
 
+    private void jCheckBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox4ItemStateChanged
+        splineChart.showLabels(jCheckBox4.isSelected());
+    }//GEN-LAST:event_jCheckBox4ItemStateChanged
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -2294,6 +2309,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JComboBox jComboBox4;
@@ -2362,7 +2378,6 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;

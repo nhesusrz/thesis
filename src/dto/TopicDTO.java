@@ -24,6 +24,9 @@
  */
 package dto;
 
+import dao.DAOManager;
+import dao.DAONameEnum;
+import dao.TopicDAO;
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Comparator;
@@ -41,17 +44,22 @@ public class TopicDTO extends BaseDTO {
     private Date openedDate;
     private HashMap<String, BigDecimal> words;
     private HashMap<Integer, BigDecimal> docs;
+    private BigDecimal sumWordsProb;
+    private BigDecimal sumDocsProb;
+    private final double varianceThreshold = 0.4;
 
     public TopicDTO() {
         id = -1;
         words = new HashMap<String, BigDecimal>();
         docs = new HashMap<Integer, BigDecimal>();
+        sumWordsProb = sumDocsProb = new BigDecimal(0);
     }
 
     public TopicDTO(Integer id) {
         this.id = id;
         words = new HashMap<String, BigDecimal>();
         docs = new HashMap<Integer, BigDecimal>();
+        sumWordsProb = sumDocsProb = new BigDecimal(0);
     }
 
     /**
@@ -61,9 +69,15 @@ public class TopicDTO extends BaseDTO {
      */
     @Override
     public String toString() {
-        String result = "<html><b>Z" + id + "</b>:{ <i>";
+        String result;
+        if (getVarianceDocs().compareTo(new BigDecimal(varianceThreshold)) >= 0) {
+            result = "<html><b><span style=\"color:#E60000;\">Z";
+        } else {
+            result = "<html><b><span style=\"color:#000000;\">Z";
+        }
+        result = result + id + "</b></span>:{ <i>";
         int i = 0;
-        for (Iterator<Map.Entry<String, BigDecimal>> it = getSortDataWords().entrySet().iterator(); it.hasNext() && (i < 5);) {
+        for (Iterator<Map.Entry<String, BigDecimal>> it = getSortedDataWords().entrySet().iterator(); it.hasNext() && (i < 5);) {
             Map.Entry<String, BigDecimal> entry = it.next();
             if (i == 4) {
                 result += entry.getKey() + "</i> }</html>";
@@ -87,7 +101,7 @@ public class TopicDTO extends BaseDTO {
     public String toStringWithoutHTMLTags() {
         String result = "Z" + id + "{";
         int i = 0;
-        for (Iterator<Map.Entry<String, BigDecimal>> it = getSortDataWords().entrySet().iterator(); it.hasNext() && (i < 3);) {
+        for (Iterator<Map.Entry<String, BigDecimal>> it = getSortedDataWords().entrySet().iterator(); it.hasNext() && (i < 3);) {
             Map.Entry<String, BigDecimal> entry = it.next();
             if (i == 2) {
                 result += entry.getKey() + "}";
@@ -123,12 +137,13 @@ public class TopicDTO extends BaseDTO {
         this.words = words;
     }
 
-    public HashMap<String, BigDecimal> getSortDataWords() {
+    public HashMap<String, BigDecimal> getSortedDataWords() {
         return sortByComparator(words);
     }
 
     public void putWord(String word, BigDecimal probability) {
         words.put(word, probability);
+        sumWordsProb = sumWordsProb.add(probability);
     }
 
     public BigDecimal getTermProb(String termID) {
@@ -150,8 +165,13 @@ public class TopicDTO extends BaseDTO {
         this.docs = docs;
     }
 
+    public HashMap<Integer, BigDecimal> getSortedDataDocs() {
+        return sortByComparator2(docs);
+    }
+
     public void putDoc(Integer docID, BigDecimal probability) {
         docs.put(docID, probability);
+        sumDocsProb = sumDocsProb.add(probability);
     }
 
     public BigDecimal getDocProb(Integer docID) {
@@ -191,6 +211,49 @@ public class TopicDTO extends BaseDTO {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
         return sortedMap;
+    }
+
+    /**
+     * Order the topic's docs by his probability.
+     *
+     * @param unsortMap No ordered terms.
+     * @return An ordered term hashmap.
+     */
+    private static HashMap<Integer, BigDecimal> sortByComparator2(HashMap<Integer, BigDecimal> unsortMap) {
+        // Convert Map to List
+        List<Map.Entry<Integer, BigDecimal>> list = new LinkedList<Map.Entry<Integer, BigDecimal>>(unsortMap.entrySet());
+        // Sort list with comparator, to compare the Map values
+        Collections.sort(list, new Comparator<Map.Entry<Integer, BigDecimal>>() {
+            public int compare(Map.Entry<Integer, BigDecimal> o1, Map.Entry<Integer, BigDecimal> o2) {
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+        // Convert sorted map back to a Map
+        HashMap<Integer, BigDecimal> sortedMap = new LinkedHashMap<Integer, BigDecimal>();
+        for (Iterator<Map.Entry<Integer, BigDecimal>> it = list.iterator(); it.hasNext();) {
+            Map.Entry<Integer, BigDecimal> entry = it.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
+    }
+
+    /**
+     * Calculates the the statistical variance in the document's probabilities.
+     *
+     * @return The variance.
+     */
+    private BigDecimal getVarianceDocs() {
+        BigDecimal result = new BigDecimal(0);
+        if (sumDocsProb.compareTo(result) <= 0) {
+            for (Map.Entry<Integer, BigDecimal> entry : docs.entrySet()) {
+                sumDocsProb = sumDocsProb.add(entry.getValue());
+            }
+        }
+        BigDecimal mu = sumDocsProb.divideToIntegralValue(new BigDecimal(docs.size()));
+        for (Map.Entry<Integer, BigDecimal> entry : docs.entrySet()) {
+            result = result.add(entry.getValue().subtract(mu).abs().pow(2));
+        }
+        return result.divideToIntegralValue(new BigDecimal(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount()));
     }
 
 }
