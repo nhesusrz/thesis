@@ -42,8 +42,8 @@ public class Weight extends Metric {
     @Override
     public BigDecimal getResult(VersionDTO version, TopicDTO topic) {
         BigDecimal result = new BigDecimal(0.0);
-        List<BaseDTO> docs = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
-        for (BaseDTO baseDto : docs) {
+        List<BaseDTO> docsInVersion = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
+        for (BaseDTO baseDto : docsInVersion) {
             DocumentDTO doc = (DocumentDTO) baseDto;
             if (topic.getDocProb(doc.getId()) != null) {
                 result = result.add(topic.getDocProb(doc.getId()).multiply(new BigDecimal(doc.size())));

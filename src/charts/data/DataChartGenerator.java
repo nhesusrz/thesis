@@ -27,9 +27,10 @@ package charts.data;
 import charts.Chart;
 import dto.TopicDTO;
 import java.util.ArrayList;
+import java.util.Observable;
 import metrics.Metric;
 
-public abstract class DataChartGenerator {
+public abstract class DataChartGenerator extends Observable {
 
     Chart chart;
 

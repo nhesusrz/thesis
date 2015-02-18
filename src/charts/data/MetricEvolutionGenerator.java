@@ -30,6 +30,7 @@ import dao.DAONameEnum;
 import dto.TopicDTO;
 import dto.VersionDTO;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import metrics.Metric;
 
 
@@ -46,7 +47,9 @@ public class MetricEvolutionGenerator extends DataChartGenerator {
             chart.destroy();
             ((XYSplineChart)chart).setYLabel(metric.toString());
             ((XYSplineChart)chart).setTitle(metric.toString() + " Evolution");
-            for(int versionId = 1; versionId <= versionCount; versionId++) {
+            setChanged();
+            notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Inic"));
+            for(int versionId = 1; versionId <= versionCount; versionId++) {                
                 VersionDTO version = (VersionDTO) (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).get(versionId);
                 for(TopicDTO topic: topics) {
                     ((XYSplineChart)chart).createNewSerie(topic.getID(), topic.toStringWithoutHTMLTags());
@@ -67,8 +70,12 @@ public class MetricEvolutionGenerator extends DataChartGenerator {
                             ((XYSplineChart)chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
                             break;
                     }                         
-                }   
-            }                    
+                } 
+                setChanged();
+                notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Run"));
+            } 
+            setChanged();
+            notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.End"));
         }        
     }
 

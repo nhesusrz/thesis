@@ -2205,6 +2205,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList2ValueChanged
         if (!evt.getValueIsAdjusting()) {
             if (jList2.getSelectedValue() != null) {
+                splineChartGenData.addObserver(this);
                 splineChartGenData.generateData((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
             }
         }
@@ -2212,6 +2213,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
         if (jList2.getSelectedValue() != null) {
+            splineChartGenData.addObserver(this);
             splineChartGenData.generateData((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
         }
     }//GEN-LAST:event_jComboBox5ItemStateChanged
@@ -2570,6 +2572,14 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             jButton13.setEnabled(true);
             jButton14.setEnabled(false);
             jButton11.setEnabled(true);
+        } else if(((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Inic"))) { 
+            setProgressBar((DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount());
+            setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("Metric.Status")); 
+        } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Run"))) { 
+                repaintProgressBar(progressBar.getValue() + 1);
+        } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.End"))) {
+            setProgressBar(0);
+            setLabelBar(""); 
         } else if (o instanceof LuceneManager) {
             showIndexResults((String) arg);
         } else {
