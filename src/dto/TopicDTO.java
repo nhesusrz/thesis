@@ -46,7 +46,7 @@ public class TopicDTO extends BaseDTO {
     private HashMap<Integer, BigDecimal> docs;
     private BigDecimal sumWordsProb;
     private BigDecimal sumDocsProb;
-    private final double varianceThreshold = 0.4;
+    private final double varianceThreshold = 2.5;
 
     public TopicDTO() {
         id = -1;

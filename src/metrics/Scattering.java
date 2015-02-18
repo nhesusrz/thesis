@@ -43,21 +43,22 @@ public class Scattering extends Metric {
     public BigDecimal getResult(VersionDTO version, TopicDTO topic) {
         BigDecimal result = new BigDecimal(0.0);
         List<BaseDTO> docs = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
-        BigDecimal norm;
-        if (!docs.isEmpty()) {
-            norm = new BigDecimal(1 / docs.size());
-        } else {
-            return result;
-        }
+//        BigDecimal norm;
+//        if (!docs.isEmpty()) {
+//            norm = new BigDecimal(1 / docs.size());
+//        } else {
+//            return result;
+//        }
         for (BaseDTO baseDto : docs) {
             DocumentDTO doc = (DocumentDTO) baseDto;
-            if (topic.getDocProb(doc.getId()) != null && topic.getDocProb(doc.getId()).compareTo(new BigDecimal(0)) > 0) {
+            if (topic.getDocProb(doc.getId()) != null && topic.getDocProb(doc.getId()).signum() == 1) {
                 BigDecimal aux = topic.getDocProb(doc.getId());
-                BigDecimal resultAux = aux.multiply(new BigDecimal(Math.log10(aux.doubleValue())));
-                result = result.add(resultAux);
+                BigDecimal resultAux = aux.multiply(new BigDecimal(Math.log(aux.doubleValue())));
+                result = result.add(resultAux.abs());
             }
         }
-        result = result.abs();
-        return result.multiply(norm);
+        return result;
+//        result = result.abs();
+//        return result.multiply(norm);
     }
 }

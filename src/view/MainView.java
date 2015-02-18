@@ -619,8 +619,9 @@ public class MainView extends FrameView implements Observer {
     private void showVersionTable(VersionDTO version) {
         inicVersionTable();
         DefaultTableModel tableModel5 = (javax.swing.table.DefaultTableModel) jTable5.getModel();
-        tableModel5.addColumn("<html><b>Date</b></html>", new Object[]{"<html><b>From</b></html>", "<html><b>To</b></html>"});
-        tableModel5.addColumn("<html><b>Value</b></html>", new Object[]{sdf.format(version.getDateFrom()), sdf.format(version.getDateTo())});
+        tableModel5.addColumn("<html><b>Date</b></html>", new Object[]{"<html><b>From</b></html>", "<html><b>To</b></html>","<html><b>Documents</b></html>"});
+        int docCount = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCountBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
+        tableModel5.addColumn("<html><b>Value</b></html>", new Object[]{sdf.format(version.getDateFrom()), sdf.format(version.getDateTo()), docCount});
     }
 
     private void inicVersionTable() {
@@ -1411,24 +1412,30 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
         jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(jPanel14Layout.createSequentialGroup()
             .addContainerGap()
-            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36)
-                    .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel34))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel14Layout.createSequentialGroup()
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel32)
-                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel32))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE))
+                    .addComponent(jScrollPane10))
                 .addComponent(jScrollPane13))
             .addContainerGap())
+        .addGroup(jPanel14Layout.createSequentialGroup()
+            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel14Layout.createSequentialGroup()
+                    .addGap(14, 14, 14)
+                    .addComponent(jLabel36)))
+            .addGap(549, 549, 549))
     );
 
     jScrollPane10.getAccessibleContext().setAccessibleName(bundle.getString("MainView.jScrollPane10.AccessibleContext.accessibleName")); // NOI18N

@@ -35,6 +35,8 @@ import java.math.RoundingMode;
 import java.util.List;
 
 public class Focus extends Metric {
+    
+    private final double threshold = 0.1;
 
     public Focus() {
         super(MetricNameEnum.FOCUS);
@@ -43,13 +45,13 @@ public class Focus extends Metric {
     @Override
     public BigDecimal getResult(VersionDTO version, TopicDTO topic) {
         BigDecimal result = new BigDecimal(0.0);
-        List<BaseDTO> docs = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
-        for (BaseDTO baseDto : docs) {
+        List<BaseDTO> docsInVersion = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
+        for (BaseDTO baseDto : docsInVersion) {
             DocumentDTO doc = (DocumentDTO) baseDto;
             if (topic.getDocProb(doc.getId()) != null) {
                 BigDecimal aux = topic.getDocProb(doc.getId());
-                if (aux.compareTo(new BigDecimal(0.5)) > 0 && docs.size() > 0) {
-                    BigDecimal resultAux = aux.divide(new BigDecimal(docs.size()), 2, RoundingMode.HALF_UP);
+                if (aux.compareTo(new BigDecimal(threshold)) > 0 && docsInVersion.size() > 0) {
+                    BigDecimal resultAux = aux.divide(new BigDecimal(docsInVersion.size()), 2, RoundingMode.HALF_UP);
                     result = result.add(resultAux);
                 }
             }

@@ -68,6 +68,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import logger.ThesisLogger;
+import org.apache.commons.lang.StringUtils;
 import org.tartarus.snowball.ext.PorterStemmer;
 import util.Duration;
 import util.PropertiesApp;
@@ -374,42 +375,51 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
             training.addThruPipe(new StringArrayIterator(new String[]{applyStemming(removeSimbols(doc.getText()))}));
             idDocLDA++;
         }
-
     }
 
     /**
      * This remove some noice from the text documents.
      */
     private String removeSimbols(String text) {
-        // Regular exp for url.
-        text = text.replaceAll("^(http|https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text);
-        // Regular exp for 24 hours time.
-        text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
-        // Regular exp for 12 hours time.
-        text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
-        // Regular exp for 12 hours time.
-        text = text.replaceAll("^(\\d+\\\\.)?(\\d+\\\\.)?(\\\\*|\\d+)$", text);
-        text = text.replaceAll("_", " ");
-        text = text.replaceAll("\\.", " ");
-        text = text.replaceAll(":", " ");
-        text = text.replaceAll("/", " ");
-        text = text.replaceAll("\\(", " ");
-        text = text.replaceAll("\\)", " ");
-        text = text.replaceAll("\"", " ");
-        text = text.replaceAll("¿", " ");
-        text = text.replaceAll("\\?", " ");
-        text = text.replaceAll("¡", " ");
-        text = text.replaceAll("\\!", " ");
-        text = text.replaceAll("-", " ");
-        text = text.replaceAll("\\\\", " ");
-        text = text.replaceAll("_", " ");
-        text = text.replaceAll(",", " ");
-        text = text.replaceAll("\"", " ");
-//        text = text.replaceAll("'s", " ");
-//        text = text.replaceAll("[a-z]{3,}", "[a-z]");
-//        text = text.replaceAll("Z+", "");
-//        text = text.replaceAll("z+", " ");
-//        text = text.replaceAll("Z+", " ");
+        text = text.replace("(\r\n|\n\r|\r|\n)", " ");
+        text = text.replace("_", " ");
+        text = text.replace(".", " ");
+        text = text.replace(":", " ");
+        text = text.replace(";", " ");
+        text = text.replace("/", " ");
+        text = text.replace("[", " ");
+        text = text.replace("]", " ");
+        text = text.replace("{", " ");
+        text = text.replace("}", " ");
+        text = text.replace("@", " ");
+        text = text.replace("#", " ");
+        text = text.replace("*", " ");
+        text = text.replace("&", " ");
+        text = text.replace("%", " ");
+        text = text.replace("~", " ");
+        text = text.replace("·", " ");
+        text = text.replace("º", " ");
+        text = text.replace("ª", " ");
+        text = text.replace("^", " ");
+        text = text.replace("`", " ");
+        text = text.replace("´", " ");
+        text = text.replace("¨", " ");
+        text = text.replace("<", " ");
+        text = text.replace(">", " ");
+        text = text.replace("|", " ");
+        text = text.replace("(", " ");
+        text = text.replace(")", " ");
+        text = text.replace("\"", " ");
+        text = text.replace("¿", " ");
+        text = text.replace("?", " ");
+        text = text.replace("¡", " ");
+        text = text.replace("!", " ");
+        text = text.replace("-", " ");
+        text = text.replace("\\", " ");
+        text = text.replace("_", " ");
+        text = text.replace(",", " ");
+        text = text.replace("\"", " ");
+        text = text.replace("'", " ");
         return text;
     }
 
@@ -425,17 +435,23 @@ public class SimpleLDAGibbs extends Observable implements Runnable {
         String delimWord = "(?=\\p{Upper})";
         String[] textArray = text.split(delim);
         for (String word : textArray) {
-            String[] wordArray = word.split(delimWord);
-            if (wordArray.length > 1) { // For i.e. androidRuntime
+            String[] wordArray;
+            if (!StringUtils.isAllUpperCase(word) && !word.matches(".*\\d.*")) {
+                // For i.e. AndroidRuntime or androidRuntime
+                wordArray = word.split(delimWord);
+            } else {
+                wordArray = word.toLowerCase().split(delim);
+            }
+            if (wordArray.length > 1) {
                 for (String subWord : wordArray) {
-                    if (!stopWords.contains(subWord) /*&& !wordEnds(subWord)*/) {
+                    if (!stopWords.contains(subWord)/*&& !wordEnds(subWord)*/) {
                         textResult = textResult + " " + stemming(subWord);
                     } else {
                         textResult = textResult + " " + subWord;
                     }
                 }
             } else {
-                if (!stopWords.contains(word) /* && !wordEnds(word)*/) {
+                if (!stopWords.contains(word)/* && !wordEnds(word)*/) {
                     textResult = textResult + " " + stemming(word);
                 } else {
                     textResult = textResult + " " + word;

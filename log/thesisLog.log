@@ -19264,3 +19264,107 @@ INSERT INTO COMMENT VALUES (null, '81', 'jlapenna@google.com', '2009-08-31', '' 
 	stoplabels.tr
 	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@10b4b2f]
 		- jar:file:/C:/Program%20Files/Java/Librerias/Carrot2/carrot2-java-api-3.9.4/lib/required/carrot2-core-3.9.4.jar!/stoplabels.tr
+0    17-02-2015 17:09:35 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: Error General : "java.lang.NullPointerException"
+General error: "java.lang.NullPointerException"; SQL statement:
+SELECT COMPONENT FROM BUG [50000-173]
+7286 17-02-2015 17:09:43 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: Error General : "java.lang.NullPointerException"
+General error: "java.lang.NullPointerException"; SQL statement:
+SELECT COMPONENT FROM BUG [50000-173]
+0    17-02-2015 17:10:00 [AWT-EventQueue-0] ERROR logger.ThesisLogger : DaoManager.executeQuery: org.h2.jdbc.JdbcSQLException: Error General : "java.lang.ArrayIndexOutOfBoundsException: 0"
+General error: "java.lang.ArrayIndexOutOfBoundsException: 0"; SQL statement:
+SELECT COMPONENT FROM BUG [50000-173]
+0    17-02-2015 18:49:29 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Error General : "java.lang.NullPointerException"
+General error: "java.lang.NullPointerException" [50000-173]
+16   17-02-2015 18:49:29 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Violación de una restricción de Integridad Referencial: "CONSTRAINT_EC: PUBLIC.TOPIC_TERM FOREIGN KEY(TERM_ID) REFERENCES PUBLIC.TERM(WORD) ('whit')"
+Referential integrity constraint violation: "CONSTRAINT_EC: PUBLIC.TOPIC_TERM FOREIGN KEY(TERM_ID) REFERENCES PUBLIC.TERM(WORD) ('whit')"; SQL statement:
+INSERT INTO TOPIC_TERM VALUES (null, '14', 'whit', '0.000523697302958889797375174879334736033342778682708740234375'); [23506-173]
+0    17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '1', '0') -- (NULL, 'null', '1', '0') [22018-173]
+131  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '2', '0') -- (NULL, 'null', '2', '0') [22018-173]
+214  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '3', '0') -- (NULL, 'null', '3', '0') [22018-173]
+271  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '4', '0') -- (NULL, 'null', '4', '0') [22018-173]
+334  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '5', '0') -- (NULL, 'null', '5', '0') [22018-173]
+381  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '6', '0') -- (NULL, 'null', '6', '0') [22018-173]
+428  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '7', '0') -- (NULL, 'null', '7', '0') [22018-173]
+475  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '8', '0') -- (NULL, 'null', '8', '0') [22018-173]
+521  17-02-2015 20:04:17 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '9', '0') -- (NULL, 'null', '9', '0') [22018-173]
+568  17-02-2015 20:04:18 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '10', '0') -- (NULL, 'null', '10', '0') [22018-173]
+0    17-02-2015 20:41:03 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '1', '0') -- (NULL, 'null', '1', '0') [22018-173]
+100  17-02-2015 20:41:03 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '2', '0') -- (NULL, 'null', '2', '0') [22018-173]
+164  17-02-2015 20:41:03 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '3', '0') -- (NULL, 'null', '3', '0') [22018-173]
+214  17-02-2015 20:41:03 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '4', '0') -- (NULL, 'null', '4', '0') [22018-173]
+276  17-02-2015 20:41:04 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '5', '0') -- (NULL, 'null', '5', '0') [22018-173]
+339  17-02-2015 20:41:04 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '6', '0') -- (NULL, 'null', '6', '0') [22018-173]
+370  17-02-2015 20:41:04 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '7', '0') -- (NULL, 'null', '7', '0') [22018-173]
+433  17-02-2015 20:41:04 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '8', '0') -- (NULL, 'null', '8', '0') [22018-173]
+464  17-02-2015 20:41:04 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '9', '0') -- (NULL, 'null', '9', '0') [22018-173]
+526  17-02-2015 20:41:04 [Thread-5] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL SELECTIVITY 22)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '10', '0') -- (NULL, 'null', '10', '0') [22018-173]
+0    17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '1', '0.0875731179114241087280134934189845807850360870361328125') -- (NULL, 'null', '1', '0.0875731179114241087280134934189845807850360870361328125') [22018-173]
+47   17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '2', '0.09993377409477512129942766705426038242876529693603515625') -- (NULL, 'null', '2', '0.09993377409477512129942766705426038242876529693603515625') [22018-173]
+93   17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '3', '0.097559599094899251969792430827510543167591094970703125') -- (NULL, 'null', '3', '0.097559599094899251969792430827510543167591094970703125') [22018-173]
+140  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '4', '0.097559599094899251969792430827510543167591094970703125') -- (NULL, 'null', '4', '0.097559599094899251969792430827510543167591094970703125') [22018-173]
+172  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '5', '0.10613249883961799191478547754741157405078411102294921875') -- (NULL, 'null', '5', '0.10613249883961799191478547754741157405078411102294921875') [22018-173]
+203  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '6', '0.09993377409477512129942766705426038242876529693603515625') -- (NULL, 'null', '6', '0.09993377409477512129942766705426038242876529693603515625') [22018-173]
+250  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '7', '0.089481361568519546256794683358748443424701690673828125') -- (NULL, 'null', '7', '0.089481361568519546256794683358748443424701690673828125') [22018-173]
+281  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '8', '0.10504652218107284056269890015755663625895977020263671875') -- (NULL, 'null', '8', '0.10504652218107284056269890015755663625895977020263671875') [22018-173]
+297  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '9', '0.10042254340952995461666574783521355129778385162353515625') -- (NULL, 'null', '9', '0.10042254340952995461666574783521355129778385162353515625') [22018-173]
+328  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
+Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
+INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '10', '0.1163572097104867697492380784751730971038341522216796875') -- (NULL, 'null', '10', '0.1163572097104867697492380784751730971038341522216796875') [22018-173]

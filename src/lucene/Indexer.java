@@ -34,6 +34,7 @@ import java.text.MessageFormat;
 import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import org.apache.commons.lang.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.DateTools;
 import org.apache.lucene.document.Document;
@@ -55,7 +56,7 @@ public class Indexer extends Observable implements Runnable {
     private IndexWriter index_writer;
     private int docsCount;
     private SimpleFSDirectory directory;
-    
+
     private String stopWords;
     PorterStemmer stemmer = new PorterStemmer();
 
@@ -149,44 +150,54 @@ public class Indexer extends Observable implements Runnable {
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.Run"));
         }
     }
-    
+
     /**
      * This remove some noice from the text documents.
      */
     private String removeSimbols(String text) {
-        // Regular exp for url.
-        text = text.replaceAll("^(http|https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]", text);
-        // Regular exp for 24 hours time.
-        text = text.replaceAll("([01]?[0-9]|2[0-3]):[0-5][0-9]", text);
-        // Regular exp for 12 hours time.
-        text = text.replaceAll("(1[012]|[1-9]):[0-5][0-9](\\\\s)?(?i)(am|pm)", text);
-        // Regular exp for 12 hours time.
-        text = text.replaceAll("^(\\d+\\\\.)?(\\d+\\\\.)?(\\\\*|\\d+)$", text);
-        text = text.replaceAll("_", " ");
-        text = text.replaceAll("\\.", " ");
-        text = text.replaceAll(":", " ");
-        text = text.replaceAll("/", " ");
-        text = text.replaceAll("\\(", " ");
-        text = text.replaceAll("\\)", " ");
-        text = text.replaceAll("\"", " ");
-        text = text.replaceAll("¿", " ");
-        text = text.replaceAll("\\?", " ");
-        text = text.replaceAll("¡", " ");
-        text = text.replaceAll("\\!", " ");
-        text = text.replaceAll("-", " ");
-        text = text.replaceAll("\\\\", " ");
-        text = text.replaceAll("_", " ");
-        text = text.replaceAll(",", " ");
-        text = text.replaceAll("\"", " ");
-//        text = text.replaceAll("'s", " ");
-//        text = text.replaceAll("[a-z]{3,}", "[a-z]");
-//        text = text.replaceAll("Z+", "");
-//        text = text.replaceAll("z+", " ");
-//        text = text.replaceAll("Z+", " ");
+        text = text.replace("(\r\n|\n\r|\r|\n)", " ");
+        text = text.replace("_", " ");
+        text = text.replace(".", " ");
+        text = text.replace(":", " ");
+        text = text.replace(";", " ");
+        text = text.replace("/", " ");
+        text = text.replace("[", " ");
+        text = text.replace("]", " ");
+        text = text.replace("{", " ");
+        text = text.replace("}", " ");
+        text = text.replace("@", " ");
+        text = text.replace("#", " ");
+        text = text.replace("*", " ");
+        text = text.replace("&", " ");
+        text = text.replace("%", " ");
+        text = text.replace("~", " ");
+        text = text.replace("·", " ");
+        text = text.replace("º", " ");
+        text = text.replace("ª", " ");
+        text = text.replace("^", " ");
+        text = text.replace("`", " ");
+        text = text.replace("´", " ");
+        text = text.replace("¨", " ");
+        text = text.replace("<", " ");
+        text = text.replace(">", " ");
+        text = text.replace("|", " ");
+        text = text.replace("(", " ");
+        text = text.replace(")", " ");
+        text = text.replace("\"", " ");
+        text = text.replace("¿", " ");
+        text = text.replace("?", " ");
+        text = text.replace("¡", " ");
+        text = text.replace("!", " ");
+        text = text.replace("-", " ");
+        text = text.replace("\\", " ");
+        text = text.replace("_", " ");
+        text = text.replace(",", " ");
+        text = text.replace("\"", " ");
+        text = text.replace("'", " ");
         return text;
     }
-    
-   /**
+
+    /**
      * Reduce all words in the string to each stem.
      *
      * @param text Text to reduce.
@@ -198,17 +209,23 @@ public class Indexer extends Observable implements Runnable {
         String delimWord = "(?=\\p{Upper})";
         String[] textArray = text.split(delim);
         for (String word : textArray) {
-            String[] wordArray = word.split(delimWord);
-            if (wordArray.length > 1) { // For i.e. androidRuntime
+            String[] wordArray;
+            if (!StringUtils.isAllUpperCase(word) && !word.matches(".*\\d.*")) {
+                // For i.e. AndroidRuntime or androidRuntime
+                wordArray = word.split(delimWord);
+            } else {
+                wordArray = word.toLowerCase().split(delim);
+            }
+            if (wordArray.length > 1) {
                 for (String subWord : wordArray) {
-                    if (!stopWords.contains(subWord) /*&& !wordEnds(subWord)*/) {
+                    if (!stopWords.contains(subWord)/*&& !wordEnds(subWord)*/) {
                         textResult = textResult + " " + stemming(subWord);
                     } else {
                         textResult = textResult + " " + subWord;
                     }
                 }
             } else {
-                if (!stopWords.contains(word) /* && !wordEnds(word)*/) {
+                if (!stopWords.contains(word)/* && !wordEnds(word)*/) {
                     textResult = textResult + " " + stemming(word);
                 } else {
                     textResult = textResult + " " + word;
@@ -217,7 +234,7 @@ public class Indexer extends Observable implements Runnable {
         }
         return textResult;
     }
-    
+
     /**
      * Applies the Lucene Snowball Porter Stemming.
      *
