@@ -1147,7 +1147,7 @@
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(bugComponentDistribution.getGraphicPanel())"/>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="bugComponentDistribution = new PieChart();&#xa;bugComponentDistributionData = new charts.data.BugComponentDistributionGenerator(bugComponentDistribution);&#xa;bugComponentDistribution.setPreferredSize(380, 300);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="bugComponentDistribution = new PieChart();&#xa;bugComponentDistributionData = new charts.data.BugComponentDistributionData(bugComponentDistribution);&#xa;bugComponentDistribution.setPreferredSize(380, 300);"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -1158,7 +1158,7 @@
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(BugDistributionChart.getGraphicPanel())"/>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="BugDistributionChart = new XYSplineChart();&#xa;BugDistributionChart.setTitle(&quot;Bug and Comments Distribution&quot;);&#xa;BugDistributionChart.setYLabel(&quot;Number&quot;);&#xa;&#xa;bugDistributionData = new charts.data.BugCommentDistributionGenerator(BugDistributionChart);&#xa;BugDistributionChart.setPreferredSize(400, 300);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="BugDistributionChart = new XYSplineChart();&#xa;BugDistributionChart.setTitle(&quot;Bug and Comments Distribution&quot;);&#xa;BugDistributionChart.setYLabel(&quot;Number&quot;);&#xa;&#xa;bugDistributionData = new charts.data.BugCommentDistributionData(BugDistributionChart);&#xa;BugDistributionChart.setPreferredSize(400, 300);"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -1557,7 +1557,7 @@
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(splineChart.getGraphicPanel())"/>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="splineChart = new XYSplineChart();&#xa;splineChartGenData = new charts.data.MetricEvolutionGenerator(splineChart);"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="splineChart = new XYSplineChart();&#xa;splineChartGenData = new charts.data.MetricDistributionData(splineChart);"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

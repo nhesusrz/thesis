@@ -24,37 +24,22 @@
  */
 package charts.data;
 
-import charts.Chart;
-import dto.TopicDTO;
-import java.util.ArrayList;
 import java.util.Observable;
-import metrics.Metric;
 
-public abstract class DataChartGenerator extends Observable implements Runnable {
+public class Generator extends Observable {
 
-    protected Chart chart;
-
-    DataChartGenerator(Chart chart) {
-        this.chart = chart;
+    public Generator() {
+    }
+    
+    /**
+     * Excute the data generation for chart in a thread.
+     * @param dataChartGenerator 
+     */
+    public static void generateData(DataChartGenerator dataChartGenerator) {
+        if (dataChartGenerator.isReady()) {
+            Thread thread = new Thread(dataChartGenerator);
+            thread.start();
+        }
     }
 
-    /**
-     * Checks if the data is available for the generation of data.
-     *
-     * @return
-     */
-    public abstract boolean isReady();
-
-    /**
-     * Sets some data if the chart needs.
-     *
-     * @param topics List of topics for representation.
-     * @param metric Metric to show.
-     */
-    public abstract void setDataSource(ArrayList<TopicDTO> topics, Metric metric);
-
-    /**
-     * Generates the data for a chart.
-     */
-    protected abstract void generateData();
 }

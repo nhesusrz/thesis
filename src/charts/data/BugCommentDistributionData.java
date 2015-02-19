@@ -35,14 +35,24 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import metrics.Metric;
 
-public class BugCommentDistributionGenerator extends DataChartGenerator {
+public class BugCommentDistributionData extends DataChartGenerator {
 
-    public BugCommentDistributionGenerator(Chart chart) {
+    public BugCommentDistributionData(Chart chart) {
         super(chart);
     }
 
     @Override
-    public void generateData() {
+    public boolean isReady() {
+        return true;
+    }
+
+    @Override
+    public void setDataSource(ArrayList<TopicDTO> topics, Metric metric) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void generateData() {
         int versionCount = (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount();
         chart.destroy();
         ((XYSplineChart) chart).setYLabel(ResourceBundle.getBundle("view/Bundle").getString("Chart2.YLabel"));
@@ -66,8 +76,13 @@ public class BugCommentDistributionGenerator extends DataChartGenerator {
     }
 
     @Override
-    public void generateData(ArrayList<TopicDTO> topics, Metric metric) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void run() {
+        if (isReady()) {
+            generateData();
+        } else {
+            setChanged();
+            notifyObservers("NO TIEN DATOS BUG y comentario GENNN");
+        }
     }
 
 }

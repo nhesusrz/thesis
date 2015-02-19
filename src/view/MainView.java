@@ -28,9 +28,10 @@ import algorithms.AlgorithmManager;
 import algorithms.Clustering;
 import charts.PieChart;
 import charts.XYSplineChart;
-import charts.data.BugCommentDistributionGenerator;
-import charts.data.BugComponentDistributionGenerator;
-import charts.data.MetricEvolutionGenerator;
+import charts.data.BugCommentDistributionData;
+import charts.data.BugComponentDistributionData;
+import charts.data.Generator;
+import charts.data.MetricDistributionData;
 import dao.CommentDAO;
 import dao.DAOManager;
 import dao.DAONameEnum;
@@ -328,8 +329,8 @@ public class MainView extends FrameView implements Observer {
         iniVersionComboBox();
         refreshTablesDocumentTopicMatrix();
         if (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()).getCount() > 0) {
-            bugComponentDistributionData.generateData();
-            bugDistributionData.generateData();
+            Generator.generateData(bugComponentDistributionData);
+            Generator.generateData(bugDistributionData);
         }
         refreshJLists();
     }
@@ -348,7 +349,6 @@ public class MainView extends FrameView implements Observer {
 //            jComboBox1.addItem(((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getTopicWords(tIndx));
 //        }
 //    }
-
     private void showActivityMessage(String msj) {
         HTMLDocument doc = (HTMLDocument) jTextPane2.getStyledDocument();
         try {
@@ -490,7 +490,6 @@ public class MainView extends FrameView implements Observer {
 //        tableModel3 = (javax.swing.table.DefaultTableModel) jTable3.getModel();
 //        TableRowSorter<TableModel> rowShorter3 = new TableRowSorter<TableModel>(tableModel3);
 //        jTable3.setRowSorter(rowShorter3);
-
         int topicsCount = ((TopicDAO) DAOManager.getDAO(DAONameEnum.TOPIC_DAO.getName())).getCount();
         if (topicsCount != 0) {
             // Delete tables.
@@ -619,7 +618,7 @@ public class MainView extends FrameView implements Observer {
     private void showVersionTable(VersionDTO version) {
         inicVersionTable();
         DefaultTableModel tableModel5 = (javax.swing.table.DefaultTableModel) jTable5.getModel();
-        tableModel5.addColumn("<html><b>Date</b></html>", new Object[]{"<html><b>From</b></html>", "<html><b>To</b></html>","<html><b>Documents</b></html>"});
+        tableModel5.addColumn("<html><b>Date</b></html>", new Object[]{"<html><b>From</b></html>", "<html><b>To</b></html>", "<html><b>Documents</b></html>"});
         int docCount = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCountBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
         tableModel5.addColumn("<html><b>Value</b></html>", new Object[]{sdf.format(version.getDateFrom()), sdf.format(version.getDateTo()), docCount});
     }
@@ -725,14 +724,14 @@ public class MainView extends FrameView implements Observer {
         jSpinner9 = new javax.swing.JSpinner();
         jSpinner7 = new javax.swing.JSpinner();
         bugComponentDistribution = new PieChart();
-        bugComponentDistributionData = new charts.data.BugComponentDistributionGenerator(bugComponentDistribution);
+        bugComponentDistributionData = new charts.data.BugComponentDistributionData(bugComponentDistribution);
         bugComponentDistribution.setPreferredSize(380, 300);
         jScrollPane8 = new javax.swing.JScrollPane(bugComponentDistribution.getGraphicPanel());
         BugDistributionChart = new XYSplineChart();
         BugDistributionChart.setTitle("Bug and Comments Distribution");
         BugDistributionChart.setYLabel("Number");
 
-        bugDistributionData = new charts.data.BugCommentDistributionGenerator(BugDistributionChart);
+        bugDistributionData = new charts.data.BugCommentDistributionData(BugDistributionChart);
         BugDistributionChart.setPreferredSize(400, 300);
         jScrollPane9 = new javax.swing.JScrollPane(BugDistributionChart.getGraphicPanel());
         jPanel2 = new javax.swing.JPanel();
@@ -756,7 +755,7 @@ public class MainView extends FrameView implements Observer {
         jList2 = new javax.swing.JList();
         jCheckBox4 = new javax.swing.JCheckBox();
         splineChart = new XYSplineChart();
-        splineChartGenData = new charts.data.MetricEvolutionGenerator(splineChart);
+        splineChartGenData = new charts.data.MetricDistributionData(splineChart);
         jScrollPane6 = new javax.swing.JScrollPane(splineChart.getGraphicPanel());
         jPanel15 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -2205,16 +2204,18 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList2ValueChanged
         if (!evt.getValueIsAdjusting()) {
             if (jList2.getSelectedValue() != null) {
-                splineChartGenData.addObserver(this);
-                splineChartGenData.generateData((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
+                splineChartGenData.addObserver(this);          
+            splineChartGenData.setDataSource((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
+            Generator.generateData(splineChartGenData);
             }
         }
     }//GEN-LAST:event_jList2ValueChanged
 
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
-        if (jList2.getSelectedValue() != null) {
-            splineChartGenData.addObserver(this);
-            splineChartGenData.generateData((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
+        if (jList2.getSelectedValue() != null) {            
+            splineChartGenData.addObserver(this);          
+            splineChartGenData.setDataSource((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
+            Generator.generateData(splineChartGenData);
         }
     }//GEN-LAST:event_jComboBox5ItemStateChanged
 
@@ -2447,13 +2448,13 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private File indexDir, xmlFile;
 
     private XYSplineChart splineChart;
-    private MetricEvolutionGenerator splineChartGenData;
+    private MetricDistributionData splineChartGenData;
 
     private PieChart bugComponentDistribution;
-    private BugComponentDistributionGenerator bugComponentDistributionData;
+    private BugComponentDistributionData bugComponentDistributionData;
 
     private XYSplineChart BugDistributionChart;
-    private BugCommentDistributionGenerator bugDistributionData;
+    private BugCommentDistributionData bugDistributionData;
 
     @Override
     public void update(Observable o, Object arg) {
@@ -2467,8 +2468,8 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.Run"))) {
             repaintProgressBar(progressBar.getValue() + 1);
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"))) {
-            bugComponentDistributionData.generateData();
-            bugDistributionData.generateData();
+            Generator.generateData(bugComponentDistributionData);
+            Generator.generateData(bugDistributionData);
             jButton1.setEnabled(true);
             jButton3.setEnabled(true);
             jButton8.setEnabled(false);
@@ -2566,20 +2567,20 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             repaintProgressBar(progressBar.getValue() + 1);
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.End"))) {
             jTextField11.setText(Integer.toString((DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount()));
-            bugDistributionData.generateData();
+            Generator.generateData(bugDistributionData);
             setProgressBar(0);
             setLabelBar("");
             jButton13.setEnabled(true);
             jButton14.setEnabled(false);
             jButton11.setEnabled(true);
-        } else if(((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Inic"))) { 
+        } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Inic"))) {
             setProgressBar((DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount());
-            setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("Metric.Status")); 
-        } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Run"))) { 
-                repaintProgressBar(progressBar.getValue() + 1);
+            setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("Metric.Status"));
+        } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Run"))) {
+            repaintProgressBar(progressBar.getValue() + 1);
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.End"))) {
             setProgressBar(0);
-            setLabelBar(""); 
+            setLabelBar("");
         } else if (o instanceof LuceneManager) {
             showIndexResults((String) arg);
         } else {

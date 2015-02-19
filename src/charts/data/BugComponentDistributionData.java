@@ -35,14 +35,24 @@ import java.util.HashMap;
 import java.util.Map;
 import metrics.Metric;
 
-public class BugComponentDistributionGenerator extends DataChartGenerator {
+public class BugComponentDistributionData extends DataChartGenerator {
 
-    public BugComponentDistributionGenerator(Chart chart) {
+    public BugComponentDistributionData(Chart chart) {
         super(chart);
     }
 
     @Override
-    public void generateData() {
+    public boolean isReady() {
+        return true;
+    }
+
+    @Override
+    public void setDataSource(ArrayList<TopicDTO> topics, Metric metric) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void generateData() {
         int bugCount = (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName())).getCount();
         HashMap<String, Integer> distribution = ((BugDAO) (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()))).getDistributionComponent();
         chart.destroy();
@@ -52,8 +62,13 @@ public class BugComponentDistributionGenerator extends DataChartGenerator {
     }
 
     @Override
-    public void generateData(ArrayList<TopicDTO> topics, Metric metric) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void run() {
+        if (isReady()) {
+            generateData();
+        } else {
+            setChanged();
+            notifyObservers("NO TIEN DATOS BUG COMPONENTE GENNN");
+        }
     }
 
 }

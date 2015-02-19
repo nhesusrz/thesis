@@ -51,7 +51,7 @@ public class Focus extends Metric {
             if (topic.getDocProb(doc.getId()) != null) {
                 BigDecimal aux = topic.getDocProb(doc.getId());
                 if (/*aux.compareTo(new BigDecimal(threshold)) > 0 && */docsInVersion.size() > 0) {
-                    BigDecimal resultAux = aux.divide(new BigDecimal(docsInVersion.size()), 2, RoundingMode.HALF_UP);
+                    BigDecimal resultAux = aux.divide(new BigDecimal(docsInVersion.size()), RoundingMode.HALF_UP);
                     result = result.add(resultAux);
                 }
             }

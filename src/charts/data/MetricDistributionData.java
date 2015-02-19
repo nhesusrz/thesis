@@ -33,55 +33,75 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import metrics.Metric;
 
+public class MetricDistributionData extends DataChartGenerator {
 
-public class MetricEvolutionGenerator extends DataChartGenerator {
-    
-    public MetricEvolutionGenerator(XYSplineChart chart) {
+    private ArrayList<TopicDTO> topics;
+    private Metric metric;
+
+    public MetricDistributionData(XYSplineChart chart) {
         super(chart);
+        topics = null;
+        metric = null;
     }
 
     @Override
-    public void generateData(ArrayList<TopicDTO> topics, Metric metric) {        
-        if(!topics.isEmpty()) {                                  
-            int versionCount  = (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount();            
+    public boolean isReady() {
+        if (metric != null && topics != null && topics.size() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void setDataSource(ArrayList<TopicDTO> topics, Metric metric) {
+        this.topics = topics;
+        this.metric = metric;
+    }
+
+    @Override
+    protected void generateData() {
+        if (!topics.isEmpty()) {
+            int versionCount = (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount();
             chart.destroy();
-            ((XYSplineChart)chart).setYLabel(metric.toString());
-            ((XYSplineChart)chart).setTitle(metric.toString() + " Evolution");
+            ((XYSplineChart) chart).setYLabel(metric.toString());
+            ((XYSplineChart) chart).setTitle(metric.toString() + " Evolution");
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Inic"));
-            for(int versionId = 1; versionId <= versionCount; versionId++) {                
+            for (int versionId = 1; versionId <= versionCount; versionId++) {
                 VersionDTO version = (VersionDTO) (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).get(versionId);
-                for(TopicDTO topic: topics) {
-                    ((XYSplineChart)chart).createNewSerie(topic.getID(), topic.toStringWithoutHTMLTags());
-                    switch(metric.getCode()) {
-                        case 1:                                                             
-                            ((XYSplineChart)chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                for (TopicDTO topic : topics) {
+                    ((XYSplineChart) chart).createNewSerie(topic.getID(), topic.toStringWithoutHTMLTags());
+                    switch (metric.getCode()) {
+                        case 1:
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
                             break;
-                        case 2: 
-                            ((XYSplineChart)chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                        case 2:
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
                             break;
                         case 3:
-                            ((XYSplineChart)chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
                             break;
                         case 4:
-                            ((XYSplineChart)chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
                             break;
                         case 5:
-                            ((XYSplineChart)chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
                             break;
-                    }                         
-                } 
+                    }
+                }
                 setChanged();
                 notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.Run"));
-            } 
+            }
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.End"));
-        }        
+        }
     }
 
     @Override
-    public void generateData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void run() {
+        if (isReady()) {
+            generateData();
+        } 
     }
-            
+
 }
