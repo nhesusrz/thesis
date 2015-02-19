@@ -45,7 +45,7 @@ public class Assignment extends Metric {
         List<BaseDTO> docsInVersion = (DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
         for (BaseDTO baseDto : docsInVersion) {
             DocumentDTO doc = (DocumentDTO) baseDto;
-            if (topic.getDocProb(doc.getId()) != null) {
+            if (topic.getDocProb(doc.getId()).signum() == 1) {
                 result = result.add(topic.getDocProb(doc.getId()));
             }
         }

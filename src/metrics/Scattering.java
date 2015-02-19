@@ -51,8 +51,8 @@ public class Scattering extends Metric {
 //        }
         for (BaseDTO baseDto : docsInVersion) {
             DocumentDTO doc = (DocumentDTO) baseDto;
-            if (topic.getDocProb(doc.getId()) != null && topic.getDocProb(doc.getId()).signum() == 1) {
-                BigDecimal aux = topic.getDocProb(doc.getId());
+            BigDecimal aux = topic.getDocProb(doc.getId());
+            if (aux.signum() == 1) {
                 BigDecimal resultAux = aux.multiply(new BigDecimal(Math.log(aux.doubleValue())));
                 result = result.add(resultAux.abs());
             }

@@ -178,7 +178,7 @@ public class TopicDTO extends BaseDTO {
         if (docs != null && docs.get(docID) != null) {
             return docs.get(docID);
         }
-        return null;
+        return new BigDecimal(0);
     }
 
     public int getDocsCount() {
