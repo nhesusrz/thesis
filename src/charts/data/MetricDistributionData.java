@@ -32,6 +32,7 @@ import dto.VersionDTO;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import metrics.Metric;
+import org.jfree.data.time.SimpleTimePeriod;
 
 public class MetricDistributionData extends DataChartGenerator {
 
@@ -60,7 +61,8 @@ public class MetricDistributionData extends DataChartGenerator {
 
     @Override
     protected void generateData() {
-        if (!topics.isEmpty()) {
+        synchronized(chart) {
+            if (!topics.isEmpty()) {
             int versionCount = (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount();
             chart.destroy();
             ((XYSplineChart) chart).setYLabel(metric.toString());
@@ -73,19 +75,16 @@ public class MetricDistributionData extends DataChartGenerator {
                     ((XYSplineChart) chart).createNewSerie(topic.getID(), topic.toStringWithoutHTMLTags());
                     switch (metric.getCode()) {
                         case 1:
-                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), metric.getResult(version, topic).doubleValue());
                             break;
                         case 2:
-                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), metric.getResult(version, topic).doubleValue());
                             break;
                         case 3:
-                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), metric.getResult(version, topic).doubleValue());
                             break;
                         case 4:
-                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
-                            break;
-                        case 5:
-                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), versionId, metric.getResult(version, topic).doubleValue());
+                            ((XYSplineChart) chart).addItemToSerie(topic.getID(), new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), metric.getResult(version, topic).doubleValue());
                             break;
                     }
                 }
@@ -94,7 +93,8 @@ public class MetricDistributionData extends DataChartGenerator {
             }
             setChanged();
             notifyObservers(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.End"));
-        }
+            }
+        }         
     }
 
     @Override
@@ -103,5 +103,6 @@ public class MetricDistributionData extends DataChartGenerator {
             generateData();
         } 
     }
+
 
 }

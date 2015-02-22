@@ -58,6 +58,6 @@ public abstract class Chart {
      */
     public abstract ChartPanel getGraphicPanel();
 
-    public abstract void destroy();
+    public  abstract void destroy();
 
 }

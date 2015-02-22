@@ -24,21 +24,79 @@
  */
 package charts.data;
 
+import java.util.HashMap;
 import java.util.Observable;
 
 public class Generator extends Observable {
 
+    private static Thread metricThread, bugCommentThread, bugComponentThread = null;
+
     public Generator() {
     }
-    
+
     /**
-     * Excute the data generation for chart in a thread.
-     * @param dataChartGenerator 
+     * Excutes the data generation for bug and comments chart in a thread.
+     *
+     * @param dataChartGenerator
      */
-    public static void generateData(DataChartGenerator dataChartGenerator) {
-        if (dataChartGenerator.isReady()) {
-            Thread thread = new Thread(dataChartGenerator);
-            thread.start();
+    public static void generateBugCommentData(BugCommentDistributionData dataChartGenerator) {
+        if (bugCommentThread == null) {
+            bugCommentThread = new Thread(dataChartGenerator);
+        }
+        bugCommentThread.start();
+    }
+
+    /**
+     * Excutes the stop BugComment thread.
+     */
+    public static void stopBugCommentThread() {
+        if (bugCommentThread != null) {
+            bugCommentThread.stop();
+            bugCommentThread = null;
+        }
+    }
+
+    /**
+     * Excutes the data generation for bug's components chart in a thread.
+     *
+     * @param dataChartGenerator
+     */
+    public static void generateBugComponentData(BugComponentDistributionData dataChartGenerator) {
+        if (bugComponentThread == null) {
+            bugComponentThread = new Thread(dataChartGenerator);
+        }
+        bugComponentThread.start();
+    }
+
+    /**
+     * Excutes the stop BugComponent thread.
+     */
+    public static void stopBugComponentThread() {
+        if (bugComponentThread != null) {
+            bugComponentThread.stop();
+            bugComponentThread = null;
+        }
+    }
+
+    /**
+     * Excutes the data generation for metric chart in a thread.
+     *
+     * @param dataChartGenerator
+     */
+    public static void generateDataMetricThread(MetricDistributionData dataChartGenerator) {
+        if (metricThread == null) {
+            metricThread = new Thread(dataChartGenerator);
+        }
+        metricThread.start();
+    }
+
+    /**
+     * Excutes the stop metric thread.
+     */
+    public static void stopMetricThread() {
+        if (metricThread != null) {
+            metricThread.stop();
+            metricThread = null;
         }
     }
 

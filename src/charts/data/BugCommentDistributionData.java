@@ -34,6 +34,7 @@ import dto.VersionDTO;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import metrics.Metric;
+import org.jfree.data.time.SimpleTimePeriod;
 
 public class BugCommentDistributionData extends DataChartGenerator {
 
@@ -69,9 +70,9 @@ public class BugCommentDistributionData extends DataChartGenerator {
             int bugCountVersionNotClosed = ((BugDAO) (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()))).getCountBeetwDatesClosed(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()), false);
             int bugCountVersionClosed = ((BugDAO) (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()))).getCountBeetwDatesClosed(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()), true);
             int commentCount = (DAOManager.getDAO(DAONameEnum.COMMENT_DAO.getName())).getCountBeetwDates(new java.sql.Date(version.getDateFrom().getTime()), new java.sql.Date(version.getDateTo().getTime()));
-            ((XYSplineChart) chart).addItemToSerie(1, i, bugCountVersionNotClosed);
-            ((XYSplineChart) chart).addItemToSerie(2, i, bugCountVersionClosed);
-            ((XYSplineChart) chart).addItemToSerie(3, i, commentCount);
+            ((XYSplineChart) chart).addItemToSerie(1, new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), bugCountVersionNotClosed);
+            ((XYSplineChart) chart).addItemToSerie(2, new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), bugCountVersionClosed);
+            ((XYSplineChart) chart).addItemToSerie(3, new SimpleTimePeriod(version.getDateFrom(), version.getDateTo()), commentCount);
         }
     }
 

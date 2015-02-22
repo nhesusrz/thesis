@@ -57,4 +57,5 @@ public abstract class DataChartGenerator extends Observable implements Runnable 
      * Generates the data for a chart.
      */
     protected abstract void generateData();
+     
 }

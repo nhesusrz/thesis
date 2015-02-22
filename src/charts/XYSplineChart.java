@@ -28,36 +28,43 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Stroke;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.labels.StandardXYItemLabelGenerator;
 import org.jfree.chart.labels.XYItemLabelGenerator;
-import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.xy.DefaultXYItemRenderer;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.xy.XYSeries;
-import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.data.time.SimpleTimePeriod;
+import org.jfree.data.time.TimePeriodValues;
+import org.jfree.data.time.TimePeriodValuesCollection;
 import org.jfree.ui.RectangleInsets;
+import org.jfree.ui.TextAnchor;
 
 public class XYSplineChart extends Chart {
 
     private final JFreeChart chart;
     private final ChartPanel chartPanel;
-    private final XYSeriesCollection dataSet;
-    private final HashMap<Integer, XYSeries> series;
+    private final TimePeriodValuesCollection dataSet;
+    private final HashMap<Integer, TimePeriodValues> series;
 
     public XYSplineChart() {
-        dataSet = new XYSeriesCollection();
+        dataSet = new TimePeriodValuesCollection();
         chart = createChart(dataSet);
         chartPanel = new ChartPanel(chart);
         chartPanel.setFillZoomRectangle(true);
         chartPanel.setMouseWheelEnabled(true);
-        series = new HashMap<Integer, XYSeries>();
+        series = new HashMap<Integer, TimePeriodValues>();
     }
 
     /**
@@ -67,10 +74,12 @@ public class XYSplineChart extends Chart {
      * @param name Is the name of the serie.
      */
     public void createNewSerie(Integer serieKey, String name) {
-        if (!series.containsKey(serieKey)) {
-            XYSeries serie_nueva = new XYSeries(name);
-            dataSet.addSeries(serie_nueva);
-            series.put(serieKey, serie_nueva);
+        synchronized (series) {
+            if (!series.containsKey(serieKey)) {
+                TimePeriodValues newSerie = new TimePeriodValues(name);
+                dataSet.addSeries(newSerie);
+                series.put(serieKey, newSerie);
+            }
         }
     }
 
@@ -81,8 +90,10 @@ public class XYSplineChart extends Chart {
      * @param x X point.
      * @param y Y point.
      */
-    public void addItemToSerie(Integer serieId, Number x, double y) {
-        series.get(serieId).add(x, y);
+    public void addItemToSerie(Integer serieId, SimpleTimePeriod x, double y) {
+        synchronized (series) {
+            series.get(serieId).add(x, y);
+        }
     }
 
     @Override
@@ -97,8 +108,12 @@ public class XYSplineChart extends Chart {
 
     @Override
     public void destroy() {
-        series.clear();
-        dataSet.removeAllSeries();
+        synchronized (dataSet) {
+            for (Map.Entry<Integer, TimePeriodValues> entry : series.entrySet()) {
+                dataSet.removeSeries(entry.getValue());
+            }
+            series.clear();
+        }
     }
 
     /**
@@ -118,9 +133,15 @@ public class XYSplineChart extends Chart {
 
     /**
      * Sets the labels in the view chart.
-     * @param show The flag. 
+     *
+     * @param show The flag.
      */
-    public void showLabels(boolean show) {        
+    public void showLabels(boolean show) {
+        final ItemLabelPosition p = new ItemLabelPosition(
+            ItemLabelAnchor.OUTSIDE1, TextAnchor.TOP_LEFT, 
+            TextAnchor.TOP_LEFT, -Math.PI / 8.0
+        );
+        chart.getXYPlot().getRenderer().setPositiveItemLabelPosition(p);
         chart.getXYPlot().getRenderer().setBaseItemLabelsVisible(show);
     }
 
@@ -145,13 +166,13 @@ public class XYSplineChart extends Chart {
         ((XYLineAndShapeRenderer) chart.getXYPlot().getRenderer()).setSeriesShapesVisible(serie, flag);
     }
 
-    private JFreeChart createChart(XYSeriesCollection dataSet) {
-        JFreeChart chart = ChartFactory.createXYLineChart(
+    private JFreeChart createChart(TimePeriodValuesCollection dataSet) {
+        JFreeChart chart = ChartFactory.createTimeSeriesChart(
                 ResourceBundle.getBundle("view/Bundle").getString("Chart3.Title"),
                 ResourceBundle.getBundle("view/Bundle").getString("Chart3.XLabel"),
                 ResourceBundle.getBundle("view/Bundle").getString("Chart3.YLabel"),
                 dataSet,
-                PlotOrientation.VERTICAL,
+                //PlotOrientation.VERTICAL,
                 true,
                 true,
                 false
@@ -166,21 +187,24 @@ public class XYSplineChart extends Chart {
             }
         };;
 
-        XYItemLabelGenerator xy = new StandardXYItemLabelGenerator("v{1}\n= {2}", NumberFormat.getNumberInstance(), NumberFormat.getNumberInstance());
+        XYItemLabelGenerator xy = new StandardXYItemLabelGenerator("({1},{2})", new SimpleDateFormat("d/MM/yy"), new DecimalFormat("0.00"));
 
         renderer.setBaseItemLabelGenerator(xy);
         renderer.setBaseItemLabelsVisible(true);
         renderer.setBaseLinesVisible(true);
         renderer.setBaseItemLabelsVisible(false);
-
+        
+                
+        chart.getXYPlot().setDomainZeroBaselineVisible(true);
         chart.getXYPlot().setRenderer(renderer);
         chart.getXYPlot().setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
         chart.getXYPlot().setBackgroundPaint(Color.white);
         chart.getXYPlot().setDomainGridlinePaint(Color.white);
         chart.getXYPlot().setRangeGridlinePaint(Color.lightGray);
         chart.getXYPlot().setOutlinePaint(Color.white);
-        chart.getXYPlot().getDomainAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
         chart.getXYPlot().setNoDataMessage(ResourceBundle.getBundle("view/Bundle").getString("Chart.NoData"));
+        DateAxis axis = (DateAxis) chart.getXYPlot().getDomainAxis();
+        axis.setDateFormatOverride(new SimpleDateFormat("MMM-YY"));
         return chart;
     }
 

@@ -314,6 +314,14 @@ public class MainView extends FrameView implements Observer {
         AlgorithmManager.getInstance().stopLDA();
     }
 
+    @Action
+    public void calulateMetric() {
+        metricChartData.addObserver(this);
+        metricChartData.setDataSource((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
+        Generator.stopMetricThread();
+        Generator.generateDataMetricThread(metricChartData);
+    }
+
     @Override
     public void finalize() {
         //DAOManager.getInstance().closeConecction();
@@ -329,8 +337,8 @@ public class MainView extends FrameView implements Observer {
         iniVersionComboBox();
         refreshTablesDocumentTopicMatrix();
         if (DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()).getCount() > 0) {
-            Generator.generateData(bugComponentDistributionData);
-            Generator.generateData(bugDistributionData);
+            Generator.generateBugComponentData(bugComponentChartData);
+            Generator.generateBugCommentData(bugCommentChartData);
         }
         refreshJLists();
     }
@@ -723,15 +731,14 @@ public class MainView extends FrameView implements Observer {
         jLabel36 = new javax.swing.JLabel();
         jSpinner9 = new javax.swing.JSpinner();
         jSpinner7 = new javax.swing.JSpinner();
-        bugComponentDistribution = new PieChart();
-        bugComponentDistributionData = new charts.data.BugComponentDistributionData(bugComponentDistribution);
-        bugComponentDistribution.setPreferredSize(380, 300);
-        jScrollPane8 = new javax.swing.JScrollPane(bugComponentDistribution.getGraphicPanel());
+        bugComponentDistributionChart = new PieChart();
+        bugComponentChartData = new charts.data.BugComponentDistributionData(bugComponentDistributionChart);
+        bugComponentDistributionChart.setPreferredSize(380, 300);
+        jScrollPane8 = new javax.swing.JScrollPane(bugComponentDistributionChart.getGraphicPanel());
         BugDistributionChart = new XYSplineChart();
+        bugCommentChartData = new charts.data.BugCommentDistributionData(BugDistributionChart);
         BugDistributionChart.setTitle("Bug and Comments Distribution");
         BugDistributionChart.setYLabel("Number");
-
-        bugDistributionData = new charts.data.BugCommentDistributionData(BugDistributionChart);
         BugDistributionChart.setPreferredSize(400, 300);
         jScrollPane9 = new javax.swing.JScrollPane(BugDistributionChart.getGraphicPanel());
         jPanel2 = new javax.swing.JPanel();
@@ -754,8 +761,9 @@ public class MainView extends FrameView implements Observer {
         jScrollPane7 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
         jCheckBox4 = new javax.swing.JCheckBox();
+        jButton15 = new javax.swing.JButton();
         splineChart = new XYSplineChart();
-        splineChartGenData = new charts.data.MetricDistributionData(splineChart);
+        metricChartData = new charts.data.MetricDistributionData(splineChart);
         jScrollPane6 = new javax.swing.JScrollPane(splineChart.getGraphicPanel());
         jPanel15 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -1268,7 +1276,7 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel13)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
             .addContainerGap())
     );
 
@@ -1606,7 +1614,7 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
                 .addComponent(jLabel39))
             .addGap(9, 9, 9)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING))
             .addContainerGap())
@@ -1650,37 +1658,31 @@ jSpinner4.addChangeListener(new javax.swing.event.ChangeListener() {
         new Scattering(),
         new Focus()}));
 jComboBox5.setName("jComboBox5");
-jComboBox5.addItemListener(new java.awt.event.ItemListener() {
-public void itemStateChanged(java.awt.event.ItemEvent evt) {
-    jComboBox5ItemStateChanged(evt);
+
+jLabel29.setText(bundle.getString("MainView.jLabel29.text")); // NOI18N
+jLabel29.setName("jLabel29"); // NOI18N
+
+jScrollPane7.setName("jScrollPane7"); // NOI18N
+
+jList2.setModel(new javax.swing.AbstractListModel() {
+TopicDTO[] topcis = {};
+public int getSize() { return topcis.length; }
+public TopicDTO getElementAt(int i) { return topcis[i]; }
+});
+jList2.setName("jList2");
+jScrollPane7.setViewportView(jList2);
+
+jCheckBox4.setText(bundle.getString("MainView.jCheckBox4.text")); // NOI18N
+jCheckBox4.setName("jCheckBox4"); // NOI18N
+jCheckBox4.addItemListener(new java.awt.event.ItemListener() {
+    public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        jCheckBox4ItemStateChanged(evt);
     }
     });
 
-    jLabel29.setText(bundle.getString("MainView.jLabel29.text")); // NOI18N
-    jLabel29.setName("jLabel29"); // NOI18N
-
-    jScrollPane7.setName("jScrollPane7"); // NOI18N
-
-    jList2.setModel(new javax.swing.AbstractListModel() {
-        TopicDTO[] topcis = {};
-        public int getSize() { return topcis.length; }
-        public TopicDTO getElementAt(int i) { return topcis[i]; }
-    });
-    jList2.setName("jList2");
-    jList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-        public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-            jList2ValueChanged(evt);
-        }
-    });
-    jScrollPane7.setViewportView(jList2);
-
-    jCheckBox4.setText(bundle.getString("MainView.jCheckBox4.text")); // NOI18N
-    jCheckBox4.setName("jCheckBox4"); // NOI18N
-    jCheckBox4.addItemListener(new java.awt.event.ItemListener() {
-        public void itemStateChanged(java.awt.event.ItemEvent evt) {
-            jCheckBox4ItemStateChanged(evt);
-        }
-    });
+    jButton15.setAction(actionMap.get("calulateMetric")); // NOI18N
+    jButton15.setText(bundle.getString("MainView.jButton15.text")); // NOI18N
+    jButton15.setName("jButton15"); // NOI18N
 
     javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
     jPanel11.setLayout(jPanel11Layout);
@@ -1693,10 +1695,13 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createSequentialGroup()
                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCheckBox4)
                         .addComponent(jLabel28)
                         .addComponent(jLabel29))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createSequentialGroup()
+                    .addComponent(jCheckBox4)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton15)))
             .addContainerGap())
     );
     jPanel11Layout.setVerticalGroup(
@@ -1709,9 +1714,12 @@ public void itemStateChanged(java.awt.event.ItemEvent evt) {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jLabel29)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jCheckBox4))
+            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addComponent(jCheckBox4)
+                .addComponent(jButton15))
+            .addContainerGap())
     );
 
     //jComboBox5.removeAllItems();
@@ -2058,7 +2066,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jLabel33)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
+            .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
             .addContainerGap())
     );
 
@@ -2201,24 +2209,6 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         }
     }//GEN-LAST:event_jSpinner6StateChanged
 
-    private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList2ValueChanged
-        if (!evt.getValueIsAdjusting()) {
-            if (jList2.getSelectedValue() != null) {
-                splineChartGenData.addObserver(this);          
-            splineChartGenData.setDataSource((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
-            Generator.generateData(splineChartGenData);
-            }
-        }
-    }//GEN-LAST:event_jList2ValueChanged
-
-    private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
-        if (jList2.getSelectedValue() != null) {            
-            splineChartGenData.addObserver(this);          
-            splineChartGenData.setDataSource((ArrayList<TopicDTO>) jList2.getSelectedValuesList(), (Metric) jComboBox5.getSelectedItem());
-            Generator.generateData(splineChartGenData);
-        }
-    }//GEN-LAST:event_jComboBox5ItemStateChanged
-
     private void jSpinner8StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner8StateChanged
         Integer value = (Integer) jSpinner8.getValue();
         if (value > 0 && value <= (DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount()) {
@@ -2308,6 +2298,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2448,13 +2439,13 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
     private File indexDir, xmlFile;
 
     private XYSplineChart splineChart;
-    private MetricDistributionData splineChartGenData;
+    private MetricDistributionData metricChartData;
 
-    private PieChart bugComponentDistribution;
-    private BugComponentDistributionData bugComponentDistributionData;
+    private PieChart bugComponentDistributionChart;
+    private BugComponentDistributionData bugComponentChartData;
 
     private XYSplineChart BugDistributionChart;
-    private BugCommentDistributionData bugDistributionData;
+    private BugCommentDistributionData bugCommentChartData;
 
     @Override
     public void update(Observable o, Object arg) {
@@ -2468,14 +2459,16 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.Run"))) {
             repaintProgressBar(progressBar.getValue() + 1);
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Parser.Action.End"))) {
-            Generator.generateData(bugComponentDistributionData);
-            Generator.generateData(bugDistributionData);
+            Generator.stopBugComponentThread();
+            Generator.stopBugCommentThread();
+            Generator.generateBugComponentData(bugComponentChartData);
+            Generator.generateBugCommentData(bugCommentChartData);
             jButton1.setEnabled(true);
             jButton3.setEnabled(true);
             jButton8.setEnabled(false);
             setProgressBar(0);
             setLabelBar("");
-        } else // Base de datos.
+        } else // Data Base.
         if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("H2.Action.Inic"))) {
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("DocGen.Action.Inic"))) {
             setProgressBar((DAOManager.getDAO(DAONameEnum.BUG_DAO.getName())).getCount() + (DAOManager.getDAO(DAONameEnum.COMMENT_DAO.getName())).getCount());
@@ -2499,7 +2492,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             jTextField9.setText(Integer.toString((DAOManager.getDAO(DAONameEnum.BUG_DAO.getName()).getCount())));
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("H2.Action.Run.PutComment"))) {
             jTextField10.setText(Integer.toString(DAOManager.getDAO(DAONameEnum.COMMENT_DAO.getName()).getCount()));
-        } else // Indexador.
+        } else // Indexer.
         if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Action.Inic"))) {
             setProgressBar((DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCount());
             setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("Indexer.Status"));
@@ -2514,7 +2507,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             jButton7.setEnabled(false);
             setProgressBar(0);
             setLabelBar("");
-        } else // Buscador.
+        } else // Searcher.
         if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Searcher.Action.Inic"))) {
             setProgressBar(10);
             repaintProgressBar(8);
@@ -2556,7 +2549,8 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 //            iniTopicComboBox();
             refreshJLists();
             refreshTablesDocumentTopicMatrix();
-        } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.Inic"))) { // LDA. VERSIONS. 
+        } else // Versions.
+        if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.Inic"))) {
             setProgressBar((DAOManager.getDAO(DAONameEnum.DOCUMENT_DAO.getName())).getCount());
             setLabelBar(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Status"));
             jButton13.setEnabled(false);
@@ -2567,7 +2561,8 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             repaintProgressBar(progressBar.getValue() + 1);
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("VersionGen.Action.End"))) {
             jTextField11.setText(Integer.toString((DAOManager.getDAO(DAONameEnum.VERSION_DAO.getName())).getCount()));
-            Generator.generateData(bugDistributionData);
+            Generator.stopBugCommentThread();
+            Generator.generateBugCommentData(bugCommentChartData);
             setProgressBar(0);
             setLabelBar("");
             jButton13.setEnabled(true);
@@ -2581,6 +2576,7 @@ jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         } else if (((String) arg).equals(ResourceBundle.getBundle("view/Bundle").getString("Metric.Action.End"))) {
             setProgressBar(0);
             setLabelBar("");
+            //Generator./plineChartGenData.stop();//
         } else if (o instanceof LuceneManager) {
             showIndexResults((String) arg);
         } else {
