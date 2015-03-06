@@ -1,4 +1,4 @@
-Thesis
+Thesis for degree in Systems Engineer (UNICEN University)
 ======
 
 Director: Dr. Daniela Godoy, Co-Director Eng. Alejandro Corbellini. National University of the Center of Buenos Aires (UNICEN University). Tandil, Argentina. (http://www.exa.unicen.edu.ar/)
