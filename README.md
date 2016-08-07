@@ -2,9 +2,7 @@
 
 [Faculty of Sciences](http://www.exa.unicen.edu.ar/), National University of the Center of Buenos Aires ([UNICEN](http://www.unicen.edu.ar/)). [Tandil](http://www.tandil.gov.ar/), Argentina. 
 
-**Director:** Dr. Daniela Godoy
-
-**Co-Director:**r Eng. Alejandro Corbellini. 
+**Director:** Dr. Daniela Godoy,  **Co-Directorr:** Eng. Alejandro Corbellini. 
 
 **Description** 
 
