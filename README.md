@@ -1,7 +1,5 @@
 ### Extraction and Analysis System of Topics for Software History Reports
 
-> Thesis for degree in Systems Engineer
-
 [Faculty of Sciences](http://www.exa.unicen.edu.ar/), National University of the Center of Buenos Aires ([UNICEN](http://www.unicen.edu.ar/)). [Tandil](http://www.tandil.gov.ar/), Argentina. 
 
 **Director:** Dr. Daniela Godoy
