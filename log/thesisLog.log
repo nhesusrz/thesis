@@ -19368,3 +19368,535 @@ INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '9', '0.10042254340952995461666
 328  17-02-2015 20:42:23 [Thread-8] ERROR logger.ThesisLogger : DaoManager.executeStatement: org.h2.jdbc.JdbcSQLException: Conversión de datos fallida, convirtiendo "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"
 Data conversion error converting "'null' (TOPIC_DOCUMENT: DOC_ID INTEGER NOT NULL)"; SQL statement:
 INSERT INTO TOPIC_DOCUMENT VALUES (null, 'null', '10', '0.1163572097104867697492380784751730971038341522216796875') -- (NULL, 'null', '10', '0.1163572097104867697492380784751730971038341522216796875') [22018-173]
+0    03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.text.clustering.MultilingualClustering : Performing monolingual clustering in: English
+44   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceCache : Loading resources, locations: [org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]]
+45   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ar
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ar
+48   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ar
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ar
+50   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.bg
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.bg
+51   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.bg
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.bg
+52   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.cz
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.cz
+52   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.cz
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.cz
+53   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.zh_cn
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.zh_cn
+54   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.zh_cn
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.zh_cn
+55   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.hr
+55   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.hr
+56   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.da
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.da
+57   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.da
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.da
+58   03-10-2016 13:21:24 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.nl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.nl
+395  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.nl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.nl
+396  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.en
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.en
+397  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.en
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.en
+402  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ee
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ee
+403  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ee
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ee
+403  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.fi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.fi
+404  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.fi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.fi
+405  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.fr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.fr
+406  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.fr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.fr
+407  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.de
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.de
+407  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.de
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.de
+408  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.gr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.gr
+409  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.gr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.gr
+409  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hu
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.hu
+410  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hu
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.hu
+410  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.hi
+411  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.hi
+412  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.it
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.it
+413  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.it
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.it
+413  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ie
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ie
+414  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ie
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ie
+414  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ja
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ja
+414  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ja
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ja
+415  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ko
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ko
+416  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ko
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ko
+417  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.lv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.lv
+417  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.lv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.lv
+417  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.lt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.lt
+418  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.lt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.lt
+418  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.mt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.mt
+418  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.mt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.mt
+419  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.no
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.no
+419  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.no
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.no
+420  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.pl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.pl
+420  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.pl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.pl
+421  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.pt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.pt
+421  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.pt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.pt
+422  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ro
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ro
+422  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ro
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ro
+426  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ru
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.ru
+427  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ru
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.ru
+428  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sk
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.sk
+429  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sk
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.sk
+429  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.sl
+430  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.sl
+431  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.es
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.es
+431  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.es
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.es
+432  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.sv
+433  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.sv
+434  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.th
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.th
+434  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.th
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.th
+435  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.tr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stopwords.tr
+436  03-10-2016 13:21:25 [Thread-11] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.tr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@7440e464]
+		- jar:file:/Volumes/Samsung%20M3/Herramientas/Librerias/Carrot2/carrot2-java-api-3.12.0/lib/required/carrot2-core-3.12.0.jar!/stoplabels.tr
+0    03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.text.clustering.MultilingualClustering : Performing monolingual clustering in: English
+49   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceCache : Loading resources, locations: [org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]]
+50   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ar
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ar
+53   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ar
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ar
+57   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.bg
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.bg
+58   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.bg
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.bg
+59   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.cz
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.cz
+60   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.cz
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.cz
+61   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.zh_cn
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.zh_cn
+62   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.zh_cn
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.zh_cn
+63   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.hr
+64   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.hr
+64   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.da
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.da
+65   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.da
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.da
+65   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.nl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.nl
+66   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.nl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.nl
+66   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.en
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.en
+67   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.en
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.en
+69   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ee
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ee
+71   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ee
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ee
+72   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.fi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.fi
+72   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.fi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.fi
+73   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.fr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.fr
+74   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.fr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.fr
+74   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.de
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.de
+74   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.de
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.de
+75   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.gr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.gr
+75   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.gr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.gr
+76   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hu
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.hu
+77   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hu
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.hu
+77   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.hi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.hi
+78   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.hi
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.hi
+79   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.it
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.it
+79   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.it
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.it
+80   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ie
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ie
+80   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ie
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ie
+80   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ja
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ja
+81   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ja
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ja
+81   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ko
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ko
+82   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ko
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ko
+83   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.lv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.lv
+83   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.lv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.lv
+83   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.lt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.lt
+84   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.lt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.lt
+84   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.mt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.mt
+84   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.mt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.mt
+84   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.no
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.no
+85   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.no
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.no
+85   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.pl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.pl
+86   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.pl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.pl
+89   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.pt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.pt
+89   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.pt
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.pt
+90   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ro
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ro
+90   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ro
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ro
+91   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.ru
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.ru
+91   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.ru
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.ru
+91   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sk
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.sk
+91   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sk
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.sk
+92   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.sl
+92   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sl
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.sl
+93   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.es
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.es
+93   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.es
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.es
+93   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.sv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.sv
+93   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.sv
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.sv
+94   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.th
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.th
+94   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.th
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.th
+94   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stopwords.tr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stopwords.tr
+95   03-10-2016 13:36:00 [Thread-7] DEBUG org.carrot2.util.resource.ResourceLookup : getFirst():
+	stoplabels.tr
+	- 1 hit from: org.carrot2.util.resource.ContextClassLoaderLocator [current: sun.misc.Launcher$AppClassLoader@70dea4e]
+		- jar:file:/Users/nhesusrz/Dropbox/Documentos/Educaci%c3%b3n/UNICEN/Materias/Proyecto%20Final/Herramienta/dist/lib/carrot2-core-3.12.0.jar!/stoplabels.tr

@@ -28,19 +28,19 @@ import java.util.ResourceBundle;
 
 public enum ParametersEnum {
 
-    XML_DEFAULT_PATH(".\\data"),    
-    INDEX_DEFAULT_PATH(".\\index"),
+    XML_DEFAULT_PATH(".//data"),    
+    INDEX_DEFAULT_PATH(".//index"),
     
-    LOG4J_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\log4j.properties"),
+    LOG4J_PROPERTIE_FILE_DEFAULT_PATH(".//properties//log4j.properties"),
         
-    H2_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\h2.properties"),
+    H2_PROPERTIE_FILE_DEFAULT_PATH(".//properties//h2.properties"),
     DB_URL("db.url"),
     DB_NAME("db.name"),
     DB_USER("db.user"),
     DB_PASS("db.password"),
     DB_SQUEMA_URL("db.squema"),
     
-    MALLET_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\malletLDA.properties"),
+    MALLET_PROPERTIE_FILE_DEFAULT_PATH(".//properties//malletLDA.properties"),
     LDA_STOP_WORDS("lda.stopwords"),
     LDA_ITERATIONS("lda.iterations"),
     LDA_NUM_TOPICS("lda.num_topics"),
@@ -52,7 +52,7 @@ public enum ParametersEnum {
     VERSION_STEP_MONTH(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.month")),
     VERSION_STEP_YEAR(ResourceBundle.getBundle("view/Bundle").getString("MainView.jCombox6.version.year")),
     
-    LUCENE_PROPERTIE_FILE_DEFAULT_PATH(".\\properties\\lucene.properties"),
+    LUCENE_PROPERTIE_FILE_DEFAULT_PATH(".//properties//lucene.properties"),
     STOP_WORDS("stopwords"),
     
     INDEX_FIELD1("Id"),

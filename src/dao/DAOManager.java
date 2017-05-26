@@ -56,7 +56,7 @@ public class DAOManager extends Observable implements Observer {
     protected Date sqlDate, sqlEmptyDate;
 
     public DAOManager() {
-        PropertiesApp.getInstance().fileLoad(".\\properties\\h2.properties");
+        PropertiesApp.getInstance().fileLoad(".//properties//h2.properties");
         try {
             db = new H2DB(PropertiesApp.getInstance().getPropertie(ParametersEnum.DB_URL.toString()),
                     PropertiesApp.getInstance().getPropertie(ParametersEnum.DB_USER.toString()),
